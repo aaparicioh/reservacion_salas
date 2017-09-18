@@ -1,0 +1,122 @@
+<h1>P&aacute;gina principal del sistema de reservaci&oacute;n de espacios acad&eacute;micos</h1>
+<p>A partir de ahora usted puede reservar un espacio acad&eacute;mico mediante este sistema, llenando el formulario que se presenta a continuaci&oacute;n.</p>
+
+<%= form_for :post, :url => {:controller => 'solicitud', :action => 'espera'} do |f| %> 
+
+	<p>
+		<%= f.label :Sala %>
+		<%= f.select :Sala, [['Auditorio 4° piso','Aud4'],['Sala 1 5° piso','Sala1_5'],['Sala 2 5° piso','Sala2_5'],['Auditorio 5° piso','Aud5'],['Sala 6° piso','Sala6'],['Anexo','Anexo']] %>
+	</p>
+	<p>
+		<%= f.label :Responsable %>
+		<%= f.text_field :Responsable %>
+	</p>
+	<p>
+		<%= f.label :Motivo %>
+		<%= f.text_field :Motivo %>
+	</p>
+	<p>
+		<%= f.label :Numero_sesiones %>
+		<%= f.text_field :Numero_sesiones %>
+	</p>
+	<p>
+		<%= f.label :Fecha_inicio %>
+		<%= f.text_field :Fecha_inicio %>
+	</p>
+	<p>
+		<%= f.label :Fecha_fin %>
+		<%= f.text_field :Fecha_fin %>
+	</p>
+	<p>
+		<%= f.label :Dia_semana %>
+		<%= f.select :Dia_semana, [['Lunes','lunes'],['Martes','martes'],['Miércoles','miercoles'],['Jueves','jueves'],['Viernes','viernes']] %>
+	</p>
+	<p>
+		<%= f.label :Horario %>
+		<%= f.text_field :Horario %>
+	</p>
+	<p>
+		<%= f.label :Num_personas %>
+		<%= f.text_field :Num_personas %>
+	</p>
+	<p>
+		<%= f.label :Requerimientos %>
+		<%= f.text_area :Requerimientos %>
+	</p>
+	<p>
+		<%= f.submit :Enviar%>
+	</p>
+<% end %>
+
+<%= form_with(model: reservacion, local: true) do |form| %>
+  <% if reservacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservacion.errors.count, "error") %> prohibited this reservacion from being saved:</h2>
+
+      <ul>
+      <% reservacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre_del_responsable %>
+    <%= form.text_field :nresponsable, id: :reservacion_nresponsable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre_del_evento %>
+    <%= form.text_field :nevento, id: :reservacion_nevento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_de_inicio %>
+    <%= form.date_select :fechainicio, id: :reservacion_fechainicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_de_fin %>
+    <%= form.date_select :fechafin, id: :reservacion_fechafin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_de_inicio %>
+    <%= form.time_select :horainicio, id: :reservacion_horainicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_de_fin %>
+    <%= form.time_select :horafin, id: :reservacion_horafin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repeticion %>
+    <%= form.check_box :repeticion, id: :reservacion_repeticion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :id_de_repeticiones %>
+    <%= form.text_field :idrepeticiones, id: :reservacion_idrepeticiones %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aprobacion %>
+    <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo_de_actividad %>
+    <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_de_solicitud %>
+    <%= form.datetime_select :fechasolicitud, id: :reservacion_fechasolicitud %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Solicituds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sala</th>
+      <th>Responsable</th>
+      <th>Motivo</th>
+      <th>Sesiones</th>
+      <th>Fechainicio</th>
+      <th>Fechafin</th>
+      <th>Diasemana</th>
+      <th>Horario</th>
+      <th>Numpersonas</th>
+      <th>Requerimientos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solicituds.each do |solicitud| %>
+      <tr>
+        <td><%= solicitud.sala %></td>
+        <td><%= solicitud.responsable %></td>
+        <td><%= solicitud.motivo %></td>
+        <td><%= solicitud.sesiones %></td>
+        <td><%= solicitud.fechainicio %></td>
+        <td><%= solicitud.fechafin %></td>
+        <td><%= solicitud.diasemana %></td>
+        <td><%= solicitud.horario %></td>
+        <td><%= solicitud.numpersonas %></td>
+        <td><%= solicitud.requerimientos %></td>
+        <td><%= link_to 'Show', solicitud %></td>
+        <td><%= link_to 'Edit', edit_solicitud_path(solicitud) %></td>
+        <td><%= link_to 'Destroy', solicitud, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Solicitud', new_solicitud_path %>

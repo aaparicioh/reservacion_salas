@@ -1,0 +1,72 @@
+<%= form_with(model: reservacion, local: true) do |form| %>
+  <% if reservacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservacion.errors.count, "error") %> prohibited this reservacion from being saved:</h2>
+
+      <ul>
+      <% reservacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre_del_responsable %>
+    <%= form.text_field :nresponsable, id: :reservacion_nresponsable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre_del_evento %>
+    <%= form.text_field :nevento, id: :reservacion_nevento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_de_inicio %>
+    <%= form.date_select :fechainicio, id: :reservacion_fechainicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_de_fin %>
+    <%= form.date_select :fechafin, id: :reservacion_fechafin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_de_inicio %>
+    <%= form.time_select :horainicio, id: :reservacion_horainicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_de_fin %>
+    <%= form.time_select :horafin, id: :reservacion_horafin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repeticion %>
+    <%= form.check_box :repeticion, id: :reservacion_repeticion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :id_de_repeticiones %>
+    <%= form.text_field :idrepeticiones, id: :reservacion_idrepeticiones %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aprobacion %>
+    <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo_de_actividad %>
+    <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_de_solicitud %>
+    <%= form.datetime_select :fechasolicitud, id: :reservacion_fechasolicitud %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

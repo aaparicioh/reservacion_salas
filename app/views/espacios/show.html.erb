@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @espacio.nombre %>
+</p>
+
+<p>
+  <strong>Ubicacion:</strong>
+  <%= @espacio.ubicacion %>
+</p>
+
+<p>
+  <strong>Aforo:</strong>
+  <%= @espacio.aforo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @espacio.descripcion %>
+</p>
+
+<p>
+  <strong>Servicios adicionales:</strong>
+  <%= @espacio.servicios_adicionales %>
+</p>
+
+<p>
+  <strong>Estatus:</strong>
+  <%= @espacio.estatus %>
+</p>
+
+<%= link_to 'Edit', edit_espacio_path(@espacio) %> |
+<%= link_to 'Back', espacios_path %>

@@ -1,0 +1,47 @@
+<%= form_with(model: espacio, local: true) do |form| %>
+  <% if espacio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(espacio.errors.count, "error") %> prohibited this espacio from being saved:</h2>
+
+      <ul>
+      <% espacio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :espacio_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ubicacion %>
+    <%= form.text_field :ubicacion, id: :espacio_ubicacion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aforo %>
+    <%= form.number_field :aforo, id: :espacio_aforo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion, id: :espacio_descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :servicios_adicionales %>
+    <%= form.text_area :servicios_adicionales, id: :espacio_servicios_adicionales %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estatus %>
+    <%= form.text_field :estatus, id: :espacio_estatus %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

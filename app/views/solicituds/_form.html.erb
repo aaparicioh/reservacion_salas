@@ -1,0 +1,67 @@
+<%= form_with(model: solicitud, local: true) do |form| %>
+  <% if solicitud.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(solicitud.errors.count, "error") %> prohibited this solicitud from being saved:</h2>
+
+      <ul>
+      <% solicitud.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sala %>
+    <%= form.text_field :sala, id: :solicitud_sala %>
+  </div>
+
+  <div class="field">
+    <%= form.label :responsable %>
+    <%= form.text_field :responsable, id: :solicitud_responsable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :motivo %>
+    <%= form.text_field :motivo, id: :solicitud_motivo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sesiones %>
+    <%= form.text_field :sesiones, id: :solicitud_sesiones %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fechainicio %>
+    <%= form.text_field :fechainicio, id: :solicitud_fechainicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fechafin %>
+    <%= form.text_field :fechafin, id: :solicitud_fechafin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diasemana %>
+    <%= form.text_field :diasemana, id: :solicitud_diasemana %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horario %>
+    <%= form.text_field :horario, id: :solicitud_horario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numpersonas %>
+    <%= form.text_field :numpersonas, id: :solicitud_numpersonas %>
+  </div>
+
+  <div class="field">
+    <%= form.label :requerimientos %>
+    <%= form.text_field :requerimientos, id: :solicitud_requerimientos %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

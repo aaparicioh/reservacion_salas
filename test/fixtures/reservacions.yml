@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nresponsable: MyString
+  nevento: MyString
+  fechainicio: 2017-09-06
+  fechafin: 2017-09-06
+  horainicio: 2017-09-06 10:29:07
+  horafin: 2017-09-06 10:29:07
+  repeticion: false
+  idrepeticiones: MyString
+  aprobacion: false
+  tipoactividad: MyString
+  fechasolicitud: 2017-09-06 10:29:07
+
+two:
+  nresponsable: MyString
+  nevento: MyString
+  fechainicio: 2017-09-06
+  fechafin: 2017-09-06
+  horainicio: 2017-09-06 10:29:07
+  horafin: 2017-09-06 10:29:07
+  repeticion: false
+  idrepeticiones: MyString
+  aprobacion: false
+  tipoactividad: MyString
+  fechasolicitud: 2017-09-06 10:29:07

@@ -1,0 +1,2 @@
+class Espacio < ApplicationRecord
+end

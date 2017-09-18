@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @usuario.nick %>
+</p>
+
+<p>
+  <strong>Contraseña:</strong>
+  <%= @usuario.pass %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @usuario.nombre %>
+</p>
+
+<p>
+  <strong>Apellido paterno:</strong>
+  <%= @usuario.appat %>
+</p>
+
+<p>
+  <strong>Apellido materno:</strong>
+  <%= @usuario.apmat %>
+</p>
+
+<p>
+  <strong>Tipo de usuario:</strong>
+  <%= @usuario.tipo_usuario %>
+</p>
+
+<p>
+  <strong>Autorizado:</strong>
+  <%= @usuario.autorizado %>
+</p>
+
+<%= link_to 'Editar', edit_usuario_path(@usuario) %> |
+<%= link_to 'Regresar', usuarios_path %>

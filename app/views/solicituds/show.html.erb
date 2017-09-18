@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sala:</strong>
+  <%= @solicitud.sala %>
+</p>
+
+<p>
+  <strong>Responsable:</strong>
+  <%= @solicitud.responsable %>
+</p>
+
+<p>
+  <strong>Motivo:</strong>
+  <%= @solicitud.motivo %>
+</p>
+
+<p>
+  <strong>Sesiones:</strong>
+  <%= @solicitud.sesiones %>
+</p>
+
+<p>
+  <strong>Fechainicio:</strong>
+  <%= @solicitud.fechainicio %>
+</p>
+
+<p>
+  <strong>Fechafin:</strong>
+  <%= @solicitud.fechafin %>
+</p>
+
+<p>
+  <strong>Diasemana:</strong>
+  <%= @solicitud.diasemana %>
+</p>
+
+<p>
+  <strong>Horario:</strong>
+  <%= @solicitud.horario %>
+</p>
+
+<p>
+  <strong>Numpersonas:</strong>
+  <%= @solicitud.numpersonas %>
+</p>
+
+<p>
+  <strong>Requerimientos:</strong>
+  <%= @solicitud.requerimientos %>
+</p>
+
+<%= link_to 'Edit', edit_solicitud_path(@solicitud) %> |
+<%= link_to 'Back', solicituds_path %>

@@ -1,0 +1,52 @@
+<%= form_with(model: usuario, local: true) do |form| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+      <% usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :usuario %>
+    <%= form.text_field :nick, id: :usuario_nick %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contraseña %>
+    <%= form.text_field :pass, id: :usuario_pass %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :usuario_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido_paterno %>
+    <%= form.text_field :appat, id: :usuario_appat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido_materno %>
+    <%= form.text_field :apmat, id: :usuario_apmat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo_de_usuario %>
+    <%= form.text_field :tipo_usuario, id: :usuario_tipo_usuario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :autorizado %>
+    <%= form.number_field :autorizado, id: :usuario_autorizado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :Agregar %>
+  </div>
+<% end %>
