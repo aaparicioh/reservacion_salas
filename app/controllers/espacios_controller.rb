@@ -28,7 +28,7 @@ class EspaciosController < ApplicationController
 
     respond_to do |format|
       if @espacio.save
-        format.html { redirect_to @espacio, notice: 'Espacio was successfully created.' }
+        format.html { redirect_to @espacio, notice: 'El Espacio fue agregado satisfactoriamente.' }
         format.json { render :show, status: :created, location: @espacio }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EspaciosController < ApplicationController
   def update
     respond_to do |format|
       if @espacio.update(espacio_params)
-        format.html { redirect_to @espacio, notice: 'Espacio was successfully updated.' }
+        format.html { redirect_to @espacio, notice: 'Los datos del espacio fueron actualizados satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @espacio }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class EspaciosController < ApplicationController
   def destroy
     @espacio.destroy
     respond_to do |format|
-      format.html { redirect_to espacios_url, notice: 'Espacio was successfully destroyed.' }
+      format.html { redirect_to espacios_url, notice: 'Los datos del Espacio fueron eliminados satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

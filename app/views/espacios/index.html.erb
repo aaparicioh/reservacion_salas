@@ -6,9 +6,9 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Ubicacion</th>
+      <th>Ubicación</th>
       <th>Aforo</th>
-      <th>Descripcion</th>
+      <th>Descripción</th>
       <th>Servicios adicionales</th>
       <th>Estatus</th>
       <th colspan="3"></th>
@@ -24,9 +24,9 @@
         <td><%= espacio.descripcion %></td>
         <td><%= espacio.servicios_adicionales %></td>
         <td><%= espacio.estatus %></td>
-        <td><%= link_to 'Show', espacio %></td>
-        <td><%= link_to 'Edit', edit_espacio_path(espacio) %></td>
-        <td><%= link_to 'Destroy', espacio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', espacio %></td>
+        <td><%= link_to 'Editar', edit_espacio_path(espacio) %></td>
+        <td><%= link_to 'Eliminar', espacio, method: :delete, data: { confirm: '¿Desea continuar?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Espacio', new_espacio_path %>
+<%= link_to 'Agregar Espacio', new_espacio_path %>
