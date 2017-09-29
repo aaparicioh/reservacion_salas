@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :sala %>
-    <%= form.text_field :sala, id: :solicitud_sala %>
+    <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
   </div>
 
   <div class="field">
@@ -32,28 +32,28 @@
   </div>
 
   <div class="field">
-    <%= form.label :fechainicio %>
-    <%= form.text_field :fechainicio, id: :solicitud_fechainicio %>
+    <%= form.label :fecha_de_inicio %>
+    <%= form.date_field :fechainicio, id: :solicitud_fechainicio %>
   </div>
 
   <div class="field">
-    <%= form.label :fechafin %>
-    <%= form.text_field :fechafin, id: :solicitud_fechafin %>
+    <%= form.label :fecha_de_fin %>
+    <%= form.date_field :fechafin, id: :solicitud_fechafin %>
   </div>
 
   <div class="field">
-    <%= form.label :diasemana %>
-    <%= form.text_field :diasemana, id: :solicitud_diasemana %>
+    <%= form.label :día_de_la_semana %>
+    <%= form.select :diasemana, [['Lunes','lunes'],['Martes','martes'],['Miércoles','miercoles'],['Jueves','jueves'],['Viernes','viernes']], id: :solicitud_diasemana %>
   </div>
 
   <div class="field">
     <%= form.label :horario %>
-    <%= form.text_field :horario, id: :solicitud_horario %>
+    <%= form.time_field :horario, id: :solicitud_horario %>
   </div>
 
   <div class="field">
-    <%= form.label :numpersonas %>
-    <%= form.text_field :numpersonas, id: :solicitud_numpersonas %>
+    <%= form.label :numero_de_personas %>
+    <%= form.number_field :numpersonas, id: :solicitud_numpersonas, in: 1..100, step: 1 %>
   </div>
 
   <div class="field">
@@ -62,6 +62,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :Aceptar %>
   </div>
 <% end %>

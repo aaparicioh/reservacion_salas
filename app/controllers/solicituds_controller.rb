@@ -28,7 +28,7 @@ class SolicitudsController < ApplicationController
 
     respond_to do |format|
       if @solicitud.save
-        format.html { redirect_to @solicitud, notice: 'Solicitud was successfully created.' }
+        format.html { redirect_to @solicitud, notice: 'Su solicitud fue enviada correctamente al departamento de difusión. Por favor verifique en un máximo de tres días su correo electrónico para la notificación correspondiente. Gracias.' }
         format.json { render :show, status: :created, location: @solicitud }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SolicitudsController < ApplicationController
   def update
     respond_to do |format|
       if @solicitud.update(solicitud_params)
-        format.html { redirect_to @solicitud, notice: 'Solicitud was successfully updated.' }
+        format.html { redirect_to @solicitud, notice: 'La solicitud fue actualizada satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @solicitud }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SolicitudsController < ApplicationController
   def destroy
     @solicitud.destroy
     respond_to do |format|
-      format.html { redirect_to solicituds_url, notice: 'Solicitud was successfully destroyed.' }
+      format.html { redirect_to solicituds_url, notice: 'La solicitud fue eliminada satisfactoriamente.' }
       format.json { head :no_content }
     end
   end
