@@ -1,0 +1,35 @@
+<html>
+
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://momentjs.com/downloads/moment.js"></script>
+<script src="https://rawgit.com/monkbroc/fullcalendar/year-view-demo/dist/fullcalendar.js"></script>
+
+
+<link rel='stylesheet' href="https://rawgit.com/monkbroc/fullcalendar/year-view-demo/dist/fullcalendar.css"/>
+<div id="calendar"></div>
+
+
+
+<script>
+$(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'year,month,basicWeek,basicDay'
+			},
+			defaultView: 'year',
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			
+		});
+
+});
+</script>
+
+
+</head>
+</html>
