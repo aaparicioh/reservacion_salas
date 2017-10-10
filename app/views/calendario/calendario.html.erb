@@ -42,7 +42,9 @@
 	 
 	  	<button type="button" class="btn btn-link">Políticas</button>
                 <div>
-                 <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
+        <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
+
+
 <div id="ventana_emergente"> 
 <h3> SERVICIOS TÉCNICOS </h3>
        <p> Videoproyector </p>
@@ -74,15 +76,30 @@
   <li class="span4">
     <div class="thumbnail">
       <img src="https://deconceptos.com/wp-content/uploads/2010/07/concepto-de-auditorio-295x300.jpg" alt="">
-     <h4><%= link_to 'Auditorio 4° piso', espacios_auditorio4P_path %></h4>
-     
+<center> 
+   <a class="btn btn-primary btn-large">
+   <%= button_to 'Auditorio 4° piso', espacios_auditorio4P_path, :method => :post %>
+    <form>
+      <input name="id" type="hidden" value="1">
+   </form>
+    </a>
+</center> 
     </div> 
 </li>
 <li class="span4">
 <div class="thumbnail">
       <img src="https://deconceptos.com/wp-content/uploads/2010/07/concepto-de-auditorio-295x300.jpg" alt="">
-     <button type="button" class="btn btn-link">Sala uno 5° piso</button>
-     
+     <center> 
+   <a class="btn btn-primary btn-large">
+    <style type="text/css">
+input {color: black;}
+    </style>
+   <%= button_to 'Sala uno 5° piso', espacios_sala15P_path, :method => :post %>
+    <form>
+      <input name="id" type="hidden" value="2">
+   </form>
+    </a>
+</center> 
     </div>
   </li>
 </ul>          
@@ -94,14 +111,22 @@
   <li class="span4">
     <div class="thumbnail">
       <img src="https://deconceptos.com/wp-content/uploads/2010/07/concepto-de-auditorio-295x300.jpg" alt="">
-    <button type="button" class="btn btn-link">Sala dos 5° piso</button>
+<center> 
+    <a class="btn btn-primary btn-large">
+     <%= button_to 'Sala dos 5° piso', espacios_sala25P_path, :method => :get %>
+    </a>
+</center> 
+  
     </div> 
 </li>
 <li class="span4">
 <div class="thumbnail">
       <img src="https://deconceptos.com/wp-content/uploads/2010/07/concepto-de-auditorio-295x300.jpg" alt="">
-      <button type="button" class="btn btn-link">Auditorio Rolando García</button>
-     
+     <center> 
+   <a class="btn btn-primary btn-large">
+   <%= button_to 'Auditorio Rolando García', espacios_auditorioRG_path, :method => :get %>
+    </a>
+</center> 
     </div>
   </li>
 </ul>          
@@ -113,14 +138,21 @@
   <li class="span4">
     <div class="thumbnail">
       <img src="https://deconceptos.com/wp-content/uploads/2010/07/concepto-de-auditorio-295x300.jpg" alt="">
-     <button type="button" class="btn btn-link">Sala 6° piso</button>
+     <center> 
+   <a class="btn btn-primary btn-large">
+   <%= button_to 'Sala del 6° piso', espacios_sala6P_path, :method => :get %>
+    </a>
+</center> 
     </div> 
 </li>
 <li class="span4">
 <div class="thumbnail">
       <img src="https://deconceptos.com/wp-content/uploads/2010/07/concepto-de-auditorio-295x300.jpg" alt="">
-      <button type="button" class="btn btn-link">Sala de posgrado</button>
-     
+      <center> 
+   <a class="btn btn-primary btn-large">
+   <%= button_to 'Sala de Posgrado', espacios_salaPosg_path, :method => :get %>
+    </a>
+</center> 
     </div>
   </li>
 </ul>          

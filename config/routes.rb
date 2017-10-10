@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :reservacions
   resources :usuarios
-  resources :espacios
   resources :solicituds
   resources :welcome
   resources :calendario
@@ -23,7 +22,14 @@ Rails.application.routes.draw do
   get 'calendario/calendario'
   get 'solicituds/index'
   get 'reservacion/index'
-  get'espacios/auditorio4P'
-get 'espacios/1'
+  get 'espacios/auditorio4P'
+  post 'espacios/auditorio4P'
+  get 'espacios/sala15P'
+ post 'espacios/sala15P'
+  get 'espacios/sala25P'
+  get'espacios/auditorioRG'
+  get 'espacios/sala6P'
+  get 'espacios/salaPosg'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -49,16 +49,16 @@ $(document).ready(function() {
         events : [
         {
             title  : 'event1',
-            start  : '2017-10-01'
+            start  : '2017-10-05'
         },
         {
             title  : 'event2',
-            start  : '2017-10-05',
-            end    : '2017-10-07'
+            start  : '2017-10-20',
+            end    : '2017-10-30'
         },
         {
             title  : 'event3',
-            start  : '2017-10-09 12:30:00',
+            start  : '2017-10-17 12:30:00',
             allDay : false // will make the time show
         }
       ]
@@ -69,10 +69,8 @@ $(document).ready(function() {
 
 <div class="panel-group">
 	<div class="col-md-9" >
-		<center><h1>Auditorio 4° piso</h1></center>
 <div id="calendar"></div>
 </div>
-<%= button_to 'Otro espacio', calendario_calendario_path, :method => :get %>
 </div>
 
 

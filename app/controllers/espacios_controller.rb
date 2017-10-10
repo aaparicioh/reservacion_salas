@@ -10,7 +10,6 @@ class EspaciosController < ApplicationController
   # GET /espacios/1
   # GET /espacios/1.json
   def show
-render '/espacios/auditorio4P'
   end
 
   # GET /espacios/new
