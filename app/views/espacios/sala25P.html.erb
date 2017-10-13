@@ -1,0 +1,79 @@
+<html>
+
+<head>
+ 
+<script src="//code.jquery.com/jquery-3.2.1.min.js">
+  </script>
+<script src="//momentjs.com/downloads/moment.js">
+  </script>  
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
+  </script>
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.print.css" rel="stylesheet">
+ 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"> </script>
+
+<div class="panel-group">
+	<div class="col-md-2" >
+	 <div class="panel panel-default">
+                <div class="panel-heading">Programación de actividades </div>
+		<div class="panel-body">
+                <div class="btn-group-vertical" role="group" aria-label="...">
+	  		
+		Reservaciones
+	 
+	  	<button type="button" class="btn btn-link">Políticas</button>
+                <div>
+                 <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
+<div id="ventana_emergente">  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+    $('#calendar').fullCalendar({
+
+                        header:  {
+				left: 'today, next day',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+        height : 250,
+        width  : 350,
+
+        events : [
+        {
+            title  : 'event1',
+            start  : '2017-10-01'
+        },
+        {
+            title  : 'event2',
+            start  : '2017-10-05',
+            end    : '2017-10-07'
+        },
+        {
+            title  : 'event3',
+            start  : '2017-10-09 12:30:00',
+            allDay : false // will make the time show
+        }
+      ]
+    });
+});
+</script>
+</head>
+
+<div class="panel-group">
+	<div class="col-md-9" >
+    <div align="center"><font color="#FFFFFF" size="+3"><marquee bgcolor="#000000" direction="right" loop="20">SALA DOS 5° PISO</marquee></font></div>
+<div id="calendar"></div>
+</div>
+<%= button_to 'Otro espacio', calendario_calendario_path, :method => :get %>
+</div>
+
+
+</html>
