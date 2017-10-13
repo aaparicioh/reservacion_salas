@@ -13,6 +13,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.print.css" rel="stylesheet">
  
   <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"> </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/locale/es.js"></script>
 
 <div class="panel-group">
 	<div class="col-md-2" >
@@ -23,7 +24,7 @@
 	  		
 		Reservaciones
 	 
-	  	<button type="button" class="btn btn-link">Políticas</button>
+	  	<button type="button" class="btn btn-link"></button>
                 <div>
                  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
 <div id="ventana_emergente">  </div>
@@ -71,8 +72,18 @@ $(document).ready(function() {
 	<div class="col-md-9" >
     <div align="center"><font color="#FFFFFF" size="+3"><marquee bgcolor="#000000" direction="right" loop="20">SALA DE POSGRADO</marquee></font></div>
 <div id="calendar"></div>
+<div align ="right">
+ <a class="btn btn-primary btn-large">
+   <style type="text/css">
+input {color: black;}
+    </style>
+    <%= button_to 'Solicitar espacio', new_solicitud_path, :method => :get %>
+</a>
 </div>
+</div>
+ <a class="btn btn-primary btn-large">
 <%= button_to 'Otro espacio', calendario_calendario_path, :method => :get %>
+</a>
 </div>
 
 

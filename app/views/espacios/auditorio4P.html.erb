@@ -1,18 +1,18 @@
 <html>
 
 <head>
- 
+
 <script src="//code.jquery.com/jquery-3.2.1.min.js">
   </script>
 <script src="//momentjs.com/downloads/moment.js">
   </script>  
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
   </script>
-
   <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.print.css" rel="stylesheet">
  
   <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"> </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/locale/es.js"></script>
 
 <div class="panel-group">
 	<div class="col-md-2" >
@@ -23,7 +23,7 @@
 	  		
 		Reservaciones
 	 
-	  	<button type="button" class="btn btn-link">Políticas</button>
+	  	<button type="button" class="btn btn-link"></button>
                 <div>
                  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
 <div id="ventana_emergente">  </div>
@@ -37,12 +37,17 @@
 <script>
 $(document).ready(function() {
     $('#calendar').fullCalendar({
-
-                        header:  {
-				left: 'today, next day',
-				center: 'title',
-				right: 'month,basicWeek,basicDay'
-			},
+      editable: true,
+buttonText: {
+prev: 'anterior',
+next: 'siguiente',
+today: 'Hoy'
+},
+                        header: {
+left: '',
+center: 'title',
+right: 'prev, next today '
+},
         height : 250,
         width  : 350,
 
@@ -71,8 +76,22 @@ $(document).ready(function() {
 	<div class="col-md-9" >
 <div align="center"><font color="#FFFFFF" size="+3"><marquee bgcolor="#000000" direction="right" loop="20">AUDITORIO 4° PISO</marquee></font></div>
 <div id="calendar"></div>
+<div align ="right">
+ <a class="btn btn-primary btn-large">
+   <style type="text/css">
+input {color: black;}
+    </style>
+    <%= button_to 'Solicitar espacio', new_solicitud_path, :method => :get %>
+</a>
 </div>
+</div>
+
+ <a class="btn btn-primary btn-large">
+   <style type="text/css">
+input {color: black;}
+    </style>
 <%= button_to 'Otro espacio', calendario_calendario_path, :method => :get %>
+</a>
 </div>
 
 

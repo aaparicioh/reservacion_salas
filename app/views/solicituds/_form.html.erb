@@ -11,6 +11,9 @@
     </div>
   <% end %>
 
+  <div class="container">
+  <div class="jumbotron">
+    <center>
   <div class="field">
     <%= form.label :sala %>
     <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
@@ -64,4 +67,7 @@
   <div class="actions">
     <%= form.submit :Aceptar %>
   </div>
+</center>
+</div>
+</div>
 <% end %>
