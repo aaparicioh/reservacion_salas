@@ -22,14 +22,24 @@ Rails.application.routes.draw do
   get 'calendario/calendario'
   get 'solicituds/index'
   get 'reservacion/index'
+  
   get 'espacios/auditorio4P'
   post 'espacios/auditorio4P'
+
   get 'espacios/sala15P'
- post 'espacios/sala15P'
+  post 'espacios/sala15P'
+
   get 'espacios/sala25P'
+  post 'espacios/sala25P'
+
   get'espacios/auditorioRG'
+  post'espacios/auditorioRG'
+
   get 'espacios/sala6P'
+  post 'espacios/sala6P'
+  
   get 'espacios/salaPosg'
+  post 'espacios/salaPosg'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
