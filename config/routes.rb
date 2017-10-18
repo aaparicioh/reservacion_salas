@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'formulario/principal'
 
   get 'welcome/solicitud'
-  
+  post 'welcome/solicitud'
    
   
   get 'calendario/calendario'
