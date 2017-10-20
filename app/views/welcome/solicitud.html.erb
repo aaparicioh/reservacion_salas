@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html>
 <div class="container">
-<div class="jumbotron">
+	<style type="text/css">
+       .jumbotron2 {
+       padding: 50px;
+       background-image: url(https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/calendario.jpg); 
+       background-repeat: no-repeat;
+       background-position: center; 
+                  }
+       .jumbotron3 {
+       padding: 50px;
+       background-image: url(https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/Formulario_Icono.jpg); 
+       background-repeat: no-repeat;
+      background-position: 50% 00%;  
+                  }
+        </style>
  
  <div class="row">
  <div class="col-md-6" >
+ 	<div class="jumbotron2">
+ 		<center>
               <a class="btn btn-primary btn-large">
               	<style type="text/css">
 input {color: black;}
     </style>
-     <%= button_to 'Ver disponibilidad de espacios', calendario_calendario_path, :method => :get %>
+     <%= button_to 'Ver disponibilidad de espacios', calendario_espacios_path, :method => :get %>
     </a>
-
+</center>
+</div>
 </div>
  <div class="col-md-6" >
+ 	<div class="jumbotron3">
+ 		<center>
  	 <a class="btn btn-primary btn-large">
 <%= button_to 'Solicitar espacio', new_solicitud_path, :method => :get %>
  </a>
+</center>
 </div>
 </div>
 </div>
