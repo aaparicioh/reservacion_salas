@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'welcome/solicitud'
    
   
-  get 'calendario/calendario'
+  get 'calendario/espacios'
   get 'solicituds/index'
   get 'reservacion/index'
   

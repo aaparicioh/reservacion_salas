@@ -39,6 +39,7 @@ $(document).ready(function() {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
+      weekends: false,
         height : 750,
         width  : 300,
 
@@ -53,7 +54,7 @@ $(document).ready(function() {
             end    : '2017-10-30'
         },
         {
-            title  : 'event3',
+            title  : 'Mesa de trabajo',
             start  : '2017-10-17 12:30:00',
             allDay : false // will make the time show
         }
@@ -79,7 +80,7 @@ input {color: black;}
 </div>
 </div>
 <a class="btn btn-primary btn-large">
-<%= button_to 'Otro espacio', calendario_calendario_path, :method => :get %>
+<%= button_to 'Otro espacio', calendario_espacios_path, :method => :get %>
 </a>
 
 </html>
