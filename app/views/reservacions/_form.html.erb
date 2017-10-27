@@ -11,8 +11,15 @@
     </div>
   <% end %>
 
+    
+    <div class="field">
+    <%= form.label :sala %>
+    <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
+  </div>
+  
+
   <div class="field">
-    <%= form.label :nombre_del_responsable %>
+    <%= form.label :nombre_de_responsable %>
     <%= form.text_field :nresponsable, id: :reservacion_nresponsable %>
   </div>
 
@@ -23,22 +30,22 @@
 
   <div class="field">
     <%= form.label :fecha_de_inicio %>
-    <%= form.date_select :fechainicio, id: :reservacion_fechainicio %>
+    <%= form.date_field :fechainicio, id: :reservacion_fechainicio %>
   </div>
 
   <div class="field">
     <%= form.label :fecha_de_fin %>
-    <%= form.date_select :fechafin, id: :reservacion_fechafin %>
+    <%= form.date_field :fechafin, id: :reservacion_fechafin %>
   </div>
 
   <div class="field">
     <%= form.label :hora_de_inicio %>
-    <%= form.time_select :horainicio, id: :reservacion_horainicio %>
+    <%= form.time_field :horainicio, id: :reservacion_horainicio %>
   </div>
 
   <div class="field">
     <%= form.label :hora_de_fin %>
-    <%= form.time_select :horafin, id: :reservacion_horafin %>
+    <%= form.time_field :horafin, id: :reservacion_horafin %>
   </div>
 
   <div class="field">
@@ -63,7 +70,9 @@
 
   <div class="field">
     <%= form.label :fecha_de_solicitud %>
-    <%= form.datetime_select :fechasolicitud, id: :reservacion_fechasolicitud %>
+    <%= Time.now.strftime("%d-%m-%Y") %>
+    <%-# id: :reservacion_fechasolicitud => Time.now -%>
+    <%-#= form.datetime_select :fechasolicitud, id: :reservacion_fechasolicitud -%>
   </div>
 
   <div class="actions">

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'formulario/principal'
 
   get 'welcome/solicitud'
-  
+  post 'welcome/solicitud'
    
   
   get 'calendario/calendario'
@@ -40,6 +40,8 @@ Rails.application.routes.draw do
  
   get 'espacios/salaPosg'
   post'espacios/salaPosg'
+
+  get 'solicituds/new'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

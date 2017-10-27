@@ -1,9 +1,22 @@
-<div class="container">
-<div class="jumbotron">
-  <h3>BIENVENIDO</h3>
-	<h5> Ingresa tu correo electrónico </h5>
-<td><%= text_field("correo_electronico", "login","size"=>"15") %></td>
+<html>
 
- <%= link_to 'Entrar', welcome_solicitud_path %>
+<head>
+	<style type="text/css">
+       .jumbotron1 {
+       padding: 50px;
+       background-image: url(https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/FB_IMG_1508268037442.jpg); 
+       background-position: 2em 27cm;
+                  }
+        </style>
+
+<div class="container">
+    <div class="jumbotron1">
+    	<p></p>
+  <h2>BIENVENIDO</h2>
+	<h5> Ingresa tu correo electrónico </h5>
+<td><%= text_field("correo_electronico", "login","size"=>"22") %></td>
+ <%= button_to 'Entrar', welcome_solicitud_path %>
 </div>
 </div>
+</head>
+</html>

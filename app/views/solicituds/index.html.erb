@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Solicitudes</h1>
+<h1 align="center">Solicitudes</h1>
 
-<table>
+<table align="center">
   <thead>
     <tr>
       <th>Sala</th>
@@ -34,7 +34,7 @@
         <td><%= solicitud.requerimientos %></td>
         <td><%= link_to 'Mostrar', solicitud %></td>
         <td><%= link_to 'Editar', edit_solicitud_path(solicitud) %></td>
-        <td><%= link_to 'Eliminar', destroy_solicitud_path(solicitud), method: :delete, data: { confirm: '¿Desea continuar?' } %></td>
+        <td><%= link_to 'Eliminar', solicitud, method: :delete, data: { confirm: '¿Desea continuar?' } %></td>
       </tr>
     <% end %>
   </tbody>
