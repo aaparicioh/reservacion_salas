@@ -9,8 +9,9 @@
  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"> </script>
  <script src='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/locale/es.js'></script>
 
+<div class= "contenedor">
 <div class="panel-group">
-	<div class="col-md-2" >
+	<div class="col-md-3" >
 	 <div class="panel panel-default">
                 <div class="panel-heading">Programación de actividades </div>
 		<div class="panel-body">
@@ -19,67 +20,50 @@
 		Reservaciones
 	 
 	  	<button type="button" class="btn btn-link"></button>
+      <%= javascript_include_tag "ventanaCatalogo" %>
+      <div id="ventana_emergente"> 
+         <h3> SERVICIOS TÉCNICOS </h3>
+           <p> Videoproyector </p>
+           <p> PC </p>
+           <p> Traducción simultánea </p>
+           <p> Vídeo </p>
+           <p> Conexión por Skype </p>
+           <p> Conexión Internet </p>
+           <p> Videoconferencia </p>
+           <p> Pizarrón </p>
+           <p> Webcast </p>
+           <p> Grabación de video </p>
+           <p> Grabación de audio </p>
+         <h3> OTROS SERVICIOS </h3>
+           <p> En todas las sesiones se ofrece café. </p>
+           <p> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </p>
+           <p> <a id="cerrar" href="javascript:void(0);"> Cerrar </a> </p>
+      </div>
                 <div>
                  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
-<div id="ventana_emergente">  </div>
 </div>
 </div>
 </div>
 </div>
 </div>
 
-
-<script>
-$(document).ready(function() {
-    $('#calendar').fullCalendar({
-
-                        header:  {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-        height : 750,
-        width  : 300,
-        weekends: false,
-
-        events : [
-        {
-            title  : 'Encuentro',
-            start  : '2017-11-09'
-        },
-        {
-            title  : 'Mesa redonda',
-            start  : '2017-10-05',
-            end    : '2017-10-07'
-        },
-        {
-            title  : 'Jornada',
-            start  : '2017-10-09 12:30:00',
-            allDay : false // will make the time show
-        }
-      ]
-    });
-});
-</script>
+<%= javascript_include_tag "cal_sala25P" %>
 </head>
 
 <div class="panel-group">
-	<div class="col-md-9" >
-    <div align="center"><font color="#FFFFFF" size="+3"><marquee bgcolor="#000000" direction="left" loop="20">SALA DOS 5° PISO</marquee></font></div>
-<div id="calendar"></div>
-<div align ="right">
- <a class="btn btn-primary btn-large">
-   <style type="text/css">
-input {color: black;}
-    </style>
-    <%= button_to 'Solicitar espacio', new_solicitud_path, :method => :get %>
-</a>
+      <div class="col-md-9" >
+        <div align="center"><font color="#FFFFFF" size="+2"><marquee bgcolor="#000000" direction="left" loop="20">SALA DOS 5° PISO</marquee></font></div>
+          <div id="calendar"></div>
+            <div align ="right">
+              <a class="btn btn-primary btn-large">
+                <%= button_to 'Reservar', new_solicitud_path, :method => :get %>
+              </a>
+            </div>
+              <a class="btn btn-primary btn-large">
+                <%= button_to 'Otro espacio', calendario_espacios_path, :method => :get %>
+              </a>
+      </div>
+    </div>
 </div>
-</div>
- <a class="btn btn-primary btn-large">
-<%= button_to 'Otro espacio', calendario_espacios_path, :method => :get %>
-</a>
-</div>
-
 
 </html>

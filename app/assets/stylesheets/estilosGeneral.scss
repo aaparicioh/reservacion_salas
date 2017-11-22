@@ -1,0 +1,666 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face {
+    font-family: "AlegreyaSans-Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/fonts/alegreya/AlegreyaSans-Regular.otf") format("woff"),
+			url("/fonts/alegreya/AlegreyaSans-Regular.otf") format("truetype");
+}
+
+body {
+  margin: 0 auto;
+	background-color:#f2f8fe;
+	font-family: "Myriad Pro", Myriad, "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	font-size: 14px;
+	text-align: left;
+  vertical-align: central;
+  background-image: url('https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/fondoDeAgua.png');
+}
+
+/* 	margin-top: 0px;
+	margin-left: 0px;
+Contenedor general de la página
+*/
+
+.contenedor { 
+	margin: 0 auto;
+	width: 1280px;
+  background-image: url('https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/fondoDeAgua.png');	
+  float: none;
+}
+
+.fb-page {
+	margin-bottom:30px;
+	}
+
+/*
+Encabezado
+*/
+
+
+.encabezado{
+	margin-bottom: 10px;	
+	width: 1280px; 
+	float: none;
+}
+
+
+.cajaAnimacionInicial{	
+
+	width: 1280px;
+	height:300px;
+	float: left;
+
+}
+
+/* INICIO ANIMACION INICIAL  	margin-bottom: 0px; 440px */
+
+#inicio {
+
+  height: 320px;
+  width: 1200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+		  margin-bottom: 20px;
+}
+#inicio ul {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+}
+
+#inicio li {
+  height: 110px;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#inicio img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  position: absolute;
+  top: 0
+}
+
+#inicio .img-left img {left: 0;}
+#inicio .img-right img {right: 0;}
+
+#inicio .box-c {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 220px;
+  width: 400px;
+ -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; 
+		   background-image: url('https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/fondoDeAgua.png');
+}
+/*
+
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: left;
+  -webkit-align-items: left;
+      -ms-flex-align: left;
+          align-items: left; 
+
+
+*/
+#inicio .box-c img {
+  position: static;
+ 
+}
+
+#inicio .box-y {
+  background-color: #cdbe2d;
+}
+#inicio .box-r {
+  background-color: #d26d59;
+}
+#inicio .box-b {
+  background-color: #2992a3;
+}
+#inicio .box-p {
+  background-color: #895193;
+}
+
+/* FIN ANIMACION INICIAL*/
+
+
+
+
+
+/* INICIA MENÚ DE NAVEGACIÓN */
+/* Styles for main bar */
+#nav {
+  margin: 25px auto;
+  width: 90em;
+}
+
+
+#nav icono {
+  padding: 0 20px;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+#nav ul {
+  padding: 0 15px;
+  border-radius: 10px;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 105%;
+  font-weight: 550;
+}
+
+#nav ul:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* Styles for each element section */
+#nav ul li {
+  float: left;
+  border-top: 4px solid transparent;
+ /* color: #4d4d4d; */
+ color: #000;
+
+}
+
+#nav ul li:hover,
+#nav ul li:focus,
+#nav ul li:active,
+#nav ul li.active {
+  border-top: 4px solid #782c80;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: #782c80;
+  background-color: rgba(120,44,128,0.85);
+  color: black;
+
+}
+
+#nav ul li:hover span,
+#nav ul li:active span,
+#nav ul li.active span {
+  /* Debe ser el mismo que `background' de `body' */
+  background-color: #fff;
+  border-bottom-left-radius: 10px;
+}
+
+#nav ul li span {
+  display: block;
+  padding: 10px 10px;
+}
+
+/* revista */
+.interdisciplina {
+  display: block;
+  padding: 10px 10px;
+  color: #000;
+  text-decoration: none;
+}
+
+#nav ul li:hover .interdisciplina,
+#nav ul li:focus .interdisciplina,
+#nav ul li:active .interdisciplina {
+  background-color: #fff;
+}
+
+/* Styles for submenu items */
+#nav ul ul {
+  display: none;
+  background-color: #782c80;
+  background-color: rgba(120,44,128,0.85);
+  border-radius: 0 15px 15px 15px;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  text-align: left;
+  padding-bottom: 5px;
+  z-index: 1;
+}
+
+#nav ul li:hover > ul,
+#nav ul li:focus > ul,
+#nav ul li:active > ul,
+#nav ul li.active > ul {
+  display: block;
+}
+
+#nav ul ul li {
+  float: none;
+  position: relative;
+  border: none;
+  min-width: 12em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0 15px;
+}
+
+
+#nav ul ul li:hover,
+#nav ul ul li:focus,
+#nav ul ul li:active, 
+#nav ul ul li.active {
+  background-color: transparent;
+  border: none;
+}
+
+#nav ul ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+#nav ul ul li a:hover,
+#nav ul ul li a:focus,
+#nav ul ul li a:active,
+#nav ul ul li a.active {
+  color: #f8b706;
+  text-decoration: none;
+ /* font-weight: bold; */
+}
+
+
+/*  */
+#nav .action-group {
+  display: inline-block;
+  vertical-align: bottom; 
+  width: 255px;
+  text-align: right;
+  height: 44px;
+}
+
+#nav .action-group form {
+  display: inline-block;
+  margin: 0;
+  width: 90%;
+  position: relative;
+}
+
+#nav .search-input {
+  border-radius: 5px;
+  border: 1px solid #999;
+  background-color: #ddd;
+  font-family: FontAwesome;
+  color: #4d4d4d;
+  width: 90%;
+  padding: 3px; 
+  display: inline-block;
+}
+
+#nav .search-input:focus {
+  outline: none;
+}
+
+#nav .search-submit {
+  border: none;
+  background-color: #ddd;
+  font-family: FontAwesome; 
+  color: #4d4d4d;
+  width: 25px;
+  display: inline-block;
+  position: absolute;
+  margin-top: 2px;
+  margin-left: -30px;
+}
+
+#nav .search-submit:focus {
+  outline: none;
+}
+
+#nav .icons {
+  display: inline-block; 
+  padding-top: 5px;
+}
+
+#nav .icons .fa {
+  color:#333;
+  margin-left: 9px;
+  font-size: 20px;
+}
+
+#nav .icons a {
+  text-decoration: none;
+}
+
+
+/*
+Termina Navegacion
+*/
+
+/*
+Inicia facebook
+*/
+
+#cajaFacebook {
+
+   width: 525px;
+	float:right;
+}
+
+/*
+Termina facebook
+*/
+
+
+
+
+
+/*
+Inicia Contenido
+*/
+
+.contenido {
+   width: 1180px;
+	float: left;
+	margin-left: 35px;
+	margin-top: 10px;
+
+}
+
+
+/*
+Termina Contenido
+*/
+
+
+/*
+Inician Pie con Banners y Pie con Derechos
+*/
+
+
+.pie-banners {
+		margin: 0 auto;
+	background-color: #FFFFFF;
+	float: left;
+}	
+
+
+.pie-derechos {
+	width: 1270px;
+	font-family: "Lucida Grande", "lucida sans", "Lucida Sans Unicode", "Lucida Console";
+	font-size: 10px;
+	color: #333333;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	padding: 5px;
+	margin-left: 2px;
+	margin-top: 2px;
+	float: left;
+	background-image: url(img/pie-bg.jpg);
+	background-repeat: no-repeat;
+
+}
+
+
+
+
+.logo{
+	float: left;
+	width: 485px;
+	text-align: right;
+	margin-top: 9px;
+}
+
+.administrado{
+	float: right;
+	width: 1270px;
+	margin-top: 5px;
+	color: #1b5799;
+	text-align: center;
+}
+
+
+
+/*
+Terminan Pie con Banners y Pie con Derechos
+*/
+
+
+/* INICIO VENTANA MODAL*/
+	#modal * {
+  box-sizing: border-box;
+}
+
+#modal {
+  width: 100%;
+  height: 100%;
+   left: 0;
+  position: absolute; 
+  z-index: 1000;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.1);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+    /*   -ms-flex-align: center;*/
+          align-items: center;
+  /* opacity: 0; */
+}
+
+
+#modal .fa-spin {
+  color: #4d4d4d; 
+} 
+
+#modal .window {
+  width: 1050px;
+  height: 650px;
+  background-color: #fff;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  box-shadow: 8px 10px 5px #888;
+  position: relative;
+  /* opacity: 0; 
+  #4d4d4d*/
+}
+
+#modal .control {
+  position: absolute;
+  -webkit-transition: font-size 0.25s;
+          transition: font-size 0.25s;
+}
+#modal .control.arrow {
+ /* top: 325px;*/
+  bottom: 75px;
+ 
+  display: none;
+    font-size: 2.2rem;
+}
+
+#modal .arrow:hover {
+  font-size: 2.3rem;
+  color:#006;
+  cursor: pointer;
+  
+  
+}
+
+#modal .control.fa-chevron-circle-left {
+  left: 20px;
+   color:#036;
+}
+
+#modal .control.fa-chevron-circle-right {
+  right: 20px;
+     color:#FF0;
+}
+
+#modal .window .fa-close {
+  top: 10px;
+  right: 20px;
+} 
+#modal .window .fa-close:hover {
+  font-size: 1.2rem;
+  color: red;
+  cursor: pointer;
+}
+
+#modal .center-v {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+   /* -ms-flex-pack: center; */
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+    /*  -ms-flex-align: center; */
+          align-items: center; 
+}
+  /**/
+#modal .distribute-v {
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#modal .window .pane {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 50%;
+  height: 100%;
+}
+
+#modal .window figure {
+  margin: 30px;
+  width: 465px;                 /* .window-height / 2 - 60 (margin)*/
+}
+
+#modal figure img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#modal .window .card {
+  width: 525px;
+  height: 650px; 
+  background-color: #5497b5;
+  overflow: auto;
+}
+
+#modal .card section {
+  padding: 30px;
+  margin: 0;
+}
+
+#modal .window .card p {
+  margin: 0 0 0.5em 20px;
+  text-align: left;
+  color: #25295E;
+}
+
+#modal .card section .fa {
+  position: absolute;
+  left: -25px;
+  top: 5%;
+  font-size: 1.25rem;
+  color: #231f20;
+}
+
+#modal .card-icon {
+  position: relative;
+}
+
+#modal .card-highlight {
+  position: relative;
+  font-weight: bold;
+  color: #600d35 !important;
+}
+
+#modal .galeria {
+
+  display: inline-block;
+}
+
+#modal .galeria a {
+  height: 300px;
+  display: inline-block;
+  padding: 5px 5px;
+}
+
+#modal .galeria img {
+  max-width: 100%;
+  max-height: 100%;
+}
+	
+	
+	.fondoLibros{
+	background-color:#F7AF18 !important;
+	color: #25295E !important;
+	}	
+		
+	/* FIN VENTANA MODAL*/
+
