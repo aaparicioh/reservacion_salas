@@ -12,3 +12,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.config.assets.precompile += %w( ventanaCatalogo.js )
+Rails.application.config.assets.precompile += %w( cal_salaPos.js )
+Rails.application.config.assets.precompile += %w( cal_audRG.js )
+Rails.application.config.assets.precompile += %w( cal_aud4P.js )
+Rails.application.config.assets.precompile += %w( cal_sala15P.js )
+Rails.application.config.assets.precompile += %w( cal_sala25P.js )
+Rails.application.config.assets.precompile += %w( cal_sala6P.js )
