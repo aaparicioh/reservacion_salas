@@ -46,9 +46,6 @@
 </div>
 <%= javascript_include_tag "cal_aud4P" %>
 
-<div class="panel-group">
-	<div class="col-md-9" >
-<div align="center"><font color="#FFFFFF" size="+3"><marquee bgcolor="#000000" direction="left" loop="20">AUDITORIO 4° PISO</marquee></font></div>
 <script>
 $(document).ready(function() {
     $('#calendar').fullCalendar({
@@ -82,14 +79,6 @@ $(document).ready(function() {
 });
 </script>
 </head>
-<div id="calendar"></div>
-<div align ="right">
- <a class="btn btn-primary btn-large">
-   <style type="text/css">
-input {color: black;}
-    </style>
-    <%= button_to 'Solicitar espacio', new_reservacion_path, :method => :get %>
-</a>
 
  <div class="panel-group">
   <div class="col-md-9" >
