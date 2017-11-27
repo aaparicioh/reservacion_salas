@@ -3,19 +3,18 @@
   <body>
     <div class="container">
   
-    <div class="jumbotron1">
-       <%= stylesheet_link_tag 'application'%>
-    	<p> </p>
-           <div align="left">
-          <h2>BIENVENIDO</h2>
-	          <h5> Ingresa tu correo electrónico </h5>
-              <td><%= text_field("correo_electronico", "login","size"=>"22") %></td>
-                 <%= button_to 'Entrar', welcome_solicitud_path %>
-            </div>
+      <div class="jumbotron1">
+         <%= stylesheet_link_tag 'application'%>
+    
+            <div align="left">
+              <h2>BIENVENIDO</h2>
+	              <h5> Ingresa tu correo electrónico </h5>
+                  <div class="field">
+                    <td><%= text_field("reservacion_pass", "login","size"=>"22") %></td>
+                    <%= button_to 'Entrar', welcome_solicitud_path %>
+                  </div>
 
-    </div>
-<p></p>
-  
+            </div>
+      </div>
   </body>
-</div>
 </html>

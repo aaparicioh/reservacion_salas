@@ -61,6 +61,12 @@ class ReservacionsController < ApplicationController
     end
   end
 
+  def get_reservacion
+
+  end
+
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservacion
@@ -71,4 +77,5 @@ class ReservacionsController < ApplicationController
     def reservacion_params
       params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud)
     end
+
 end
