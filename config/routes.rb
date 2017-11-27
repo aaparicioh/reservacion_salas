@@ -41,7 +41,8 @@ Rails.application.routes.draw do
   get 'espacios/salaPosg'
   post'espacios/salaPosg'
 
-  get 'solicituds/new'
+  get 'reservacions/new'
+   get 'reservacions/get_reservacion'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
