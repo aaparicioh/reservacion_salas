@@ -1,4 +1,7 @@
 class WelcomeController < ApplicationController
+  before_action :authenticate_user! 
+ 
+
   def show
   	render 'welcome/solicitud'
   end

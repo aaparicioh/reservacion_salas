@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :reservacions
   resources :usuarios
   resources :solicituds
@@ -7,8 +8,9 @@ Rails.application.routes.draw do
   resources :solicitud
   resources :reservacion
   resources :espacios
-
-   root 'welcome#bienvenida'
+  devise_for :users
+  
+  root 'welcome#solicitud'
 
   get 'solicitud/espera'
   post 'solicitud/espera'
@@ -18,7 +20,6 @@ Rails.application.routes.draw do
   get 'welcome/solicitud'
   post 'welcome/solicitud'
    
-  
   get 'calendario/espacios'
   get 'solicituds/index'
   get 'reservacion/index'
@@ -42,8 +43,7 @@ Rails.application.routes.draw do
   post'espacios/salaPosg'
 
   get 'reservacions/new'
-   get 'reservacions/get_reservacion'
-
-
+  get 'reservacions/get_reservacion'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

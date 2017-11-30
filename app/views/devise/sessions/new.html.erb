@@ -1,0 +1,27 @@
+
+<body>
+<div class="contenedor">
+<div class="container">
+      <div class="jumbotron1">
+        <div align="left">
+              <h2>BIENVENIDO</h2>
+
+                <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                <h5> Ingresa tu correo electrónico </h5>
+                <%= f.email_field :email %>
+
+                <h5> Contraseña </h5>
+                <%= f.password_field :password %>
+
+                <% if devise_mapping.rememberable? -%>
+                <div><%= f.check_box :remember_me %> <h9> Recordarme </h9></div>
+                <% end -%>
+
+                <div><%= f.submit t('.sign_in', :default => "Sign in") %></div>
+                <% end %>
+        </div>
+      </div>
+</div>
+</div>
+</body>
+<%= render "devise/shared/links" %>

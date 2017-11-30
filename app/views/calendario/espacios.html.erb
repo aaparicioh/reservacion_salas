@@ -2,33 +2,7 @@
 <html>
  <head>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.3.js"></script>
-  <script type="text/javascript">
-     jQuery.fn.doModal = function(){
-        var w = $(window).width();
-        var h = $(window).height();
-        var divW = $(this).width();
-        var divH = $(this).height();
-        $(this).css({
-           'position': 'absolute',
-           'left': (w/6)-(divW)+"px",
-           'top': (h/3)-(divH)-"px",
-           'z-index': '999'
-        });
-        $(this).fadeIn(500);
-     }
-     $(document).ready(function(){
-        $("#abrir").click(function(){
-        $("#ventana_emergente").doModal();
-        });
-        $("#cerrar").click(function(){
-          $("#ventana_emergente").css('display', 'none');
-        });
-      });
-  </script>
 </head>
-<style type="text/css">
-    #ventana_emergente {display: none; background-color: #fff; width: 300px; padding: 10px; border: solid 1px #000;}
-</style>
 <body>
    <div class= "contenedor">
     <div class="panel-group">

@@ -2,19 +2,15 @@
 
   <body>
     <div class="container">
-  
       <div class="jumbotron1">
-         <%= stylesheet_link_tag 'application'%>
-    
-            <div align="left">
+        <div align="left">
               <h2>BIENVENIDO</h2>
 	              <h5> Ingresa tu correo electrónico </h5>
-                  <div class="field">
-                    <td><%= text_field("reservacion_pass", "login","size"=>"22") %></td>
-                    <%= button_to 'Entrar', welcome_solicitud_path %>
-                  </div>
+
+                 <%= button_to 'Entrar', welcome_solicitud_path %>
 
             </div>
       </div>
+    </div>
   </body>
 </html>
