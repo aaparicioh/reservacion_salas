@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :servicios
   resources :reservacions
   resources :usuarios
   resources :solicituds
@@ -42,8 +43,13 @@ Rails.application.routes.draw do
   get 'espacios/salaPosg'
   post'espacios/salaPosg'
 
+  get 'espacios/espacioAdic'
+  post 'espacios/espacioAdic'
+
   get 'reservacions/new'
+get 'reservacions/show'
   get 'reservacions/get_reservacion'
+  get 'devise/index'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

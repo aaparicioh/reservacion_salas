@@ -21,8 +21,4 @@
        });    
     });
         
-        function SERVICIOS (ventana_emergente) {
-           ventana_emergente.document.write('SERVICIOS TÉCNICOS 2')
-
-        }
       

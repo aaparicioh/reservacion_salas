@@ -2,7 +2,7 @@
 <html>
  <head>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.3.js"></script>
-</head>
+ </head>
 <body>
    <div class= "contenedor">
     <div class="panel-group">
@@ -12,9 +12,15 @@
 	        	<div class="panel-body">
              <div class="btn-group-vertical" role="group" aria-label="...">
 	               	Reservaciones
-	          	<button type="button" class="btn btn-link"></button>
                 <div>  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
-      <%= javascript_include_tag "ventanaCatalogo" %>
+                  <%= javascript_include_tag "ventanaCatalogo" %>
+                  
+                   <div class="field">
+                      
+                     <%= link_to 'Ver mi reservación', @reservacion %>
+             
+                   </div>
+                    <button type="button" class="btn btn-link"></button>
       <div id="ventana_emergente"> 
           <h3> SERVICIOS TÉCNICOS </h3>
             <p> Videoproyector </p>
@@ -99,6 +105,20 @@
             </center> 
             </div>
             </li>
+
+            <li class="span4">
+            <div class="thumbnail">
+              <%= image_tag "cubBiblioteca.jpeg", :alt => "Otro espacio" %>
+            <center> 
+              <a class="btn btn-primary btn-large">
+                <%= button_to 'Otro espacio', espacios_espacioAdic_path, :method => :post %>
+              <form>
+                <input name="id" type="hidden" value="7">
+              </form>  </a>
+            </center> 
+            </div> 
+            </li>
+          
             </ul>          
           </div>
         </div>
