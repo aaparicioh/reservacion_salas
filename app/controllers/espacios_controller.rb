@@ -1,4 +1,5 @@
 class EspaciosController < ApplicationController
+
   before_action :set_espacio, only: [:show, :edit, :update, :destroy]
 
   # GET /espacios

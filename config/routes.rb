@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :espacios
   devise_for :users
   
+    resources :reservacions do
+    get :get_events, on: :collection
+    end
   root 'welcome#solicitud'
 
   get 'solicitud/espera'
@@ -20,6 +23,9 @@ Rails.application.routes.draw do
 
   get 'welcome/solicitud'
   post 'welcome/solicitud'
+
+  get 'welcome/administracion'
+  post 'welcome/administracion'
    
   get 'calendario/espacios'
   get 'solicituds/index'

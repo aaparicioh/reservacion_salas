@@ -14,3 +14,5 @@
 //= require rails-ujs
 //= require_tree 
 //= require ventanaCatalogo
+//= require moment
+//= require fullcalendar

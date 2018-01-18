@@ -1,4 +1,3 @@
-
 var initialize_calendar;
 initialize_calendar = function() {
   $('.calendar').each(function(){
@@ -13,24 +12,7 @@ initialize_calendar = function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
-      weekends : false,
-      
-      events:[
- 
-            <% for reservacion in @reservacions = Reservacion.all   -%>
-              {
-               id : '<%= reservacion.id.to_s %>',
-               title  : '<%= reservacion.nevento %>' ,
-               start : '<%= reservacion.fechainicio.iso8601 %>',
-               end : '<%= reservacion.fechafin %>',
-               allDay : false,
-              
- 
-              },
- 
-            <% end %>           
- 
-              ]
+      events: '/reservacions.json',
 
       select: function(start, end) {
         $.getScript('/reservacions/new', function() {});

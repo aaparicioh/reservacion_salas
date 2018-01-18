@@ -7,28 +7,28 @@ $(document).ready(function() {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
-      },
+        },
     
         height : 750,
         width  : 300,
         weekends : false,
+        selectable: true,
+        loading: function(bool){
+              if (bool) 
+                  $('#loading').show();
+              else 
+                  $('#loading').hide();
+          },
+        events:"/reservacions/get_reservacion",
+        
+        dragOpacity: "0.5",
+        eventDrop: function(reservacion, dayDelta, minuteDelta, allDay, revertFunc){
+                  moveEvent(reservacion, dayDelta, minuteDelta, allDay);
+          },
 
-        events : [
-        {
-            title  : 'Diplomado',
-            start  : '2017-11-17'
-        },
-        {
-            title  : 'Conferencia',
-            start  : '2017-10-05',
-            end    : '2017-10-07'
-        },
-        {
-            title  : 'Cine-debate',
-            start  : '2017-10-09 12:30:00',
-            allDay : true // will make the time show
-        },
-      
-      ]
+        eventResize: function(reservacion, dayDelta, minuteDelta, revertFunc){
+                  resizeEvent(reservacion, dayDelta, minuteDelta);
+          }
+  
     });
 });

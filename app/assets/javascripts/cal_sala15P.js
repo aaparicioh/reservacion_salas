@@ -12,21 +12,21 @@ $(document).ready(function() {
         height : 750,
         width  : 300,
 
-        events : [
-        {
-            title  : 'Reunión',
-            start  : '2017-10-05'
-        },
-        {
-            title  : 'Coloquio',
-            start  : '2017-10-20',
-            end    : '2017-10-30'
-        },
-        {
-            title  : 'Mesa de trabajo',
-            start  : '2017-10-17 12:30:00',
-            allDay : false // will make the time show
-        }
-      ]
+         events:[
+ 
+            <% for reservacion in @reservacions = Reservacion.all   -%>
+              {
+               id : '<%= reservacion.id.to_s %>',
+               title  : '<%= reservacion.nevento %>' ,
+               start : '<%= reservacion.fechainicio.iso8601 %> + <%= reservacion.horainicio %>',
+               end : '<%= reservacion.fechafin %> + <%= reservacion.horafin %>',
+               allDay : false,
+ 
+              },
+ 
+            <% end %>           
+ 
+              ]
+      
     });
 });

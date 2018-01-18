@@ -25,7 +25,11 @@
                 <div align="right">
                 <p class="notice"><%= notice %></p>  <p class="alert"><%= alert %></p>
                   <% if user_signed_in? %>
-                  Conectado como <%= current_user.email %>. <%= button_to  "Cerrar sesión", destroy_user_session_path, :method => :delete %>
+                  Conectado como <%= current_user.email %>. 
+                  <%= button_to  "Cerrar sesión", destroy_user_session_path, :method => :delete %>
+                  <% end %>
+                  <% if can? :manage, @reservacion %>
+                  <%= button_to "Administración", welcome_administracion_path %> 
                   <% end %>
                 </div>
               </div>

@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-<center>
+<div class="contenedor">
+  <div class="panel panel-primary">
+    <center>
+      <table class="table">
+
 <p>
   <strong>Responsable:</strong>
   <%= @reservacion.nresponsable %>
@@ -55,6 +59,10 @@
   <%= @reservacion.fechasolicitud %>
 </p>
 
+
+      </table>
 <%= link_to 'Editar', edit_reservacion_path(@reservacion) %> |
 <%= link_to 'Regresar', calendario_espacios_path, :method => :get %> 
 </center>
+</div>
+</div>

@@ -57,7 +57,7 @@
         </div>
 
         <div class="field">
-          <%= form.label :repeticion %>
+          <%= form.label :repetición %>
           <%= form.check_box :repeticion, id: :reservacion_repeticion %>
         </div>
 
@@ -65,11 +65,13 @@
           <%= form.label :id_de_repeticiones %>
           <%= form.text_field :idrepeticiones, id: :reservacion_idrepeticiones %>
         </div>
-
+        
+        <% if can? :manage, @reservacion %>
         <div class="field">
-          <%= form.label :aprobacion %>
+          <%= form.label :aprobación %>
           <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
         </div>
+        <% end %>
 
         <div class="field">
           <%= form.label :tipo_de_actividad %>
@@ -107,38 +109,41 @@
         <div class="modal-body">
            <h6> Seleccione los servicios que requiera. </h6>
            <h5><b> REQUERIMIENTOS </b></h5>
-            <div><%= form.check_box :cartel, id: :servicios_cartel %> <h7> Cartel</h7></div>
-            <div><%= form.check_box :programa, id: :servicios_programa %> <h7> Programa </h7> </div>
-            <div><%= form.check_box :constancias, id: :servicios_constancias %><h7> Constancias </h7> </div> 
+            <div><%= form.check_box :cartel, id: :reservacion_cartel %> <h7> Cartel</h7></div>
+            <div><%= form.check_box :programa, id: :reservacion_programa %> <h7> Programa </h7> </div>
+            <div><%= form.check_box :constancias, id: :reservacion_constancias %><h7> Constancias </h7> </div> 
            <h6> DISPOSICIÓN DEL AUDITORIO </h6>
-           
-            <%= form.radio_button :disposicion, 'mesaRedonda' %> <h7> Mesa redonda </h7>
-            <%= form.radio_button :disposicion, 'auditorio' %> <h7> Auditorio </h7>
+           <div class="form-group">
+            <input name=
+           <label> <%= form.radio_button :disposicion, 'mesaRedonda' %> <h7> Mesa redonda </h7> </label> 
+           <label> <%= form.radio_button :disposicion, 'auditorio' %> <h7> Auditorio </h7> </label>
+          </div>
+          
             
            <h5><b> SERVICIOS TÉCNICOS </b></h5>
-            <div><%= form.check_box :videoproyector, id: :servicios_videoproyector %><h7> Videoproyector </h7> </div> 
-            <div><%= form.check_box :pc, id: :servicios_pc %> <h7> PC </h7> </div>
-            <div><%= form.check_box :video, id: :servicios_video %><h7> Video </h7> </div> 
-            <div><%= form.check_box :conexInternet, id: :servicios_conexInternet %><h7> Conexión Internet </h7> </div>
-            <div><%= form.check_box :pizarron, id: :servicios_pizarron %> <h7> Pizarrón </h7> </div> 
-            <div><%= form.check_box :traducSimultanea, id: :servicios_traducSimultanea %> <h7> Traducción simultánea </h7> </div>
-            <div><%= form.check_box :conexSkype, id: :servicios_conexSkype %> <h7> Conexión por Skype </h7> </div> 
-            <div><%= form.check_box :videoconferencia, id: :servicios_videoconferencia %><h7> Videoproyector </h7> </div>
-            <div><%= form.check_box :webcast, id: :servicios_webcast %> <h7> Webcast </h7> </div>
-            <div><%= form.check_box :grabVideo, id: :servicios_grabVideo %> <h7> Grabación de video </h7> </div>
-            <div><%= form.check_box :grabAudio, id: :servicios_grabAudio %> <h7> Grabación de audio </h7> </div>
+            <div><%= form.check_box :videoproyector, id: :reservacion_videoproyector %><h7> Videoproyector </h7> </div> 
+            <div><%= form.check_box :pc, id: :reservacion_pc %> <h7> PC </h7> </div>
+            <div><%= form.check_box :video, id: :reservacion_video %><h7> Video </h7> </div> 
+            <div><%= form.check_box :conexInternet, id: :reservacion_conexInternet %><h7> Conexión Internet </h7> </div>
+            <div><%= form.check_box :pizarron, id: :reservacion_pizarron %> <h7> Pizarrón </h7> </div> 
+            <div><%= form.check_box :traducSimultanea, id: :reservacion_traducSimultanea %> <h7> Traducción simultánea </h7> </div>
+            <div><%= form.check_box :conexSkype, id: :reservacion_conexSkype %> <h7> Conexión por Skype </h7> </div> 
+            <div><%= form.check_box :videoconferencia, id: :reservacion_videoconferencia %><h7> Videoconferencia </h7> </div>
+            <div><%= form.check_box :webcast, id: :reservacion_webcast %> <h7> Webcast </h7> </div>
+            <div><%= form.check_box :grabVideo, id: :reservacion_grabVideo %> <h7> Grabación de video </h7> </div>
+            <div><%= form.check_box :grabAudio, id: :reservacion_grabAudio %> <h7> Grabación de audio </h7> </div>
            <h5><b> OTROS SERVICIOS </b></h5>
            <h6> En todas las sesiones se puede ofrecer café. </h6>
-            <div><%= form.check_box :cafe, id: :servicios_cafe %> <h7> Café </h7> </div>
+            <div><%= form.check_box :cafe, id: :reservacion_cafe %> <h7> Café </h7> </div>
            <h6> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </h6>
-            <div><%= form.check_box :galletas, id: :servicios_galletas %> <h7> Galletas </h7> </div>
-            <div><%= form.check_box :fruta, id: :servicios_fruta %> <h7> Fruta </h7> </div>
-            <div><h7> Asistencia aproximada por sesión: </h7> <input type="number" name="servicios_asistentes" min="0" max="99"><h7> personas</h7> </div>
+            <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
+            <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
+            <div><h7> Asistencia aproximada por sesión: </h7> <input type="number" name="reservacion_asistentes" min="0" max="99"><h7> personas</h7> </div>
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
             <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
-        
+         
         </div>
 
         </div>   
