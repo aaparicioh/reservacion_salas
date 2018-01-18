@@ -16,6 +16,7 @@
       <th>Aprobación</th>
       <th>Tipo de actividad</th>
       <th>Fecha de solicitud</th>
+      <th>Cartel</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,9 +35,31 @@
         <td><%= reservacion.aprobacion %></td>
         <td><%= reservacion.tipoactividad %></td>
         <td><%= reservacion.fechasolicitud %></td>
+        <td><%= reservacion.cartel %></td>
+        <td><%= reservacion.programa %></td>
+        <td><%= reservacion.constancias %></td>
+        <td><%= reservacion.mesaRedonda %></td>
+        <td><%= reservacion.auditorio %></td>
+        <td><%= reservacion.videoproyector %></td>
+        <td><%= reservacion.pc %></td>
+        <td><%= reservacion.video %></td>
+        <td><%= reservacion.conexInternet%></td>
+        <td><%= reservacion.pizarron %></td>
+        <td><%= reservacion.traducSimultanea %></td>
+        <td><%= reservacion.conexSkype %></td>
+        <td><%= reservacion.videoconferencia %></td>
+        <td><%= reservacion.webcast %></td>
+        <td><%= reservacion.grabVideo %></td>
+        <td><%= reservacion.grabAudio %></td>
+        <td><%= reservacion.cafe %></td>
+        <td><%= reservacion.galletas %></td>
+        <td><%= reservacion.fruta %></td>
+        <td><%= reservacion.asistentes %></td>
+      
         <td><%= link_to 'Mostrar', reservacion %></td>
         <td><%= link_to 'Editar', edit_reservacion_path(reservacion) %></td>
-        <td><%= link_to 'Eliminar', reservacion, method: :delete, data: { confirm: '¿Desea continuar ?' } %></td>
+        <td><%= link_to 'Eliminar', reservacion, method: :delete, data: {confirm: '¿Desea continuar?'} %></td>
+
       </tr>
     <% end %>
   </tbody>

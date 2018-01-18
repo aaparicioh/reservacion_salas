@@ -54,11 +54,9 @@ class ReservacionsController < ApplicationController
   # DELETE /reservacions/1
   # DELETE /reservacions/1.json
   def destroy
+    @reservacion = Reservacion.find(params[:id])
     @reservacion.destroy
-    respond_to do |format|
-      format.html { redirect_to reservacions_url, notice: 'Su Reservación fue eliminada satisfactoriamente.' }
-      format.json { head :no_content }
-    end
+        redirect_to reservacions_path, :notice => "Su reservación fue eliminada satisfactoriamente."
   end
 
   def get_reservacion

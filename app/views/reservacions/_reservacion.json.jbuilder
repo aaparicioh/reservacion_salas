@@ -1,2 +1,2 @@
-json.extract! reservacion, :id, :nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :created_at, :updated_at
+json.extract! reservacion, :id, :nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :programa, :constancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :conexInternet, :pizarron, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo, :grabAudio, :cafe, :galletas, :fruta, :asistentes, :created_at, :updated_at
 json.url reservacion_url(reservacion, format: :json)

@@ -1,16 +1,20 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+
 <%= form_with(model: reservacion, local: true) do |form| %>
   <% if reservacion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reservacion.errors.count, "error") %> prohibited this reservacion from being saved:</h2>
-
-      <ul>
-      <% reservacion.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <ul> <% reservacion.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+<<<<<<< HEAD
 <div class="container">
   <div class="jumbotron4">
     <center>
@@ -23,72 +27,155 @@
     <% end %>
 
   </div>
+=======
+<div class = "contenedor">
+  <div class="container">
+    <div class="jumbotron4">
+      <center>
+        <div class="field">
+          <%= form.label :sala %>
+          <%= form.label :Auditorio_del_4_piso, id: :solicitud_sala %>
+          <% if false %>
+          <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
+          <% end %>
+        </div>
+>>>>>>> 3a62a7285a13dcd0456c2dd1cebdbb51146c050d
   
+        <div class="field">
+          <%= form.label :nombre_de_responsable %>
+          <%= form.text_field :nresponsable, id: :reservacion_nresponsable %>
+        </div>
 
-  <div class="field">
-    <%= form.label :nombre_de_responsable %>
-    <%= form.text_field :nresponsable, id: :reservacion_nresponsable %>
+        <div class="field">
+          <%= form.label :nombre_del_evento %>
+          <%= form.text_field :nevento, id: :reservacion_nevento %>
+        </div>
+
+        <div class="field">
+          <%= form.label :fecha_de_inicio %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio %>
+        </div>
+
+        <div class="field">
+          <%= form.label :fecha_de_fin %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin %>
+        </div>
+
+        <div class="field">
+          <%= form.label :hora_de_inicio %>
+          <%= form.time_field :horainicio, id: :reservacion_horainicio %>
+        </div>
+
+        <div class="field">
+          <%= form.label :hora_de_fin %>
+          <%= form.time_field :horafin, id: :reservacion_horafin %>
+        </div>
+
+        <div class="field">
+          <%= form.label :repeticion %>
+          <%= form.check_box :repeticion, id: :reservacion_repeticion %>
+        </div>
+
+        <div class="field">
+          <%= form.label :id_de_repeticiones %>
+          <%= form.text_field :idrepeticiones, id: :reservacion_idrepeticiones %>
+        </div>
+
+        <div class="field">
+          <%= form.label :aprobacion %>
+          <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
+        </div>
+
+        <div class="field">
+          <%= form.label :tipo_de_actividad %>
+          <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
+        </div>
+
+        <div class="field">
+          <%= form.label :fecha_de_solicitud %>
+          <%= Time.now.strftime("%d-%m-%Y") %>
+          <%= form.hidden_field :reservacion_fechasolicitud, :value => Time.now.strftime("%d-%m-%Y") %>
+          <%-# id: :reservacion_fechasolicitud => Time.now -%>
+          <%-#= form.datetime_select :fechasolicitud, id: :reservacion_fechasolicitud -%>
+        </div>
+
+      <!-- <div class="actions">
+          <a class="btn btn-primary btn-large">
+        <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
+        
+        </div> -->
+         
+
+
+  <button type="button" class="btn btn-primary btn-sm" id="myBtn">Crear reservación</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="Servicios" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">SERVICIOS ADICIONALES</h4>
+        </div>
+        <div class="modal-body">
+           <h6> Seleccione los servicios que requiera. </h6>
+           <h5><b> REQUERIMIENTOS </b></h5>
+            <div><%= form.check_box :cartel, id: :servicios_cartel %> <h7> Cartel</h7></div>
+            <div><%= form.check_box :programa, id: :servicios_programa %> <h7> Programa </h7> </div>
+            <div><%= form.check_box :constancias, id: :servicios_constancias %><h7> Constancias </h7> </div> 
+           <h6> DISPOSICIÓN DEL AUDITORIO </h6>
+           
+            <%= form.radio_button :disposicion, 'mesaRedonda' %> <h7> Mesa redonda </h7>
+            <%= form.radio_button :disposicion, 'auditorio' %> <h7> Auditorio </h7>
+            
+           <h5><b> SERVICIOS TÉCNICOS </b></h5>
+            <div><%= form.check_box :videoproyector, id: :servicios_videoproyector %><h7> Videoproyector </h7> </div> 
+            <div><%= form.check_box :pc, id: :servicios_pc %> <h7> PC </h7> </div>
+            <div><%= form.check_box :video, id: :servicios_video %><h7> Video </h7> </div> 
+            <div><%= form.check_box :conexInternet, id: :servicios_conexInternet %><h7> Conexión Internet </h7> </div>
+            <div><%= form.check_box :pizarron, id: :servicios_pizarron %> <h7> Pizarrón </h7> </div> 
+            <div><%= form.check_box :traducSimultanea, id: :servicios_traducSimultanea %> <h7> Traducción simultánea </h7> </div>
+            <div><%= form.check_box :conexSkype, id: :servicios_conexSkype %> <h7> Conexión por Skype </h7> </div> 
+            <div><%= form.check_box :videoconferencia, id: :servicios_videoconferencia %><h7> Videoproyector </h7> </div>
+            <div><%= form.check_box :webcast, id: :servicios_webcast %> <h7> Webcast </h7> </div>
+            <div><%= form.check_box :grabVideo, id: :servicios_grabVideo %> <h7> Grabación de video </h7> </div>
+            <div><%= form.check_box :grabAudio, id: :servicios_grabAudio %> <h7> Grabación de audio </h7> </div>
+           <h5><b> OTROS SERVICIOS </b></h5>
+           <h6> En todas las sesiones se puede ofrecer café. </h6>
+            <div><%= form.check_box :cafe, id: :servicios_cafe %> <h7> Café </h7> </div>
+           <h6> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </h6>
+            <div><%= form.check_box :galletas, id: :servicios_galletas %> <h7> Galletas </h7> </div>
+            <div><%= form.check_box :fruta, id: :servicios_fruta %> <h7> Fruta </h7> </div>
+            <div><h7> Asistencia aproximada por sesión: </h7> <input type="number" name="servicios_asistentes" min="0" max="99"><h7> personas</h7> </div>
+            <p></p>
+            <div class="actions">
+            <a class="btn btn-primary btn-sm">
+            <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
+        
+        </div>
+
+        </div>   
+      </div>   
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :nombre_del_evento %>
-    <%= form.text_field :nevento, id: :reservacion_nevento %>
-  </div>
 
-  <div class="field">
-    <%= form.label :fecha_de_inicio %>
-    <%= form.date_field :fechainicio, id: :reservacion_fechainicio %>
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#Servicios").modal();
+    });
+});
+</script>
+        <% end %>
+      </center>
+    </div>
+    <div align ="right">
+      <a class="btn btn-primary btn-large">
+            <%= button_to 'Regresar', calendario_espacios_path, :method => :get %>
+      </a>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :fecha_de_fin %>
-    <%= form.date_field :fechafin, id: :reservacion_fechafin %>
-  </div>
-
-  <div class="field">
-    <%= form.label :hora_de_inicio %>
-    <%= form.time_field :horainicio, id: :reservacion_horainicio %>
-  </div>
-
-  <div class="field">
-    <%= form.label :hora_de_fin %>
-    <%= form.time_field :horafin, id: :reservacion_horafin %>
-  </div>
-
-  <div class="field">
-    <%= form.label :repeticion %>
-    <%= form.check_box :repeticion, id: :reservacion_repeticion %>
-  </div>
-
-  <div class="field">
-    <%= form.label :id_de_repeticiones %>
-    <%= form.text_field :idrepeticiones, id: :reservacion_idrepeticiones %>
-  </div>
-
-  <div class="field">
-    <%= form.label :aprobacion %>
-    <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tipo_de_actividad %>
-    <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fecha_de_solicitud %>
-    <%= Time.now.strftime("%d-%m-%Y") %>
-    <%= form.hidden_field :reservacion_fechasolicitud, :value => Time.now.strftime("%d-%m-%Y") %>
-    <%-# id: :reservacion_fechasolicitud => Time.now -%>
-    <%-#= form.datetime_select :fechasolicitud, id: :reservacion_fechasolicitud -%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
- </center>
 </div>
-</div>
-
-
-<% end %>
