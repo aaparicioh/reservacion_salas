@@ -56,6 +56,9 @@
         <div align ="right">
           <a class="btn btn-primary btn-large">
             <%= button_to 'Reservar', new_reservacion_path, :method => :get %>
+            <form>
+              <input name="id" type="hidden" value="1">
+            </form>
           </a>
         </div>
         <div align ="left">
