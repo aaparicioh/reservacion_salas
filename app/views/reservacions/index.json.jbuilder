@@ -1,4 +1,5 @@
 json.array! @reservacions, partial: 'reservacions/reservacion', as: :reservacion
+
 json.array! @reservacions do |reservacion|
   date_format = reservacion.all_day_event? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'
   json.id reservacion.id

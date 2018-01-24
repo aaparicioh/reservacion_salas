@@ -11,7 +11,8 @@ class ReservacionsController < ApplicationController
   # GET /reservacions/1
   # GET /reservacions/1.json
   def show
-      authorize! :read, @reservacion
+      @reservacion = Reservacion.find_by_id params[:id]
+      authorize! :show, @reservacion
   end
 
   # GET /reservacions/new
@@ -90,6 +91,10 @@ class ReservacionsController < ApplicationController
       reservacions << {:id => reservacion.id, :title => reservacion.nevento, :start => "#{reservacion.fechainicio.iso8601}", :end => "#{reservacion.fechafin.iso8601}", :allDay => reservacion.all_day}
     end
     render :text => reservacion.to_json
+  end
+
+  def radio_button(object_name, method, tag_value, options = {})
+        Tags::RadioButton.new(object_name, method, self, tag_value, options).render
   end
 
   

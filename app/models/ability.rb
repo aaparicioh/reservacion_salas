@@ -6,6 +6,7 @@ class Ability
        user ||= User.new 
        if user.role == "admin"
          can :manage, :all
+         
        else
          cannot :manage, Reservacion
          cannot :manage, Espacio

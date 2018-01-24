@@ -14,7 +14,7 @@
                  <a class="btn btn-primary btn-large">
                  <%= button_to 'Reservaciones', reservacions_path, :method => :get  %> </a>
                  <a class="btn btn-primary btn-large">
-                 <%= button_to 'Usuarios', usuarios_path, :method => :get  %> </a>
+                 <%= button_to 'Usuarios', users_path, :method => :get  %> </a>
                </center>
               </div>
              </center>
@@ -23,9 +23,10 @@
     </div>
 </div>
 
-<h1 align="center">Espacios</h1>
-<div class="panel panel-primary">
-<table class="table table-striped table-hover">
+<div class="contenedor">
+  <h1 align="center">Espacios</h1>
+   <div class="panel panel-primary">
+    <table class="table table-striped table-hover">
 
   <thead>
     <tr>
@@ -41,6 +42,7 @@
 
   <tbody>
     <% @espacios.each do |espacio| %>
+  
       <tr>
         <td><%= espacio.nombre %></td>
         <td><%= espacio.ubicacion %></td>
@@ -58,7 +60,8 @@
 </table>
 <br>
 </div>
-<%= link_to 'Agregar Espacio', new_espacio_path %>
+<%= link_to 'Agregar espacio', new_espacio_path %>
+</div>
 <% end %>
 
 <% if cannot? :manage, @espacio  %>

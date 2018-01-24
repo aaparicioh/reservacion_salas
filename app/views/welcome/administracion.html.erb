@@ -10,12 +10,14 @@
              <center>
               <div class="btn-group" role="group" aria-label="...">
                 <center>
+                 <a class="btn btn-large">
+                 <%= button_to 'Inicio', welcome_solicitud_path, :method => :get  %> </a>
                  <a class="btn btn-primary btn-large">
                  <%= button_to 'Espacios', espacios_path, :method => :get  %> </a>
                  <a class="btn btn-primary btn-large">
                  <%= button_to 'Reservaciones', reservacions_path, :method => :get  %> </a>
                  <a class="btn btn-primary btn-large">
-                 <%= button_to 'Usuarios', usuarios_path, :method => :get  %> </a>
+                 <%= button_to 'Usuarios', users_path, :method => :get  %> </a>
                </center>
               </div>
              </center>

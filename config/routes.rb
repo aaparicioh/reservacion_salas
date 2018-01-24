@@ -10,16 +10,13 @@ Rails.application.routes.draw do
   resources :reservacion
   resources :espacios
   devise_for :users
+  resources :users, only: [:index]
   
-    resources :reservacions do
-    get :get_events, on: :collection
-    end
+  as :users do
+  post 'user/new' => 'users#create'
+  # your other :admin routes here
+end 
   root 'welcome#solicitud'
-
-  get 'solicitud/espera'
-  post 'solicitud/espera'
-
-  get 'formulario/principal'
 
   get 'welcome/solicitud'
   post 'welcome/solicitud'
@@ -53,9 +50,9 @@ Rails.application.routes.draw do
   post 'espacios/espacioAdic'
 
   get 'reservacions/new'
-get 'reservacions/show'
-  get 'reservacions/get_reservacion'
-  get 'devise/index'
-  
+  get 'reservacions/show'
+
+ get "users/new_user" 
+ post "users/create_user"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

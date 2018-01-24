@@ -1,3 +1,3 @@
 class Espacio < ApplicationRecord
-	has_may :reservacions
+	has_many :reservacions
 end
