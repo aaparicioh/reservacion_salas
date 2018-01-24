@@ -29,7 +29,8 @@
                   <%= button_to  "Cerrar sesión", destroy_user_session_path, :method => :delete %>
                   <% end %>
                   <% if can? :manage, @reservacion %>
-                  <%= button_to "Administración", welcome_administracion_path %> 
+                  <%= button_to "Administración", welcome_administracion_path %>
+                  <%= button_to "Inicio", welcome_solicitud_path %>
                   <% end %>
                 </div>
               </div>

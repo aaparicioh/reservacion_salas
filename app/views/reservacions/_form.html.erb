@@ -14,32 +14,20 @@
     </div>
   <% end %>
 
-<<<<<<< HEAD
-<div class="container">
-  <div class="jumbotron4">
-    <center>
-    <div class="field">
-    <%= form.label :sala %>
-    <%= form.label :Auditorio_del_4_piso, id: :solicitud_sala %>
-    
-    <% if false %>
-    <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
-    <% end %>
 
-  </div>
-=======
 <div class = "contenedor">
   <div class="container">
     <div class="jumbotron4">
       <center>
         <div class="field">
           <%= form.label :sala %>
-          <%= form.label :Auditorio_del_4_piso, id: :solicitud_sala %>
           <% if false %>
-          <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
+          <%= form.label :Auditorio_del_4_piso, id: :solicitud_sala %>
           <% end %>
+
+          <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
+          
         </div>
->>>>>>> 3a62a7285a13dcd0456c2dd1cebdbb51146c050d
   
         <div class="field">
           <%= form.label :nombre_de_responsable %>
@@ -53,22 +41,22 @@
 
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day %>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day %>
         </div>
 
         <div class="field">
           <%= form.label :hora_de_inicio %>
-          <%= form.time_field :horainicio, id: :reservacion_horainicio %>
+          <%= form.time_field :horainicio, id: :reservacion_horainicio, :value => "08:00" %>
         </div>
 
         <div class="field">
           <%= form.label :hora_de_fin %>
-          <%= form.time_field :horafin, id: :reservacion_horafin %>
+          <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00" %>
         </div>
 
         <div class="field">
@@ -76,10 +64,12 @@
           <%= form.check_box :repeticion, id: :reservacion_repeticion %>
         </div>
 
+        <%if false%>
         <div class="field">
           <%= form.label :id_de_repeticiones %>
           <%= form.text_field :idrepeticiones, id: :reservacion_idrepeticiones %>
         </div>
+        <%end%>
         
         <% if can? :manage, @reservacion %>
         <div class="field">
@@ -90,7 +80,12 @@
 
         <div class="field">
           <%= form.label :tipo_de_actividad %>
+
+          <%= form.select :tipoactividad, [['Coloquio','Coloquio'],['Congreso','Congreso']], id: :reservacion_tipoactividad %>
+
+          <% if false %>
           <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
+          <%end%>
         </div>
 
         <div class="field">
