@@ -14,7 +14,7 @@
                  <a class="btn btn-primary btn-large">
                  <%= button_to 'Reservaciones', reservacions_path, :method => :get  %> </a>
                  <a class="btn btn-primary btn-large">
-                 <%= button_to 'Usuarios', usuarios_path, :method => :get  %> </a>
+                 <%= button_to 'Usuarios', users_path, :method => :get  %> </a>
                </center>
               </div>
              </center>
@@ -23,44 +23,27 @@
     </div>
 </div>
 
-<h1 align = "center">Usuarios</h1>
-
-<div class="panel panel-primary">
-<table class="table">
-  <thead>
-    <tr>
-      <th>Usuario</th>
-      <th>Contraseña</th>
-      <th>Nombre</th>
-      <th>Apellido paterno</th>
-      <th>Apellido materno</th>
-      <th>Tipo de usuario</th>
-      <th>Autorizado</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @usuarios.each do |usuario| %>
-      <tr>
-        <td><%= usuario.nick %></td>
-        <td><%= usuario.pass %></td>
-        <td><%= usuario.nombre %></td>
-        <td><%= usuario.appat %></td>
-        <td><%= usuario.apmat %></td>
-        <td><%= usuario.tipo_usuario %></td>
-        <td><%= usuario.autorizado %></td>
-        <td><%= link_to 'Mostrar', usuario %></td>
-        <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: '¿Desea continuar?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class= "contenedor">
+  <h1 align = "center">Usuarios</h1>
+ <div align="right"> <h4><%= link_to 'Nuevo usuario', new_user_registration_path %></h4></div>
+<% @users.each do |user| %>
+  <div class=""container">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <ul>
+          <li>Usuario: <%= user.email %></li>
+          <li>Rol: <%= user.role %></li>
+          <li>Número de usuario: <%= user.id %></li>
+          <li>Último inicio de sesión: <%= user.last_sign_in_at.strftime('%H:%M:%S %B, %d, %Y') %></li>
+          <li><%= link_to 'Editar', edit_registration_path(user) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
 </div>
-<%= link_to 'Nuevo Usuario', new_user_registration_path %>
+
+
 <% end %>
 
 <% if cannot? :manage, @usuario  %>

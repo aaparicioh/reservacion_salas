@@ -9,18 +9,23 @@
     <div class="panel-group">
 	    <div class="col-md-2" >
 	      <div class="panel panel-default">
-          <div class="panel-heading">Programación de actividades </div>
+          <div class="panel-heading">Reservaciones </div>
 	        	<div class="panel-body">
              <div class="btn-group-vertical" role="group" aria-label="...">
-	               	Reservaciones
-                <div>  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
-                  <%= javascript_include_tag "ventanaCatalogo" %>
-                  
-                   <div class="field">
-                      
-                     <%= link_to 'Ver mi reservación', @reservacion %>
-             
-                   </div>
+                <!-- <div>  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
+                  <%= javascript_include_tag "ventanaCatalogo" %></br> -->
+                 <%= form_with scope: :get, url: reservacions_path do |form| %>
+                   <h6> Consultar mi reservación. </h6>
+                    <div>
+                      <h7>Folio:</h7> 
+                      <a>
+                      <form>
+                        <input name="id" type="number" value="", min="1", max="9999">
+                      </form> </br>
+                       <%= link_to 'Consultar', reservacion_path, :reservacion => :show %>
+                   </a></div>
+                 <% end %>
+                 
                     <button type="button" class="btn btn-link"></button>
       <div id="ventana_emergente"> 
           <h3> SERVICIOS TÉCNICOS </h3>

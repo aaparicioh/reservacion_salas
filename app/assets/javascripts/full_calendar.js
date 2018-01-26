@@ -12,7 +12,7 @@ initialize_calendar = function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
-      events: 'reservacions.json',
+      events: '/reservacions.json',
 
       select: function(start, end) {
         $.getScript('/reservacions/new', function() {});
