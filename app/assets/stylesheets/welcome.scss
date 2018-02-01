@@ -1,21 +1,23 @@
 
 .jumbotron1 {
-       padding: 50px;
-       background-image: url(https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/FB_IMG_1508268037442.jpg); 
-       background-position: 2em 27cm;
+       background-image: url(torre_humanidades.jpg);
+       background-size: cover;
+       padding: 62px;
+       color: black; 
+      
 }
 
 .jumbotron2 {
        margin-top: 5em;
        padding: 50px;
-       background-image: url(https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/calendario.jpg); 
+       background-image: url(calendario.jpg); 
        background-repeat: no-repeat;
        background-position: center; 
                   }
 .jumbotron3 {
        margin-top: 5em;
        padding: 50px;
-       background-image: url(https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/Formulario_Icono.jpg); 
+       background-image: url(Formulario_Icono.jpg); 
        background-repeat: no-repeat;
        background-position: 50% 00%;  
                   }
@@ -40,13 +42,13 @@ footer {
  input {color: black;}
 
  .thumbnails {
- background-image: url('https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/fondoDeAgua.png');
+ background-image: url(fondoDeAgua.png);
  }
   .thumbnail {
- background-image: url('https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/fondoDeAgua.png');
+ background-image: url('fondoDeAgua.png');
  }
  .panel1 {
- background-image: url('https://raw.githubusercontent.com/PaulinaCEIICH/reservacion_salas/master/fondoDeAgua.png');
+ background-image: url('fondoDeAgua.png');
  }
  ul.ui-autocomplete {
     z-index: 1100;

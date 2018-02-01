@@ -11,7 +11,6 @@ class ReservacionsController < ApplicationController
   # GET /reservacions/1
   # GET /reservacions/1.json
   def show
-      @reservacion = Reservacion.find_by_id params[:id]
       authorize! :show, @reservacion
   end
 
@@ -83,6 +82,7 @@ class ReservacionsController < ApplicationController
   
   end
 
+
   def get_reservacion
 
    @reservacion = Reservacion.find(:all, :conditions => ["fechainicio >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and fechafin <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}'"] )
@@ -109,5 +109,4 @@ class ReservacionsController < ApplicationController
     def reservacion_params
       params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :ncartel, :programa, :nprograma, :constancias, :nconstancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :video, :conexInternet, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo,:grabAudio, :cafe, :galletas, :fruta, :asistentes, :pizarron, :asistentes)
     end
-
 end

@@ -1,0 +1,27 @@
+
+<div class= "contenedor">
+  <div class="container">
+    <div class="jumbotron4">
+    	<center>
+<h2><%= t('.sign_up', :default => "Sign up") %></h2>
+
+<%= form_for User, :url => {:action => "savenew"} do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email %></div></br>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div></br>
+
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></div></br>
+
+  <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</center>
+</div>
+</div>
+</div>

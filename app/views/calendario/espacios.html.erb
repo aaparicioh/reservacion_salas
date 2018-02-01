@@ -14,19 +14,28 @@
              <div class="btn-group-vertical" role="group" aria-label="...">
                 <!-- <div>  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
                   <%= javascript_include_tag "ventanaCatalogo" %></br> -->
-                 <%= form_with scope: :get, url: reservacions_path do |form| %>
-                   <h6> Consultar mi reservación. </h6>
-                    <div>
-                      <h7>Folio:</h7> 
-                      <a>
-                      <form>
-                        <input name="id" type="number" value="", min="1", max="9999">
-                      </form> </br>
-                       <%= link_to 'Consultar', reservacion_path, :reservacion => :show %>
-                   </a></div>
-                 <% end %>
+
+                  <script>     
+                     function recibir() {
+                       var valor = document.getElementById("reservacion_id").value;
+                      document.getElementById("numero").innerHTML= valor; }        
+                  </script> 
                  
-                    <button type="button" class="btn btn-link"></button>
+                  <h6> Consultar mi reservación. </h6>
+          
+                    <div class="thumbnail">
+                      <h7>Folio:</h7> 
+                      <input name= "reservacion_id" min="1" max="99" type="number" <%= @reservacion_id %> >
+                      <a>
+                        <%= link_to 'Consultar', reservacion_path, :reservacion => :show, :method => :get %>
+                       <form>
+                        <input name ="id" type="hidden" value="numero" onclick="recibir();"/>
+                        <div id="numero"></div>
+                      </form>
+                      </a>
+                    </div>
+                
+            
       <div id="ventana_emergente"> 
           <h3> SERVICIOS TÉCNICOS </h3>
             <p> Videoproyector </p>

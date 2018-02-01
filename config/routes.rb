@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index]
   
-  as :users do
-  post 'user/new' => 'users#create'
-  # your other :admin routes here
-end 
+  post 'savenew', to: 'users#savenew'
+  
+  post 'reservacions/show'
+  
   root 'welcome#solicitud'
 
   get 'welcome/solicitud'

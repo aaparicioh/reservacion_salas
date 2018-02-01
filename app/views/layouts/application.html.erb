@@ -21,20 +21,32 @@
 	        <div class="jumbotron">
 	                    <h2>Programación de Actividades Académicas</h2>
           </div>
+
+            <% if can? :manage, @reservacion %>      
+               
+              <button type="button">
+               <span class="glyphicon glyphicon-home"></span>
+                <%= button_to 'Inicio', welcome_solicitud_path %>
+              </button>
+  
+            <% end %>
+
               <div id="user_nav">
                 <div align="right">
                 <p class="notice"><%= notice %></p>  <p class="alert"><%= alert %></p>
                   <% if user_signed_in? %>
                   Conectado como <%= current_user.email %>. 
                   <%= button_to  "Cerrar sesión", destroy_user_session_path, :method => :delete %>
-                  <% end %>
-                  <% if can? :manage, @reservacion %>
-                  <%= button_to "Administración", welcome_administracion_path %> 
+                 <% if can? :manage, @reservacion %>
+                 <%= button_to "Administración", welcome_administracion_path %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
-          </div>
-        </div>
+
+                 </div>
+                  </div>
+        
              <%= yield %>
 
  <div class= "contenedor">

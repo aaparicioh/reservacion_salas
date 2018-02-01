@@ -5,4 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reservacions
   
+
+  def self.create_new_user(params)
+  @user = User.create!(params)
+  end
+  
 end
+  

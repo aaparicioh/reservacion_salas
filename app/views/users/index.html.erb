@@ -26,6 +26,7 @@
 <div class= "contenedor">
   <h1 align = "center">Usuarios</h1>
  <div align="right"> <h4><%= link_to 'Nuevo usuario', new_user_registration_path %></h4></div>
+
 <% @users.each do |user| %>
   <div class=""container">
     <div class="panel panel-primary">

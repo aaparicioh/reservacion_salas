@@ -2,65 +2,158 @@
 <div class="contenedor">
   <div class="panel panel-primary">
     <center>
-      <table class="table">
+       <ul class="list-group">
 
-<p>
-  <strong>Responsable:</strong>
-  <%= @reservacion.nresponsable %>
-</p>
+<li class="list-group-item list-group-item-info">
+  <strong>Número de reservación:</strong>
+  <%= @reservacion.id %>
+</li>
 
-<p>
-  <strong>Evento:</strong>
-  <%= @reservacion.nevento %>
-</p>
-
-<p>
-  <strong>Fecha de inicio:</strong>
-  <%= @reservacion.fechainicio %>
-</p>
-
-<p>
-  <strong>Fecha de fin:</strong>
-  <%= @reservacion.fechafin %>
-</p>
-
-<p>
-  <strong>Hora de inicio:</strong>
-  <%= @reservacion.horainicio %>
-</p>
-
-<p>
-  <strong>Hora de fin:</strong>
-  <%= @reservacion.horafin %>
-</p>
-
-<p>
-  <strong>Repetición:</strong>
-  <%= @reservacion.repeticion %>
-</p>
-
-<p>
-  <strong>ID de repeticiones:</strong>
-  <%= @reservacion.idrepeticiones %>
-</p>
-
-<p>
+<li class="list-group-item">
   <strong>Aprobación:</strong>
   <%= @reservacion.aprobacion %>
-</p>
+</li>
 
-<p>
+<li class="list-group-item">
+  <strong>Responsable:</strong>
+  <%= @reservacion.nresponsable %>
+</li>
+
+<li class="list-group-item">
+  <strong>Evento:</strong>
+  <%= @reservacion.nevento %>
+</li>
+
+<li class="list-group-item">
+  <strong>Fecha de inicio:</strong>
+  <%= @reservacion.fechainicio %>
+</li>
+
+<li class="list-group-item">
+  <strong>Fecha de fin:</strong>
+  <%= @reservacion.fechafin %>
+</li>
+
+<li class="list-group-item">
+  <strong>Hora de inicio:</strong>
+  <%= @reservacion.horainicio %>
+</li>
+
+<li class="list-group-item">
+  <strong>Hora de fin:</strong>
+  <%= @reservacion.horafin %>
+</li>
+
+<li class="list-group-item">
+  <strong>Repetición:</strong>
+  <%= @reservacion.repeticion %>
+</li>
+
+<li class="list-group-item">
+  <strong>ID de repeticiones:</strong>
+  <%= @reservacion.idrepeticiones %>
+</li>
+
+<li class="list-group-item">
+  <strong>Aprobación:</strong>
+  <%= @reservacion.aprobacion %>
+</li>
+
+<li class="list-group-item">
   <strong>Tipo de actividad:</strong>
   <%= @reservacion.tipoactividad %>
-</p>
+</li>
 
-<p>
+<li class="list-group-item">
   <strong>Fecha de solicitud:</strong>
   <%= @reservacion.fechasolicitud %>
-</p>
+</li>
 
+<li class="list-group-item">
+  <strong>SERVICIOS</strong>
+</li>
 
-      </table>
+<li class="list-group-item">
+  <strong>Cartel:</strong>
+  <%= @reservacion.cartel %>
+</li>
+
+<li class="list-group-item">
+  <strong>Programa:</strong>
+  <%= @reservacion.programa %>
+</li>
+
+<li class="list-group-item">
+  <strong>Constancias:</strong>
+  <%= @reservacion.constancias %>
+</li>
+
+<li class="list-group-item">
+  <strong>Videoproyector:</strong>
+  <%= @reservacion.videoproyector %>
+</li>
+
+<li class="list-group-item">
+  <strong>PC:</strong>
+  <%= @reservacion.pc %>
+</li>
+
+<li class="list-group-item">
+  <strong>Video:</strong>
+  <%= @reservacion.video %>
+</li>
+
+<li class="list-group-item">
+  <strong>Conexión a internet:</strong>
+  <%= @reservacion.conexInternet %>
+</li>
+<li class="list-group-item">
+  <strong>Pizarrón:</strong>
+  <%= @reservacion.pizarron %>
+</li>
+<li class="list-group-item">
+  <strong>Traducción simultánea:</strong>
+  <%= @reservacion.traducSimultanea %>
+</li>
+<li class="list-group-item">
+  <strong>Conexión de Skype:</strong>
+  <%= @reservacion.conexSkype %>
+</li>
+<li class="list-group-item">
+  <strong>Videoconferencia:</strong>
+  <%= @reservacion.videoconferencia %>
+</li>
+<li class="list-group-item">
+  <strong>Webcast:</strong>
+  <%= @reservacion.webcast %>
+</li>
+<li class="list-group-item">
+  <strong>Grabación de video:</strong>
+  <%= @reservacion.grabVideo %>
+</li>
+<li class="list-group-item">
+  <strong>Grabación de audio:</strong>
+  <%= @reservacion.grabAudio %>
+</li>
+<li class="list-group-item">
+  <strong>Café:</strong>
+  <%= @reservacion.cafe %>
+</li>
+<li class="list-group-item">
+  <strong>Galletas:</strong>
+  <%= @reservacion.galletas %>
+</li>
+<li class="list-group-item">
+  <strong>Fruta:</strong>
+  <%= @reservacion.fruta %>
+</li>
+<li class="list-group-item">
+  <strong>Número de asistentes:</strong>
+  <%= @reservacion.asistentes %>
+</li>
+
+      </ul>
+
 <%= link_to 'Editar', edit_reservacion_path(@reservacion) %> |
 <%= link_to 'Regresar', calendario_espacios_path, :method => :get %> 
 </center>

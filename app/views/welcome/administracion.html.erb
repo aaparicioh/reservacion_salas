@@ -1,7 +1,6 @@
 
 
 <% if can? :manage, @reservacion %>
-<% end %>
 <div class= "contenedor">
     <div class="panel-group">     
         <div class="panel panel-default">
@@ -10,8 +9,7 @@
              <center>
               <div class="btn-group" role="group" aria-label="...">
                 <center>
-                 <a class="btn btn-large">
-                 <%= button_to 'Inicio', welcome_solicitud_path, :method => :get  %> </a>
+                 
                  <a class="btn btn-primary btn-large">
                  <%= button_to 'Espacios', espacios_path, :method => :get  %> </a>
                  <a class="btn btn-primary btn-large">
@@ -25,3 +23,4 @@
         </div>      
     </div>
 </div>
+<% end %>
