@@ -25,6 +25,7 @@
 
 <div class="contenedor">
   <h1 align="center">Espacios</h1>
+   <div align="right"><h4><%= link_to 'Nuevo espacio', new_espacio_path %></h4></div>
    <div class="panel panel-primary">
     <table class="table table-striped table-hover">
 
@@ -59,7 +60,10 @@
 </table>
 <br>
 </div>
-<%= link_to 'Agregar espacio', new_espacio_path %>
+<div align="right">
+<%= button_to 'Ver todos los espacios', calendario_espacios_path, :method => :get %>
+</div>
+
 </div>
 <% end %>
 
@@ -71,7 +75,7 @@
                 <center>
                   <div> No tienes acceso a esta página.</div>
                  <a class="btn btn-primary btn-large">
-                 <%= button_to 'Regresar', calendario_espacios_path, :method => :get %>
+                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :post %>
                  </a>
                  </center>
           

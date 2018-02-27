@@ -1,19 +1,21 @@
 class UsersController < ApplicationController
 
-
   def index
     @users = User.all
   end
   
   def new
-  authorize! :manage, User
    @user = User.new
+  
   end
 
   def create
-    @user = User.new(permitted_params_user)
-    authorize! :manage, User
+    @user = User.new(user_params)
     @user.save
+ end
+ 
+ def edit
+  @user= User.find_by_id(params[:id])
  end
 
 def savenew

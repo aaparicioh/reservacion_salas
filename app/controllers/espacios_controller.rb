@@ -1,5 +1,5 @@
 class EspaciosController < ApplicationController
-
+protect_from_forgery
   before_action :set_espacio, only: [:show, :edit, :update, :destroy]
 
   # GET /espacios

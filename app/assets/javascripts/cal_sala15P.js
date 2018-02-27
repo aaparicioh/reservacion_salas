@@ -12,21 +12,7 @@ $(document).ready(function() {
         height : 750,
         width  : 300,
 
-         events:[
- 
-            <% for reservacion in @reservacions = Reservacion.all   -%>
-              {
-               id : '<%= reservacion.id.to_s %>',
-               title  : '<%= reservacion.nevento %>' ,
-               start : '<%= reservacion.fechainicio.iso8601 %> + <%= reservacion.horainicio %>',
-               end : '<%= reservacion.fechafin %> + <%= reservacion.horafin %>',
-               allDay : false,
- 
-              },
- 
-            <% end %>           
- 
-              ]
+         events:"/reservacions/get_reservacion",
       
     });
 });

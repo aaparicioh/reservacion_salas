@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% if can? :manage, @usuario %>
+<% if can? :manage, @user %>
 
 <div class= "contenedor">
     <div class="panel-group">     
@@ -25,7 +25,7 @@
 
 <div class= "contenedor">
   <h1 align = "center">Usuarios</h1>
- <div align="right"> <h4><%= link_to 'Nuevo usuario', new_user_registration_path %></h4></div>
+ <div align="right"> <h4><%= link_to 'Nuevo usuario', users_new_path %></h4></div>
 
 <% @users.each do |user| %>
   <div class=""container">
@@ -36,7 +36,7 @@
           <li>Rol: <%= user.role %></li>
           <li>Número de usuario: <%= user.id %></li>
           <li>Último inicio de sesión: <%= user.last_sign_in_at.strftime('%H:%M:%S %B, %d, %Y') %></li>
-          <li><%= link_to 'Editar', edit_registration_path(user) %></li>
+ 
         </ul>
       </div>
     </div>
@@ -44,10 +44,9 @@
 <% end %>
 </div>
 
-
 <% end %>
 
-<% if cannot? :manage, @usuario  %>
+<% if cannot? :manage, @user  %>
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>

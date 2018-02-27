@@ -1,4 +1,3 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   
@@ -28,10 +27,6 @@
           <%= form.select :sala, [['Auditorio del 4° piso','Auditorio del piso 4'],['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Auditorio del 5° piso','Auditorio del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
           
         </div>
-        <div class="field">
-          <%= form.label :tipo_de_actividad %>
-        
-         </div>
   
         <div class="field">
           <%= form.label :nombre_de_responsable %>
@@ -82,16 +77,15 @@
         </div>
         <% end %>
 
-        <!-- <div class="field">
+        <div class="field">
           <%= form.label :tipo_de_actividad %>
-         
 
           <%= form.select :tipoactividad, [['Seminario interno','Seminario interno'],['Reunión de trabajo','Reunión de trabajo'],['Clases','Clases'],['Curso','Curso'],['Diplomado','Diplomado'],['Seminario','Seminario'],['Taller','Taller'],['Inauguración','Inauguración'],['Ciclo de conferencias','Ciclo de conferencias'],['Cine debate','Cine debate'],['Coloquio','Coloquio'],['Conversatorio','Conversatorio'],['Encuentro','Encuentro'],['Foro','Foro'],['Jornada','Jornada'],['Mesa redonda','Mesa redonda'],['Presentación de libro','Presentación de libro'],['Mesa de trabajo','Mesa de trabajo'],['Congreso','Congreso']], id: :reservacion_tipoactividad %>
 
           <% if false %>
           <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
           <%end%>
-        </div>-->
+        </div>
 
         <div class="field">
           <%= form.label :fecha_de_solicitud %>
@@ -121,6 +115,16 @@
         </div>
         <div class="modal-body">
            <h6> Seleccione los servicios que requiera. </h6>
+           <h5><b> REQUERIMIENTOS </b></h5>
+            <div><%= form.check_box :cartel, id: :reservacion_cartel %> <h7> Cartel</h7></div>
+            <div><%= form.check_box :programa, id: :reservacion_programa %> <h7> Programa </h7> </div>
+            <div><%= form.check_box :constancias, id: :reservacion_constancias %><h7> Constancias </h7> </div> 
+           <h6> DISPOSICIÓN DEL AUDITORIO </h6>
+            <div class="form-group">
+              <label> <%= form.radio_button :disposicion,'mesaRedonda' %> <h7> Mesa redonda </h7> </label> 
+              <label> <%= form.radio_button :disposicion, 'auditorio' %> <h7> Auditorio </h7> </label>
+            </div>
+          
             
            <h5><b> SERVICIOS TÉCNICOS </b></h5>
             <div><%= form.check_box :videoproyector, id: :reservacion_videoproyector %><h7> Videoproyector </h7> </div> 
@@ -140,12 +144,13 @@
            <h6> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </h6>
             <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
-            <div><h7> Asistencia aproximada por sesión: </h7> <%= number_field_tag :average_border, @current_value, min: 1, max: 18, class: "number", placeholder: @hint_value %> personas</h7> </div>
+             <div><h7> Asistencia aproximada por sesión: </h7> <%= form.number_field :asistentes, id: :reservacion_asistentes, min:"1", max:"70" %><h7> personas</h7> </div>
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
             <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
-            </div>
+         
+        </div>
 
         </div>   
       </div>   

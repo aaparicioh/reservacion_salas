@@ -36,7 +36,7 @@
          <h3> OTROS SERVICIOS </h3>
            <p> En todas las sesiones se ofrece café. </p>
            <p> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </p>
-           <p> <a id="cerrar" href="javascript:void(0);"> Cerrar </a> </p>
+           <p> <center> <a class="btn btn-primary btn-xs" id="cerrar" href="javascript:void(0);"> Cerrar </a> </center> </p>
         </div>
              <div>  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
       
@@ -51,16 +51,20 @@
 
     <div class="panel-group">
 	  <div class="col-md-9" >
-        <div align="center"><font color="#FFFFFF" size="+2"><marquee bgcolor="#000000" direction="left" loop="20">AUDITORIO ROLANDO GARCÍA</marquee></font></div>
-          <div id="calendar"></div>
-           <div align ="right">
-             <a class="btn btn-primary btn-large">
-            <%= button_to 'Reservar', new_reservacion_path, :method => :get %>
-             </a>
+      <div class="panel panel-primary">
+        <div class="panel-heading"> <center><h3>AUDITORIO ROLANDO GARCÍA</h3> </center></div>
            </div>
-           <a class="btn btn-primary btn-large">
-           <%= button_to 'Otro espacio', calendario_espacios_path, :method => :get %>
-         </a>
+          <div id="calendarARG"></div>
+           <center>
+           <div class="btn-group" role="group" aria-label="...">
+            <center>
+              <a class="btn btn-primary btn-large">
+              <%= button_to 'Otro espacio', calendario_espacios_path, :method => :get %> </a>
+              <a class="btn btn-primary btn-large"> 
+              <%= button_to 'Reservar', new_reservacion_path, :method => :get %> </a>
+            </center>
+           </div>
+          </center>
       </div>
     </div>
 </div>
