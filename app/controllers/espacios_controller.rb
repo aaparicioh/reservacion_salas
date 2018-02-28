@@ -6,6 +6,15 @@ class EspaciosController < ApplicationController
   # GET /espacios.json
   def index
     @espacios = Espacio.all
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = EspacioPdf.new(@espacios)
+        send_data pdf.render, filename: 'espacios.pdf', type: 'application/pdf'
+      end
+    end
+
   end
 
   # GET /espacios/1
