@@ -1,4 +1,5 @@
 class ReservacionsController < ApplicationController
+  protect_from_forgery
   before_action :set_reservacion, only: [:show, :edit, :update, :destroy]
   respond_to :json
 
@@ -6,17 +7,25 @@ class ReservacionsController < ApplicationController
   # GET /reservacions.json
   def index
     @reservacions = Reservacion.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReservacionPdf.new(@reservacions)
+        send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /reservacions/1
   # GET /reservacions/1.json
   def show
-      authorize! :show, @reservacion
+  @reservacion = Reservacion.find_by_id(params[:id])
   end
 
   # GET /reservacions/new
   def new
     @reservacion = Reservacion.new
+
   end
 
   # GET /reservacions/1/edit
@@ -97,7 +106,6 @@ class ReservacionsController < ApplicationController
         Tags::RadioButton.new(object_name, method, self, tag_value, options).render
   end
 
-  
 
   private
     # Use callbacks to share common setup or constraints between actions.

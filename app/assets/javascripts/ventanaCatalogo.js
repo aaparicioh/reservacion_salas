@@ -6,8 +6,8 @@
           var divH = $(this).height();
           $(this).css({
              'position': 'absolute',
-             'left': (w/4)-(divW)+"px",
-             'top': (h/2)-(divH)-"px",
+             'left': (w/7)-(divW)+"px",
+             'top': (h)-(divH)-"px",
              'z-index': '999'
                      });
           $(this).fadeIn(500);

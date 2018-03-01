@@ -11,7 +11,7 @@ class Ability
          cannot :manage, Reservacion
          can :show, Reservacion
          cannot :manage, Espacio
-         cannot :manage, Usuario
+         cannot :manage, User
         
        end
     #

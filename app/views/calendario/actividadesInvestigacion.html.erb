@@ -14,27 +14,33 @@
              <div class="btn-group-vertical" role="group" aria-label="...">
                 <!-- <div>  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
                   <%= javascript_include_tag "ventanaCatalogo" %></br> -->
-
-                  <script>     
-                     function recibir() {
-                       var valor = document.getElementById("reservacion_id").value;
-                      document.getElementById("numero").innerHTML= valor; }        
-                  </script> 
                  
                   <h6> Consultar mi reservación. </h6>
-          
+                 
+                  <form name="consulta" id="consulta" controller= "reservacions#show" action="/reservacions/" method="GET"> 
                     <div class="thumbnail">
                       <h7>Folio:</h7> 
-                      <input name= "reservacion_id" min="1" max="99" type="number" <%= @reservacion_id %> >
-                      <a>
-                        <%= link_to 'Consultar' %> 
+                       <input type="number" id="valor" min="1" max="99" value=""/><br>
+
+                       <script>
+                        $(document).ready(function () {
+                        $("#valor").keyup(function () {
+                        var value = $(this).val();
+                        $("#consultar").val(value);
+                         });
+                        });
+                      </script>
+                       <a> <%= link_to 'Consultar', controller: "reservacions", action: "show", method: "post" %>
                        <form>
-                       
-                        <input name ="id" type="hidden" value="numero" onclick="recibir();"/>
-                        <div id="numero"></div>
-                      </form>
-                      </a>
-                    </div>
+                       <input type="hidden" id="consultar" name= "id" value=""/>
+                       </form>  </a>
+                      </div>
+                  </form>
+                   
+                    
+                     
+             </div>
+ 
                 
             
       <div id="ventana_emergente"> 
@@ -61,25 +67,9 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3" >
+        <div class="col-md-4" >
           <div class="panel1 panel-default">
             <ul class="thumbnails">
-            <li class="span4">
-            <div class="thumbnail">
-            <%= image_tag "aud4p.jpg", :alt => "Auditorio 4° piso", 
-              :title => "Aforo: 70 personas
-    SERVICIOS
-Videoproyector"%>
-            <center> 
-              <a class="btn btn-primary btn-large">
-                <%= button_to 'Auditorio 4° piso', espacios_auditorio4P_path, :method => :post %>
-              <form>
-                <input name="id" type="hidden" value="1">
-              </form>  </a>
-            </center> 
-            </div> 
-            </li>
-
             <li class="span4">
             <div class="thumbnail">
               <%= image_tag "sala1_5p.jpg", :alt => "Sala uno 5° piso", :title => "Aforo: 16 personas" %>
@@ -92,13 +82,7 @@ Videoproyector"%>
             </center> 
             </div>
             </li>
-            </ul>          
-          </div>
-        </div>
-      
-        <div class="col-md-3" >
-          <div class="panel| panel-default">
-            <ul class="thumbnails">
+
             <li class="span4">
             <div class="thumbnail">
               <%= image_tag "sala2_5p.jpg", :alt => "Sala dos 5° piso", :title => "Aforo: 16 personas" %>
@@ -111,39 +95,22 @@ Videoproyector"%>
             </center> 
             </div> 
             </li>
-          
-            <li class="span4">
-            <div class="thumbnail">
-              <%= image_tag "aud5p.jpg", :alt => "Auditorio Rolando García", :title => "Aforo: 50 personas" %>
-            <center> 
-              <a class="btn btn-primary btn-large">
-                <%= button_to 'Auditorio "Rolando García"', espacios_auditorioRG_path, :method => :post %>
-              <form>
-                <input name="id" type="hidden" value="4">
-              </form>   </a>
-            </center> 
-            </div>
-            </li>
-
-            <li class="span4">
-            <div class="thumbnail">
-              <%= image_tag "cubBiblioteca.jpeg", :alt => "Otro espacio" %>
-            <center> 
-              <a class="btn btn-primary btn-large">
-                <%= button_to 'Otro espacio', espacios_espacioAdic_path, :method => :post %>
-              <form>
-                <input name="id" type="hidden" value="7">
-              </form>  </a>
-            </center> 
-            </div> 
-            </li>
-          
+            </ul>          
+          </div>
+        </div>
+      
+        <div class="col-md-1" >
+          <div class="panel1 panel-default">
+            <ul class="thumbnails">
+            
+           
+            
             </ul>          
           </div>
         </div>
      
-        <div class="col-md-3" >
-          <div class="panel| panel-default">
+        <div class="col-md-4" >
+          <div class="panel1 panel-default">
             <ul class="thumbnails">
             <li class="span4">
             <div class="thumbnail">
@@ -173,6 +140,7 @@ Videoproyector"%>
             </ul>          
           </div>
         </div>
+        
       </div>
       </div>
     </div>

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :solicituds
   resources :welcome
   resources :calendario
-  resources :solicitud
   resources :reservacion
   resources :espacios
   devise_for :users
@@ -20,11 +19,16 @@ Rails.application.routes.draw do
 
   get 'welcome/solicitud'
   post 'welcome/solicitud'
+  get 'users/new'
+  get 'users/edit'
 
   get 'welcome/administracion'
   post 'welcome/administracion'
    
+ 
   get 'calendario/espacios'
+  post 'calendario/actividadesInvestigacion'
+
   get 'solicituds/index'
   get 'reservacion/index'
   

@@ -9,10 +9,11 @@
   <%= @reservacion.id %>
 </li>
 
-<li class="list-group-item">
-  <strong>Aprobación:</strong>
-  <%= @reservacion.aprobacion %>
-</li>
+<% if @reservacion.aprobacion == true %>
+  <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
+  <% else %>
+  <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
+<% end %>
 
 <li class="list-group-item">
   <strong>Responsable:</strong>
@@ -46,7 +47,7 @@
 
 <li class="list-group-item">
   <strong>Repetición:</strong>
-  <%= @reservacion.repeticion %>
+  <%= "Sí" if @reservacion.repeticion == true %> <%= "No" if @reservacion.repeticion == false %>
 </li>
 
 <li class="list-group-item">
@@ -55,12 +56,8 @@
 </li>
 
 <li class="list-group-item">
-  <strong>Aprobación:</strong>
-  <%= @reservacion.aprobacion %>
-</li>
-
-<li class="list-group-item">
   <strong>Tipo de actividad:</strong>
+ 
   <%= @reservacion.tipoactividad %>
 </li>
 
@@ -73,79 +70,79 @@
   <strong>SERVICIOS</strong>
 </li>
 
-<li class="list-group-item">
+<!--<li class="list-group-item">
   <strong>Cartel:</strong>
-  <%= @reservacion.cartel %>
+  <%= "Sí" if @reservacion.cartel == true %> <%= "No" if @reservacion.cartel == false %>
 </li>
 
 <li class="list-group-item">
   <strong>Programa:</strong>
-  <%= @reservacion.programa %>
+  <%= "Sí" if @reservacion.programa == true %> <%= "No" if @reservacion.programa == false %>
 </li>
 
 <li class="list-group-item">
   <strong>Constancias:</strong>
-  <%= @reservacion.constancias %>
-</li>
+  <%= "Sí" if @reservacion.constancias == true %> <%= "No" if @reservacion.constancias == false %>
+</li> -->
 
 <li class="list-group-item">
   <strong>Videoproyector:</strong>
-  <%= @reservacion.videoproyector %>
+  <%= "Sí" if @reservacion.videoproyector == true %> <%= "No" if @reservacion.videoproyector == false %>
 </li>
 
 <li class="list-group-item">
   <strong>PC:</strong>
-  <%= @reservacion.pc %>
+  <%= "Sí" if @reservacion.pc == true %> <%= "No" if @reservacion.pc == false %>
 </li>
 
 <li class="list-group-item">
   <strong>Video:</strong>
-  <%= @reservacion.video %>
+  <%= "Sí" if @reservacion.video == true %> <%= "No" if @reservacion.video == false %>
 </li>
 
 <li class="list-group-item">
   <strong>Conexión a internet:</strong>
-  <%= @reservacion.conexInternet %>
+  <%= "Sí" if @reservacion.conexInternet == true %> <%= "No" if @reservacion.conexInternet == false %>
 </li>
 <li class="list-group-item">
   <strong>Pizarrón:</strong>
-  <%= @reservacion.pizarron %>
+  <%= "Sí" if @reservacion.pizarron == true %> <%= "No" if @reservacion.pizarron == false %>
 </li>
 <li class="list-group-item">
   <strong>Traducción simultánea:</strong>
-  <%= @reservacion.traducSimultanea %>
+  <%= "Sí" if @reservacion.traducSimultanea == true %> <%= "No" if @reservacion.traducSimultanea == false %>
 </li>
 <li class="list-group-item">
   <strong>Conexión de Skype:</strong>
-  <%= @reservacion.conexSkype %>
+  <%= "Sí" if @reservacion.conexSkype == true %> <%= "No" if @reservacion.conexSkype == false %>
 </li>
 <li class="list-group-item">
   <strong>Videoconferencia:</strong>
-  <%= @reservacion.videoconferencia %>
+  <%= "Sí" if @reservacion.videoconferencia == true %> <%= "No" if @reservacion.videoconferencia == false %>
 </li>
 <li class="list-group-item">
   <strong>Webcast:</strong>
-  <%= @reservacion.webcast %>
+  <%= "Sí" if @reservacion.webcast == true %> <%= "No" if @reservacion.webcast == false %>
 </li>
 <li class="list-group-item">
   <strong>Grabación de video:</strong>
-  <%= @reservacion.grabVideo %>
+  <%= "Sí" if @reservacion.grabVideo == true %> <%= "No" if @reservacion.grabVideo == false %>
 </li>
 <li class="list-group-item">
   <strong>Grabación de audio:</strong>
-  <%= @reservacion.grabAudio %>
+  <%= "Sí" if @reservacion.grabAudio == true %> <%= "No" if @reservacion.grabAudio == false %>
 </li>
 <li class="list-group-item">
   <strong>Café:</strong>
-  <%= @reservacion.cafe %>
+  <%= "Sí" if @reservacion.cafe == true %> <%= "No" if @reservacion.cafe == false %>
 </li>
 <li class="list-group-item">
   <strong>Galletas:</strong>
-  <%= @reservacion.galletas %>
+  <%= "Sí" if @reservacion.galletas == true %> <%= "No" if @reservacion.galletas == false %>
 </li>
 <li class="list-group-item">
   <strong>Fruta:</strong>
-  <%= @reservacion.fruta %>
+  <%= "Sí" if @reservacion.fruta == true %> <%= "No" if @reservacion.fruta == false %>
 </li>
 <li class="list-group-item">
   <strong>Número de asistentes:</strong>
@@ -154,8 +151,8 @@
 
       </ul>
 
-<%= link_to 'Editar', edit_reservacion_path(@reservacion) %> |
-<%= link_to 'Regresar', calendario_espacios_path, :method => :get %> 
+<h5><%= link_to 'Editar', edit_reservacion_path(@reservacion) %> |
+<%= link_to 'Regresar', welcome_solicitud_path, :method => :get %> </h5>
 </center>
 </div>
 </div>

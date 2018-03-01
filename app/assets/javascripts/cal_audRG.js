@@ -1,7 +1,7 @@
 
 
 $(document).ready(function() {
-    $('#calendar').fullCalendar({
+    $('#calendarARG').fullCalendar({
 
                         header:  {
         left: 'prev,next today',
