@@ -1,9 +1,9 @@
-class ReservacionPdf < Prawn::Document
+class CalendarioPdf < Prawn::Document
   require "prawn/measurement_extensions"
 
-  def initialize(reservacions)
+  def initialize(calendarios)
     super()
-    @reservacions = reservacions
+    @calendarios = calendarios
     encabezado
     datos_solicitante
     servicios

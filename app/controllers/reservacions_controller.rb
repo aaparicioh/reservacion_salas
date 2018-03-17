@@ -8,11 +8,18 @@ class ReservacionsController < ApplicationController
   def index
     @reservacions = Reservacion.all
     respond_to do |format|
+      format.json {render json: @reservacions}
       format.html
       format.pdf do
         pdf = ReservacionPdf.new(@reservacions)
         send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
       end
+      #format.json do
+      #  json.array!(@reservacions) do |reservacion|
+      #    json.extract! reservacion, :id, :nevento, :fechainicio, :fechafin
+      #    json.url reservacion_url(reservacion, format: :json)
+      #  end
+      #end
     end
   end
 
