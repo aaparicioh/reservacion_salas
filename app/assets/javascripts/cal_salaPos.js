@@ -13,7 +13,7 @@ $(document).ready(function() {
 
          events:[
  
-            <% for reservacion in @reservacions = Reservacion.all   -%>
+            <%= for reservacion in @reservacions = Reservacion.all   %>
               {
                id : '<%= reservacion.id.to_s %>',
                title  : '<%= reservacion.nevento %>' ,

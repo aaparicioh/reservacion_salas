@@ -11,6 +11,7 @@ $(document).ready(function() {
         width  : 300,
         weekends : false,
 
-         events:"/reservacions/get_reservacion",
+        // events:"/reservacions/get_reservacion",
+        //events: <%= @events.to_json.html_safe %>
     });
 });

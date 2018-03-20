@@ -1,4 +1,5 @@
-json.extract! reservacion, :id, :nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :programa, :constancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :conexInternet, :pizarron, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo, :grabAudio, :cafe, :galletas, :fruta, :asistentes, :created_at, :updated_at
+#json.extract! reservacion, :id, :nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :programa, :constancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :conexInternet, :pizarron, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo, :grabAudio, :cafe, :galletas, :fruta, :asistentes, :created_at, :updated_at
+json.extract! reservacion, :id, :nevento, :fechainicio, :fechafin
 json.url reservacion_url(reservacion, format: :json)
 
 date_format = reservacion.all_day_event? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'
