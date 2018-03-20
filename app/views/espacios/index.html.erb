@@ -61,7 +61,8 @@
 <br>
 </div>
 <div align="right">
-<%= button_to 'Ver todos los espacios', calendario_espacios_path, :method => :get %>
+<%= button_to 'Ver todos los espacios', calendario_espacios_path, :method => :post %>
+<%= button_to 'Sala de Videoconferencias', calendario_salaVideoconferencia_path, :method => :post %>
 </div>
 
 </div>
@@ -75,7 +76,7 @@
                 <center>
                   <div> No tienes acceso a esta página.</div>
                  <a class="btn btn-primary btn-large">
-                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :post %>
+                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
                  </a>
                  </center>
           

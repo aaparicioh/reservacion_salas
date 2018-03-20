@@ -1,14 +1,12 @@
-<% if can? :manage, @espacio %>
-<center>
-<h1>Agregar espacio</h1>
+<% if can? :manage, @videoconferencium %>
+<center><h2>NUEVA SOLICITUD</h2></center>
 
-<%= render 'form', espacio: @espacio %>
+<%= render 'form', videoconferencium: @videoconferencium %>
 
-<%= link_to 'Regresar', espacios_path %>
-</center>
+<!--<%= link_to 'Back', videoconferencia_path %>-->
 <% end %>
 
-<% if cannot? :manage, @espacio %>
+<% if cannot? :manage, @videoconferencium %>
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>

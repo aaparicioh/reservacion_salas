@@ -1,12 +1,34 @@
-<!DOCTYPE html>
-<html>
- <head>
+<%if can? :manage, @videoconferencium %>
  <style type="button">
   input {color: black;}
  </style>
- </head>
+  <div class="container">
+    <div class="row">
+       <div class="col-md-6">
+          <div class="jumbotron2">
+            <center>
+              <a class="btn btn-primary btn-large">
+                <%= button_to 'Ver disponibilidad', calendario_salaVideoconferencia_path, :method => :post %>
+              </a>
+            </center>
+          </div>
+       </div>
+
+       <div class="col-md-6" >
+        <div class="jumbotron3">
+          <center>
+            <a class="btn btn-primary btn-large">
+              <%= button_to 'Solicitar espacio', new_videoconferencium_path, :method => :get %>
+            </a>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div> 
+<% end %>
+
+<% if cannot? :manage, @videoconferencium %>
  <div class="container">
- 
     <div class="row">
        <div class="col-md-6" >
         	<div class="jumbotron2">
@@ -15,7 +37,6 @@
                 <button type="button" data-toggle="modal" id="disponibilidad">Ver disponibilidad de espacios</button>
               </a>
             </center>
-        
                     <div id="Asistentes" class="modal fade" role="dialog">
                       <div class="modal-dialog">
                         <center>
@@ -29,26 +50,30 @@
                         <%= form_tag(calendario_actividadesInvestigacion_path, method: :get) do %>
                            <div class="modal-body">
                              <h4> TIPO DE ACTIVIDAD</h4>
-                            	<h5><input type="radio" name="tipoactividad" id="tipoactividad_seminario" value="Seminario">Seminario<br></h5>
+                            	<h5><input type="radio" name="tipoactividad" id="tipoactividad_seminario" value="Seminario" required="">Seminario<br></h5>
                             	<h5><input type="radio" name="tipoactividad" id="tipoactividad_reunion" value="Reunión">Reunión<br></h5>
                             	<h5><input type="radio" name="tipoactividad" id="tipoactividad_clase" value="Clase">Clase<br></h5>
       
                                 <h5>¿Cuál es el número aproximado de asistentes?</h5>
-                                <%= number_field_tag :asistentes, params[:asistentes], min:"1", max:"18"%>
+                                <input type="number" id="asistentes" min="1" max="18" oninvalid ="setCustomValidity('Si necesita reservar algún auditorio comuníquese con el Departamento de Difusión')" oninput="setCustomValidity('')" required="" /><br>   
+                                 <%= @reservacion = Reservacion.new[:tipoactividad]%> 
+                                 <%= @reservacion = Reservacion.new[:asistentes]%>                            
                            </div>
 
                           <div class="modal-footer">
-                            <a class="btn btn-primary btn-sm">
-                            	  <%= submit_tag "Ver disponibilidad" %>
-                            </a>
+                           <%= form_tag new_reservacion_path, method: :post do %>
+                           <%= hidden_field_tag :asistentes, @asistentes  %>
+                           <%= hidden_field_tag :tipoactividad, @tipoactividad%>
+                           <a class="btn btn-primary btn-sm">
+                           <%= submit_tag "Ver disponibilidad"%></a>
+                           <%end%>
                           </div>
-                          <% end %>
-
+                        <% end %>             
                       </div>
-
+        
                         </center>
                       </div>
-                    </div>  
+                    </div>      
 
                     <script>
                      $(document).ready(function(){
@@ -69,5 +94,6 @@
         </div>
       </div>
     </div>
-  </div> 
-</html>
+  </div>
+<% end %>
+

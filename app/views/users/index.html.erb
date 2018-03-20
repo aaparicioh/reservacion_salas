@@ -35,9 +35,16 @@
           <li>Usuario: <%= user.email %></li>
           <li>Rol: <%= user.role %></li>
           <li>Número de usuario: <%= user.id %></li>
-          <li>Último inicio de sesión: <%= user.last_sign_in_at.strftime('%H:%M:%S %B, %d, %Y') %></li>
  
         </ul>
+        <table class="table table-striped table-hover">
+          <tbody>
+             <tr>
+               <td><%= link_to 'Editar', edit_user_path(user) %></td>
+               <td><%= link_to 'Eliminar', user, method: :delete, data: {confirm: '¿Desea continuar?'} %></td> 
+             </tr>
+          </tbody>
+          </table>
       </div>
     </div>
   </div>

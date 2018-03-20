@@ -39,22 +39,20 @@
 </div>
 </div>
 </div>
- <%= javascript_include_tag "cal_salaPos" %>
+ <%= javascript_include_tag "cal_salaVideoconferencias" %>
 
 
     <div class="panel-group">
       <div class="col-md-9" >
         <div class="panel panel-primary">
-          <div class="panel-heading"> <center><h3>SALA DE POSGRADO </h3> </center></div>
+          <div class="panel-heading"> <center><h3>SALA DE VIDEOCONFERENCIAS </h3> </center></div>
         </div>
           <div id="calendar"></div>
           <center>
            <div class="btn-group" role="group" aria-label="...">
             <center>
-              <a class="btn btn-primary btn-large">
-              <%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
               <a class="btn btn-primary btn-large"> 
-              <%= button_to 'Reservar', new_reservacion_path, :method => :get %> </a>
+              <%= button_to 'Reservar', new_videoconferencium_path, :method => :get %> </a>
             </center>
            </div>
           </center>

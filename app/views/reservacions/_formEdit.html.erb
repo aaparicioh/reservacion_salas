@@ -1,4 +1,3 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   
@@ -41,22 +40,22 @@
 
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio%>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin%>
         </div>
 
         <div class="field">
           <%= form.label :hora_de_inicio %>
-          <%= form.time_field :horainicio, id: :reservacion_horainicio, :value => "08:00" %>
+          <%= form.time_field :horainicio, id: :reservacion_horainicio%>
         </div>
 
         <div class="field">
           <%= form.label :hora_de_fin %>
-          <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00" %>
+          <%= form.time_field :horafin, id: :reservacion_horafin%>
         </div>
 
         <div class="field">
@@ -78,13 +77,11 @@
         </div>
         <% end %>
 
-         <div class="field">
+        <!-- <div class="field">
           <%= form.label :tipo_de_actividad %>
-          <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
-        </div>
          
 
-          <!--<%= form.select :tipoactividad, [['Seminario interno','Seminario interno'],['Reunión de trabajo','Reunión de trabajo'],['Clases','Clases'],['Curso','Curso'],['Diplomado','Diplomado'],['Seminario','Seminario'],['Taller','Taller'],['Inauguración','Inauguración'],['Ciclo de conferencias','Ciclo de conferencias'],['Cine debate','Cine debate'],['Coloquio','Coloquio'],['Conversatorio','Conversatorio'],['Encuentro','Encuentro'],['Foro','Foro'],['Jornada','Jornada'],['Mesa redonda','Mesa redonda'],['Presentación de libro','Presentación de libro'],['Mesa de trabajo','Mesa de trabajo'],['Congreso','Congreso']], id: :reservacion_tipoactividad %>
+          <%= form.select :tipoactividad, [['Seminario interno','Seminario interno'],['Reunión de trabajo','Reunión de trabajo'],['Clases','Clases'],['Curso','Curso'],['Diplomado','Diplomado'],['Seminario','Seminario'],['Taller','Taller'],['Inauguración','Inauguración'],['Ciclo de conferencias','Ciclo de conferencias'],['Cine debate','Cine debate'],['Coloquio','Coloquio'],['Conversatorio','Conversatorio'],['Encuentro','Encuentro'],['Foro','Foro'],['Jornada','Jornada'],['Mesa redonda','Mesa redonda'],['Presentación de libro','Presentación de libro'],['Mesa de trabajo','Mesa de trabajo'],['Congreso','Congreso']], id: :reservacion_tipoactividad %>
 
           <% if false %>
           <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
@@ -93,16 +90,23 @@
 
         <div class="field">
           <%= form.label :fecha_de_solicitud %>
-          <%= Time.now.strftime("%d-%m-%Y") %>
-          <%= form.hidden_field :fechasolicitud, id: :reservacion_fechasolicitud, :value => Time.now.strftime("%d-%m-%Y") %>
+           
+          <%= form.date_field :fechasolicitud, id: :reservacion_fechasolicitud, :readonly => true %>
         </div>
 
         <div class="field">
           <%= form.label :usuario %>
-          <%= current_user.email %>
-          <%= form.hidden_field :usuario, id: :reservacion_usuario, :value => current_user.email %>
+          <%= form.text_field :usuario, id: :reservacion_usuario, :readonly => true  %>
+        
         </div>
+
+      <!-- <div class="actions">
+          <a class="btn btn-primary btn-large">
+        <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
+        
+        </div> -->
          
+
 
   <button type="button" class="btn btn-primary btn-sm" id="myBtn">Crear reservación</button>
 

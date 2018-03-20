@@ -1,0 +1,110 @@
+<p id="notice"><%= notice %></p>
+<div class="contenedor">
+  <div class="panel panel-primary">
+    <center>
+       <ul class="list-group">
+
+<li class="list-group-item list-group-item-info">
+  <strong>Número de reservación:</strong>
+  <%= @videoconferencium.id %>
+</li>
+
+<% if @videoconferencium.aprobacion == true %>
+  <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
+  <% else %>
+  <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
+<% end %>
+
+<li class="list-group-item">
+  <strong>DATOS DEL SOLICITANTE</strong>
+</li>
+
+<li class="list-group-item">
+  <strong>Nombre del solicitante:</strong>
+  <%= @videoconferencium.nSolicitante %>
+</li>
+
+<li class="list-group-item">
+  <strong>Título de la actividad:</strong>
+  <%= @videoconferencium.tituloActividad %>
+</li>
+
+<li class="list-group-item">
+  <strong>Coordinador:</strong>
+  <%= @videoconferencium.coordinador %>
+</li>
+
+<li class="list-group-item">
+  <strong>Fecha de la actividad:</strong>
+  <%= @videoconferencium.fechaActividad %>
+</li>
+
+<li class="list-group-item">
+  <strong>Hora de inicio:</strong>
+  <%= @videoconferencium.horainicio %>
+</li>
+
+<li class="list-group-item">
+  <strong>Hora de fin:</strong>
+  <%= @videoconferencium.horafin %>
+</li>
+
+<li class="list-group-item">
+  <strong>Fecha de solicitud:</strong>
+  <%= @videoconferencium.fechaSolicitud %>
+</li>
+
+<li class="list-group-item">
+  <strong>DATOS DEL ENLACE</strong>
+</li>
+
+<li class="list-group-item">
+  <strong>Coordinador:</strong>
+  <%= @videoconferencium.coordinadorEnlace %>
+</li>
+
+<li class="list-group-item">
+  <strong>Responsable técnico:</strong>
+  <%= @videoconferencium.responsableTecnico %>
+</li>
+
+<li class="list-group-item">
+  <strong>Número IP:</strong>
+  <%= @videoconferencium.numeroIP %>
+</li>
+
+<li class="list-group-item">
+  <strong>Usuario:</strong>
+  <%= @videoconferencium.usuarioTipoEnlace %>
+</li>
+
+<li class="list-group-item">
+  <strong>Teléfono:</strong>
+  <%= @videoconferencium.telefono %>
+</li>
+
+<li class="list-group-item">
+  <strong>Correo electrónico:</strong>
+  <%= @videoconferencium.correoElectronico %>
+</li>
+
+<li class="list-group-item">
+  <strong>Recursos:</strong>
+  <%= @videoconferencium.recursos %>
+</li>
+<li class="list-group-item">
+  <strong>Hora de inicio:</strong>
+  <%= @videoconferencium.horainicioEnlace %>
+</li>
+<li class="list-group-item">
+  <strong>Hora de fin:</strong>
+  <%= @videoconferencium.horafinEnlace %>
+</li>
+
+      </ul>
+
+<h5><%= link_to 'Editar', edit_videoconferencium_path(@videoconferencium) %> |
+<%= link_to 'Regresar', welcome_solicitud_path, :method => :get %> </h5>
+</center>
+</div>
+</div>

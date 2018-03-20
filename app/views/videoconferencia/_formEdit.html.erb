@@ -1,0 +1,125 @@
+<%= form_with(model: videoconferencium, local: true) do |form| %>
+  <% if videoconferencium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(videoconferencium.errors.count, "error") %> prohibited this videoconferencium from being saved:</h2>
+
+      <ul>
+      <% videoconferencium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class = "contenedor">
+  <div class="container">
+    <div class="jumbotron4">
+      <center>
+  
+        <div class="field">
+          <%= form.label :nombre_del_solicitante %>
+          <%= form.text_field :nSolicitante, id: :videoconferencia_nSolicitante %>
+        </div>
+
+        <div class="field">
+          <%= form.label :título_de_la_actividad %>
+          <%= form.text_field :tituloActividad, id: :videoconferencia_tituloActividad %>
+        </div>
+
+        <div class="field">
+          <%= form.label :coordinador_del_encuentro%>
+          <%= form.text_field :coordinador, id: :videoconferencia_coordinador %>
+        </div>
+
+        <div class="field">
+          <%= form.label :fecha_de_la_actividad %>
+          <%= form.date_field :fechaActividad, id: :videoconferencia_fechaActividad%>
+        </div>
+
+        <div class="field">
+          <%= form.label :tipo_de_enlace%>
+          <%= form.text_field :tipoEnlace, id: :videoconferencia_tipoEnlace%>
+        </div>
+
+        <div class="field">
+          <%= form.label :hora_de_inicio %>
+          <%= form.time_field :horainicio, id: :videoconferencia_horainicio %>
+        </div>
+
+        <div class="field">
+          <%= form.label :hora_de_fin %>
+          <%= form.time_field :horafin, id: :videoconferencia_horafin%></br>
+          <h7>*Tiempo de la Ciudad de México </h7>
+        </div>
+
+        
+        <% if can? :manage, @videoconferencia %>
+        <div class="field">
+          <%= form.label :aprobación %>
+          <%= form.check_box :aprobacion, id: :videoconferencia_aprobacion %>
+        </div>
+        <% end %>
+
+
+        <div class="field">
+          <%= form.label :fecha_de_solicitud %>
+          <%= form.text_field :fechaSolicitud, id: :videoconferencia_fechaSolicitud, :readonly => true %>
+        </div>
+
+        <div class="field">
+          <%= form.hidden_field :usuario, id: :videoconferencia_usuario, :readonly => true %>
+        </div>
+         
+
+  <button type="button" class="btn btn-primary btn-sm" id="myBtn">Crear reservación</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="Servicios" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">DATOS DEL ENLACE</h4>
+        </div>
+        <div class="modal-body">
+            
+            <div class="field"> <%= form.label :coordinador_del_encuentro %><%= form.text_field :coordinadorEnlace, id: :videoconferencia_coordinadorEnlace%></div> 
+            <div class="field"><%= form.label :responsable_técnico %><%= form.text_field :responsableTecnico, id: :videoconferencia_responsableTecnico %></div> 
+            <div class="field"><%= form.label :dirección_ip %><%= form.text_field :numeroIP, id: :videoconferencia_IP, min: "1" %></div> 
+            <div class="field"><%= form.label :usuario %><%= form.text_field :usuarioTipoEnlace, id: :videoconferencia_usuarioTipoEnlace%></div>
+            <div class="field"><%= form.label :teléfono %><%= form.text_field :telefono, id: :videoconferencia_telefono%></div> 
+            <div class="field"><%= form.label :correo_electrónico%><%= form.text_field :correoElectronico, id: :videoconferencia_correoElectronico %></div> 
+            <div class="field"><%= form.label :recursos%><%= form.text_area :recursos, rows: "5", id: :videoconferencia_recursos%></div> 
+            <div class="field"><%= form.label :hora_de_inicio %> <%= form.time_field :horainicioEnlace, id: :videoconferencia_horainicioEnlace %> </div>
+            <div class="field"><%= form.label :hora_de_fin %><%= form.time_field :horafinEnlace, id: :videoconferencia_horafinEnlace %></br> <h7>*Horario de la sede enlace </h7> </div>
+            
+            <div class="actions">
+            <a class="btn btn-primary btn-sm">
+            <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
+            </div>
+        </div>   
+      </div>   
+    </div>
+  </div>
+
+
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#Servicios").modal();
+    });
+});
+</script>
+        <% end %>
+      </center>
+    </div>
+    <div align ="right">
+      <a class="btn btn-primary btn-large">
+            <%= button_to 'Regresar', calendario_salaVideoconferencia_path, :method => :post %>
+      </a>
+    </div>
+  </div>
+</div>

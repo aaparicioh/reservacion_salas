@@ -1,0 +1,2 @@
+class Videoconferencium < ApplicationRecord
+end

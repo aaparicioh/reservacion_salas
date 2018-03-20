@@ -8,36 +8,54 @@ class UsersController < ApplicationController
    @user = User.new
   
   end
-
+  # POST /users
+  # POST /users.json
   def create
     @user = User.new(user_params)
     @user.save
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'Se registró un nuevo usuario satisfactoriamente.' }
+        format.json { render :show, status: :created, location: @user}
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
  end
+
+  def show
+  @user = User.find_by_id(params[:id])
+  end
  
  def edit
   @user= User.find_by_id(params[:id])
  end
 
-def savenew
-  User.create_new_user(user_params)
-  rawsql = "insert into users (email, password, password_confirmation, created_at, updated_at) values( 
-        #{ActiveRecord::Base.connection.quote(user_params[:email])},
-        #{ActiveRecord::Base.connection.quote(user_params[:password])}, 
-        #{ActiveRecord::Base.connection.quote(user_params[:password_confirmation])},now(), now())"
-  sql = rawsql
-  ActiveRecord::Base.connection.execute(sql)
-  redirect_to action: 'index'
-end
+ def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'La información del usuario fue actualizada satisfactoriamente.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @user = User.find_by_id(params[:id])
+    @user.destroy
+      redirect_to users_path, :notice => "El usuario fue eliminado satisfactoriamente."
+  
+  end
 
  private
 
   def user_params
-     params.require(:user).permit(:email, :password, :password_confirmation)
-  end
-
-  def check_admin
-    @checkUser = current_user
-    @checkUser.admin == true
+     params.require(:user).permit(:id, :email, :password, :password_confirmation)
   end
 
 end

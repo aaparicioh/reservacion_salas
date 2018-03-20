@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118201158) do
+ActiveRecord::Schema.define(version: 20180313191352) do
 
   create_table "espacios", force: :cascade do |t|
     t.string "nombre"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180118201158) do
     t.integer "asistentes"
     t.boolean "pizarron"
     t.string "disposicion"
+    t.string "usuario"
   end
 
   create_table "solicituds", force: :cascade do |t|
@@ -106,6 +107,30 @@ ActiveRecord::Schema.define(version: 20180118201158) do
     t.integer "autorizado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "videoconferencia", force: :cascade do |t|
+    t.string "nSolicitante"
+    t.string "tituloActividad"
+    t.date "fechaActividad"
+    t.string "coordinador"
+    t.string "tipoEnlace"
+    t.time "horainicio"
+    t.time "horafin"
+    t.string "coordinadorEnlace"
+    t.string "responsableTecnico"
+    t.string "usuarioTipoEnlace"
+    t.string "correoElectronico"
+    t.string "recursos"
+    t.time "horainicioEnlace"
+    t.time "horafinEnlace"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "usuario"
+    t.boolean "aprobacion"
+    t.string "numeroIP"
+    t.string "telefono"
+    t.datetime "fechaSolicitud"
   end
 
 end

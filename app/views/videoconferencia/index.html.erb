@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+<% if can? :manage, @videoconferencia %>
+
+<div class= "contenedor">
+ <h1 align="center">Reservaciones</h1><h4 align="center">SALA DE VIDEOCONFERENCIAS</h4>
+  <div align="right"> <h4><%= link_to 'Nueva reservación', new_videoconferencium_path %></h4></div>
+
+    <% @videoconferencia = @videoconferencia.reverse%>
+    <% @videoconferencia.each do |videoconferencium| %>
+ 
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <div class="col-md-6" >
+         <ul class="list-group">
+          <li class="list-group-item list-group-item-info"> <b>Folio de reservación: <%= videoconferencium.id %></b></li>
+
+         <!-- <% if videoconferencium.aprobacion == true %>
+          <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
+          <% else %>
+          <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
+          <% end %> -->
+
+          <center><h4>DATOS DEL SOLICITANTE</h4></center>
+          <li class="list-group-item"> <b>Nombre del solicitante: <%= videoconferencium.nSolicitante %></b></li>
+          <li class="list-group-item"> Título de la actividad: <%= videoconferencium.tituloActividad %> </li>
+          <li class="list-group-item"> <b>Coordinador del encuentro: <%= videoconferencium.coordinador %>  </b></li>
+          <li class="list-group-item"> Fecha de la actividad: <%= videoconferencium.fechaActividad %></li>
+          <li class="list-group-item"> <b>Tipo de enlace: <%= videoconferencium.tipoEnlace %> </b></li>
+          <li class="list-group-item"> Hora de inicio: <%= videoconferencium.horainicio %></li>
+          <li class="list-group-item"> <b>Hora de fin: <%= videoconferencium.horafin %></b></li>
+          <li class="list-group-item"> Fecha de solicitud: <%= videoconferencium.fechaSolicitud %></li>
+          <li class="list-group-item"> <b>Usuario: <%= videoconferencium.usuario %></b> </li>
+         
+         </ul>
+        </div>
+        <div class="col-md-6" >
+           <ul class="list-group">
+           </br> </br>
+            <center><h4>DATOS DEL ENLACE</h4></center>
+            <li class="list-group-item"> <b>Coordinador del encuentro: <%= videoconferencium.coordinadorEnlace %></b> </li>
+            <li class="list-group-item"> Responsable técnico: <%= videoconferencium.responsableTecnico %> </li>
+            <li class="list-group-item"> <b>Dirección IP: <%= videoconferencium.numeroIP %></b> </li>
+            <li class="list-group-item"> Usuario del tipo de enlace: <%= videoconferencium.usuarioTipoEnlace %> </li>
+            <li class="list-group-item"> <b>Teléfono: <%= videoconferencium.telefono %></b> </li>
+            <li class="list-group-item"> Correo electrónico: <%= videoconferencium.correoElectronico %> </li>
+            <li class="list-group-item"> <b>Recursos: <%= videoconferencium.recursos %></b> </li>
+            <li class="list-group-item"> Hora de inicio: <%= videoconferencium.horainicioEnlace %></li>
+            <li class="list-group-item"> <b>Hora de fin: <%= videoconferencium.horafinEnlace %></b> </li>
+          </ul>
+         </div> 
+          <table class="table table-striped table-hover">
+          <tbody>
+             <tr>
+              <td><%= link_to 'Mostrar', videoconferencium %></td>
+              <td><%= link_to 'Editar', edit_videoconferencium_path(videoconferencium) %></td>
+              <td><%= link_to 'Eliminar', videoconferencium, method: :delete, data: { confirm: '¿Desea continuar?' } %></td>
+              <!-- <td><%= link_to 'Descargar solicitud', reservacions_path(format: 'pdf')%></td> -->
+             </tr>
+          </tbody>
+          </table>    
+      </div>
+    </div>
+<% end %>
+</div>
+
+<% end %>
+<% if cannot? :manage, @videoconferencia  %>
+<div class= "contenedor">
+    <div class="panel panel-default">
+        <div class="panel-heading">Programación de actividades </div>
+            <div class="panel-body"> 
+                <center>
+                  <div> No tienes acceso a esta página.</div>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
+                 </a>
+                 </center>
+          
+            </div>
+        </div>      
+</div>
+<% end %>
+
+

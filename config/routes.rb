@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :servicios
   resources :reservacions
-  resources :usuarios
-  resources :solicituds
   resources :welcome
   resources :calendario
   resources :reservacion
   resources :espacios
+  resources :videoconferencia
   devise_for :users
-  resources :users, only: [:index]
+  resources :users
   
-  post 'savenew', to: 'users#savenew'
-  
-  post 'reservacions/show'
   
   root 'welcome#solicitud'
 
@@ -25,11 +20,14 @@ Rails.application.routes.draw do
   get 'welcome/administracion'
   post 'welcome/administracion'
    
- 
   get 'calendario/espacios'
+  post 'calendario/espacios'
+
+  get 'calendario/salaVideoconferencia'
+  post 'calendario/salaVideoconferencia'
+
   post 'calendario/actividadesInvestigacion'
 
-  get 'solicituds/index'
   get 'reservacion/index'
   
   get 'espacios/auditorio4P'
@@ -53,10 +51,16 @@ Rails.application.routes.draw do
   get 'espacios/espacioAdic'
   post 'espacios/espacioAdic'
 
+
+  get 'espacios/salaVideoconferencias'
+  post 'espacios/salaVideoconferencias'
+
   get 'reservacions/new'
   get 'reservacions/show'
 
- get "users/new_user" 
- post "users/create_user"
+  post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
+
+ 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

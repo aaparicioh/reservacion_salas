@@ -24,6 +24,7 @@ class ReservacionsController < ApplicationController
 
   # GET /reservacions/new
   def new
+    #session[:reservacion_params] ||= {}
     @reservacion = Reservacion.new
 
   end
@@ -33,26 +34,11 @@ class ReservacionsController < ApplicationController
     @reservacion = Reservacion.find_by_id(params[:id])
   end
 
-  def move
-    @reservacion = Reservacion.find_by_id params[:id]
-    if @reservacion
-      @reservacion.horainicio = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@reservacion.horainicio))
-      @reservacion.horafin = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@reservacion.horafin))
-      @reservacion.all_day = params[:all_day]
-      @reservacion.save
-    end
-  end
-
-  def resize
-    @reservacion = Reservacion.find_by_id params[:id]
-    if @reservacion
-      @reservacion.horafin = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@reservacion.horafin))
-      @reservacion.save
-    end    
-  end
+  
   # POST /reservacions
   # POST /reservacions.json
   def create
+  
     @reservacion = Reservacion.new(reservacion_params)
     @reservacion.save
     
@@ -92,21 +78,6 @@ class ReservacionsController < ApplicationController
   end
 
 
-  def get_reservacion
-
-   @reservacion = Reservacion.find(:all, :conditions => ["fechainicio >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and fechafin <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}'"] )
-    reservacions = [] 
-    @reservacions.each do |reservacion|
-      reservacions << {:id => reservacion.id, :title => reservacion.nevento, :start => "#{reservacion.fechainicio.iso8601}", :end => "#{reservacion.fechafin.iso8601}", :allDay => reservacion.all_day}
-    end
-    render :text => reservacion.to_json
-  end
-
-  def radio_button(object_name, method, tag_value, options = {})
-        Tags::RadioButton.new(object_name, method, self, tag_value, options).render
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservacion
@@ -115,6 +86,6 @@ class ReservacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservacion_params
-      params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :ncartel, :programa, :nprograma, :constancias, :nconstancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :video, :conexInternet, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo,:grabAudio, :cafe, :galletas, :fruta, :asistentes, :pizarron, :asistentes)
+      params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :ncartel, :programa, :nprograma, :constancias, :nconstancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :video, :conexInternet, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo,:grabAudio, :cafe, :galletas, :fruta, :pizarron, :asistentes, :usuario)
     end
 end
