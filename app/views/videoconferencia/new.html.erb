@@ -1,4 +1,4 @@
-<% if can? :manage, @videoconferencium %>
+<% if can? :show, Videoconferencium %>
 <center><h2>NUEVA SOLICITUD</h2></center>
 
 <%= render 'form', videoconferencium: @videoconferencium %>

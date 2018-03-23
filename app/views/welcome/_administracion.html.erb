@@ -1,5 +1,4 @@
 
-
 <% if can? :manage, Welcome %>
 <div class= "contenedor">
     <div class="panel-group">     
@@ -16,16 +15,6 @@
                  <% if can? :manage, Reservacion %>
                  <a class="btn btn-primary btn-large">
                  <%= button_to 'Reservaciones', reservacions_path, :method => :get  %> </a>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Usuarios', users_path, :method => :get  %> </a>
-                 <% if can? :manage, @videoconferencium %>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Sala de Videoconferencias', videoconferencia_path, :method => :get  %> </a>
-                 <% end %>
-                 <!--<a class="btn btn-primary btn-large">
-                 <%= button_to 'Calendarios', calendario_espacios_path, :method => :get  %> </a>-->
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Calendarios', calendario_espacios_path, :method => :get  %> </a>
                  <% end %>
                   <% if can? :manage, Videoconferencium %>
                  <a class="btn btn-primary btn-large">

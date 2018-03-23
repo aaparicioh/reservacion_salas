@@ -45,12 +45,14 @@ class ReservacionsController < ApplicationController
   # GET /reservacions/1
   # GET /reservacions/1.json
   def show
-  @reservacion = Reservacion.find_by_id(params[:id])
+    if @reservacion.usuario == current_user.email
+      @reservacion = Reservacion.find_by_id(params[:id])
+     @reservacion.show
+    end
   end
 
   # GET /reservacions/new
   def new
-    #session[:reservacion_params] ||= {}
     @reservacion = Reservacion.new
 
   end

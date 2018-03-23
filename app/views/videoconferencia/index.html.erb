@@ -1,5 +1,43 @@
 <p id="notice"><%= notice %></p>
-<% if can? :manage, @videoconferencia %>
+<% if can? :manage, Reservacion %>
+<div class= "contenedor">
+    <div class="panel-group">     
+        <div class="panel panel-default">
+          <div class="panel-heading">Programación de actividades </div>
+            <div class="panel-body">
+             <center>
+              <div class="btn-group" role="group" aria-label="...">
+                <center>
+                 <% if can? :manage, Espacio %>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Espacios', espacios_path, :method => :get  %> </a>
+                 <% end %>
+                 <% if can? :manage, Reservacion %>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Reservaciones', reservacions_path, :method => :get  %> </a>
+                 <% end %>
+                  <% if can? :manage, Videoconferencium %>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Sala de Videoconferencias', videoconferencia_path, :method => :get  %> </a>
+                 <% end %>
+                 <% if can? :manage, Calendario %>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Calendarios', calendario_espacios_path, :method => :post  %> </a>
+                 <% end %>
+                 <% if can? :manage, User%>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Usuarios', users_path, :method => :get  %> </a>
+                 <% end %>
+               </center>
+              </div>
+             </center>
+            </div>
+        </div>      
+    </div>
+</div>
+<% end %>
+
+<% if can? :manage, Videoconferencium %>
 
 <div class= "contenedor">
  <h1 align="center">Reservaciones</h1><h4 align="center">SALA DE VIDEOCONFERENCIAS</h4>
@@ -64,7 +102,7 @@
 </div>
 
 <% end %>
-<% if cannot? :manage, @videoconferencia  %>
+<% if cannot? :manage, Videoconferencium  %>
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>

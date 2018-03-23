@@ -24,7 +24,7 @@
             </center>
           </div>
 
-            <% if can? :manage, @reservacion %>      
+            <% if can? :manage, Welcome %>      
                
               <button type="button">
                <span class="glyphicon glyphicon-home"></span>
@@ -39,10 +39,10 @@
                   <% if user_signed_in? %>
                   Conectado como <%= current_user.email %>. 
                   <%= button_to  "Cerrar sesión", destroy_user_session_path, :method => :delete %>
-                 <% if can? :manage, @reservacion %>
+                 <% if can? :manage, Welcome %>
                  <%= button_to "Administración", welcome_administracion_path %>
                     <% end %>
-
+                    
                   <% end %>
                   
                 </div>

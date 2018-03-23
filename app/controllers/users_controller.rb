@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'Se registró un nuevo usuario satisfactoriamente.' }
-        format.json { render :show, status: :created, location: @user}
+        format.json { render :index, status: :created, location: @user}
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -34,9 +34,11 @@ class UsersController < ApplicationController
  end
 
  def update
+  @user= User.find_by_id(params[:id])
+
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'La información del usuario fue actualizada satisfactoriamente.' }
+        format.html { redirect_to @user, notice: 'La información del siguiente usuario fue actualizada satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

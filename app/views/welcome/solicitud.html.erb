@@ -1,11 +1,12 @@
-<%if can? :manage, @videoconferencium %>
+<%if can? :show, Videoconferencium %>
  <style type="button">
   input {color: black;}
  </style>
   <div class="container">
+   <h4 align="center">RESERVACIÓN SALA DE VIDEOCONFERENCIAS</h4>
     <div class="row">
        <div class="col-md-6">
-          <div class="jumbotron2">
+          <div class="jumbotron5">
             <center>
               <a class="btn btn-primary btn-large">
                 <%= button_to 'Ver disponibilidad', calendario_salaVideoconferencia_path, :method => :post %>
@@ -15,7 +16,7 @@
        </div>
 
        <div class="col-md-6" >
-        <div class="jumbotron3">
+        <div class="jumbotron6">
           <center>
             <a class="btn btn-primary btn-large">
               <%= button_to 'Solicitar espacio', new_videoconferencium_path, :method => :get %>
@@ -26,9 +27,10 @@
     </div>
   </div> 
 <% end %>
-
-<% if cannot? :manage, @videoconferencium %>
+</br></br></br></br>
+<% if can? :show, Reservacion %>
  <div class="container">
+  <h4 align="center">RESERVACIÓN DE SALAS</h4>
     <div class="row">
        <div class="col-md-6" >
         	<div class="jumbotron2">

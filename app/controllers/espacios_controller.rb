@@ -29,7 +29,7 @@ protect_from_forgery
 
     respond_to do |format|
       if @espacio.save
-        format.html { redirect_to @espacio, notice: 'El Espacio fue agregado satisfactoriamente.' }
+        format.html { redirect_to @espacio, notice: 'El espacio fue agregado satisfactoriamente.' }
         format.json { render :show, status: :created, location: @espacio }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ protect_from_forgery
   def destroy
     @espacio.destroy
     respond_to do |format|
-      format.html { redirect_to espacios_url, notice: 'Los datos del Espacio fueron eliminados satisfactoriamente.' }
+      format.html { redirect_to espacios_url, notice: 'Los datos del espacio fueron eliminados satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

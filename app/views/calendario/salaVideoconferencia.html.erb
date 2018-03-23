@@ -14,7 +14,7 @@
              <div class="btn-group-vertical" role="group" aria-label="...">
               
                   <h6> Consultar mi reservación. </h6>
-                  <%= form_for :videoconferencium, url: videoconferencia_path do |f| %>
+                  <%= form_for :videoconferencia, url: videoconferencia_path do |f| %>
                     <div class="thumbnail">
                       <h7>Folio:</h7> 
                   <%= f.number_field :id, name:"id", min: "1", max: "99", required:"" %>
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-<% if cannot? :manage, @videoconferencium %>
+<% if cannot? :manage, Videoconferencium %>
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>
