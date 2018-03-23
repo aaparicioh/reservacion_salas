@@ -3,9 +3,10 @@
  <head>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.3.js"></script>
  </head>
+ 
+<% if can? :show, Reservacion %>
 <body>
-
-   <div class= "contenedor">
+ <div class= "contenedor">
     <div class="panel-group">
 	    <div class="col-md-2" >
 	      <div class="panel panel-default">
@@ -21,6 +22,7 @@
                   <%= f.submit "Consultar" %>
                      </div>
                   <% end %>
+                  
 
              </div>
 	          </div>
@@ -103,4 +105,22 @@
       </div>
     </div>
   </body>
+<% end %>
+
+<% if cannot? :show, Reservacion %>
+<div class= "contenedor">
+    <div class="panel panel-default">
+        <div class="panel-heading">Programación de actividades </div>
+            <div class="panel-body"> 
+                <center>
+                  <div> No tienes acceso a esta página.</div>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
+                 </a>
+                 </center>
+          
+            </div>
+        </div>      
+</div>
+<% end %>
 </html>

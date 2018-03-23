@@ -1,27 +1,7 @@
 <p id="notice"><%= notice %></p>
-<% if can? :manage, @user %>
+<% if can? :manage, User %>
 
-<div class= "contenedor">
-    <div class="panel-group">     
-        <div class="panel panel-default">
-          <div class="panel-heading">Programación de actividades </div>
-            <div class="panel-body">
-             <center>
-              <div class="btn-group" role="group" aria-label="...">
-                <center>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Espacios', espacios_path, :method => :get  %> </a>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Reservaciones', reservacions_path, :method => :get  %> </a>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Usuarios', users_path, :method => :get  %> </a>
-               </center>
-              </div>
-             </center>
-            </div>
-        </div>      
-    </div>
-</div>
+<%= render 'welcome/administracion', welcome: @welcome %>
 
 <div class= "contenedor">
   <h1 align = "center">Usuarios</h1>

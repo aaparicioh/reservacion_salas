@@ -6,19 +6,22 @@ class Ability
    user ||= User.new 
       if user.role == "superadmin"
        can :manage, :all
-      end
+      else
         if user.role == "admin"
          can :manage, Reservacion
-         can :manage, Espacio
-         can :manage, Videoconferencium
+         can :manage, Calendario
+         can :manage, Welcome
         end
-
-          if user.role == "videoconferencias"
-             can :manage, Videoconferencium
-          end
-           if user.role == "usuario"
-           can :show, Reservacion
-           
-           end
+      end
+      if user.role == "videoconferencias"
+        can :manage, Videoconferencium
+        can :manage, Welcome
+      end
+      if user.role == "usuario"
+        can :show, Reservacion
+      end
+      if user.role == "usuarioV"
+        can :show, Videoconferencium
+      end
   end
 end

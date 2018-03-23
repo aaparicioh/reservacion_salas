@@ -1,4 +1,22 @@
-
+<% if can? :show, Reservacion %>
 <center><h2>EDICIÓN DE LA RESERVACIÓN</h2></center>
 
 <%= render 'formEdit', reservacion: @reservacion %>
+<% end %>
+
+<% if cannot? :show, Reservacion %>
+<div class= "contenedor">
+    <div class="panel panel-default">
+        <div class="panel-heading">Programación de actividades </div>
+            <div class="panel-body"> 
+                <center>
+                  <div> No tienes acceso a esta página.</div>
+                 <a class="btn btn-primary btn-large">
+                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
+                 </a>
+                 </center>
+          
+            </div>
+        </div>      
+</div>
+<% end %>

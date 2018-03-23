@@ -59,7 +59,10 @@ Rails.application.routes.draw do
   get 'reservacions/show'
 
   post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
+  post '/reservacions/espacios', to: 'reservacions#show'
+  post '/reservacions/salaVideoconferencia', to: 'videoconferencia#show'
 
+ 
  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

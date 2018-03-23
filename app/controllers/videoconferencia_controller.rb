@@ -29,7 +29,7 @@ class VideoconferenciaController < ApplicationController
 
     respond_to do |format|
       if @videoconferencium.save
-        format.html { redirect_to @videoconferencium, notice: 'Videoconferencium was successfully created.' }
+        format.html { redirect_to @videoconferencium, notice: 'La reservación fue creada satisfactoriamente.' }
         format.json { render :show, status: :created, location: @videoconferencium }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class VideoconferenciaController < ApplicationController
   def update
     respond_to do |format|
       if @videoconferencium.update(videoconferencium_params)
-        format.html { redirect_to @videoconferencium, notice: 'Videoconferencium was successfully updated.' }
+        format.html { redirect_to @videoconferencium, notice: 'La información ha sido actualizada satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @videoconferencium }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class VideoconferenciaController < ApplicationController
   def destroy
     @videoconferencium.destroy
     respond_to do |format|
-      format.html { redirect_to videoconferencia_url, notice: 'Videoconferencium was successfully destroyed.' }
+      format.html { redirect_to videoconferencia_url, notice: 'La reservación fue eliminada satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

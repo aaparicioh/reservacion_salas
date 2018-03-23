@@ -1,27 +1,7 @@
 <p id="notice"><%= notice %></p>
-<% if can? :manage, @reservacion %>
+<% if can? :manage, Reservacion%>
 
-<div class= "contenedor">
-    <div class="panel-group">     
-        <div class="panel panel-default">
-          <div class="panel-heading">Programación de actividades </div>
-            <div class="panel-body">
-             <center>
-              <div class="btn-group" role="group" aria-label="...">
-                <center>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Espacios', espacios_path, :method => :get  %> </a>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Reservaciones', reservacions_path, :method => :get  %> </a>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Usuarios', users_path, :method => :get  %> </a>
-               </center>
-              </div>
-             </center>
-            </div>
-        </div>      
-    </div>
-</div>
+<%= render 'welcome/administracion', welcome: @welcome %>
 
 <div class= "contenedor">
  <h1 align="center">Reservaciones</h1>
@@ -29,13 +9,13 @@
 
 <% @reservacions = @reservacions.reverse%>
  <% @reservacions.each do |reservacion| %>
- 
- 
+
     <div class="panel panel-primary">
       <div class="panel-body">
         <div class="col-md-6" >
          <ul class="list-group">
           <li class="list-group-item list-group-item-info"> <b>Folio de reservación: <%= reservacion.id %></b></li>
+
 
           <% if reservacion.aprobacion == true %>
           <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
@@ -52,7 +32,7 @@
           <li class="list-group-item"> <b>Hora de fin: <%= reservacion.horafin %></b></li>
           <li class="list-group-item"> Repetición: <%= "Sí" if reservacion.repeticion == true %> <%= "No" if reservacion.repeticion == false %></li>
           <li class="list-group-item"> <b>ID repeticiones: <%= reservacion.idrepeticiones %></b></li>
-          <li class="list-group-item"> Fecha de solicitud: <%= reservacion.fechasolicitud %></li>
+          <li class="list-group-item"> Fecha de solicitud: <%= reservacion.fechasolicitud%></li>
           <!--<li class="list-group-item"> <b>Disposición: <%= reservacion.disposicion %></b></li>     
           <li class="list-group-item"> Cartel: <%= "Sí" if reservacion.cartel == true %> <%= "No" if reservacion.cartel == false %></li>
           <li class="list-group-item"> <b>Programa: <%= "Sí" if reservacion.programa == true %> <%= "No" if reservacion.programa == false %></b></li>
