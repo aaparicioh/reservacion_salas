@@ -3,24 +3,43 @@ class ReservacionsController < ApplicationController
   before_action :set_reservacion, only: [:show, :edit, :update, :destroy]
   respond_to :json
 
+  #def as_json(options={})
+  #  super(:only => [:nevento],
+  #        :include => {
+  #          :start => {:only => [:fechainicio]},
+  #          :end => {:only => [:fechafin]}
+  #        }
+  #  )
+  #end
+
+
   # GET /reservacions
   # GET /reservacions.json
   def index
     @reservacions = Reservacion.all
-    respond_to do |format|
-      format.json {render json: @reservacions}
-      format.html
-      format.pdf do
-        pdf = ReservacionPdf.new(@reservacions)
-        send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
-      end
+    #respond_to do |format|
+      #format.json { render :show, title: :nevento}#, location: @reservacion }
+      #format.json {render json: @reservacions}
+      #format.json {render :json => @reservacions}
+      #format.json {render json: @reservacions.as_json(only: [:nevento, :fechainicio, :fechafin, :fechasolicitud] )}
+      #format.json do
+      #  render json: {
+      #    title: @reservacions.nevento,
+      #    start: @reservacions.fechainicio,
+      #    end: @reservacions.fechafin
+      #  }.to_json
+      #end
+      #format.html
+      #format.pdf do
+      #  pdf = ReservacionPdf.new(@reservacions)
+      #  send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
+      #end
       #format.json do
       #  json.array!(@reservacions) do |reservacion|
       #    json.extract! reservacion, :id, :nevento, :fechainicio, :fechafin
-      #    json.url reservacion_url(reservacion, format: :json)
       #  end
       #end
-    end
+    #end
   end
 
   # GET /reservacions/1

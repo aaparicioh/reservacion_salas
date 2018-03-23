@@ -9,12 +9,12 @@ $(document).ready(function() {
       height : 750,
       width  : 300,
 
-      events: '/reservacions.json'
+      //events: '/reservacions.json'
 
-      /*events:[
+      events:[
         {
-          title  : 'event1',
-          start  : '2018-01-01'
+          "title"  : "event1",
+          "start"  : "2018-03-22"
         },
         {
           title  : 'event2',
@@ -38,7 +38,10 @@ $(document).ready(function() {
           rendering: 'background',
           color: '#ff9f89'
         }
-      ]*/
+      ],
+      eventColor: '#378006',
+      textColor: '#f00'
+      //backgroundColor: '#f00'
       //"/reservacions/get_reservacion",
 
     });
