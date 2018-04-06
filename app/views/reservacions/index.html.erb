@@ -23,6 +23,7 @@
           <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
           <% end %>
 
+          <li class="list-group-item"> Espacio: <%= reservacion.espacio.nombre if reservacion.espacio%> </li>
           <li class="list-group-item"> <b>Responsable: <%= reservacion.nresponsable %></b></li>
           <li class="list-group-item"> Evento: <%= reservacion.nevento %> </li>
           <li class="list-group-item"> <b>Tipo de actividad: <%= reservacion.tipoactividad %>  </b></li>
