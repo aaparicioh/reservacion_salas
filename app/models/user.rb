@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reservacions
+  has_many :videoconferencium
   
 
   def self.create_new_user(params)

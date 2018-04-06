@@ -12,49 +12,16 @@
           <div class="panel-heading">Reservaciones </div>
 	        	<div class="panel-body">
              <div class="btn-group-vertical" role="group" aria-label="...">
-                <!-- <div>  <a id="abrir" href="javascript:void(0);"> Cátalogo de servicios </a> </div>
-                  <%= javascript_include_tag "ventanaCatalogo" %></br> -->
-
-                  <script>     
-                     function recibir() {
-                       var valor = document.getElementById("reservacion_id").value;
-                      document.getElementById("numero").innerHTML= valor; }        
-                  </script> 
-                 
-                  <h6> Consultar mi reservación. </h6>
-          
+                
+                <h6> Consultar mi reservación. </h6>
+                  <%= form_for :reservacion, url: reservacion_path(:id) do |f| %>
                     <div class="thumbnail">
                       <h7>Folio:</h7> 
-                      <input name= "reservacion_id" min="1" max="99" type="number" <%= @reservacion_id %> >
-                      <a>
-                        <%= link_to 'Consultar' %> 
-                       <form>
-                       
-                        <input name ="id" type="hidden" value="numero" onclick="recibir();"/>
-                        <div id="numero"></div>
-                      </form>
-                      </a>
-                    </div>
-                
-            
-      <div id="ventana_emergente"> 
-          <h3> SERVICIOS TÉCNICOS </h3>
-            <p> Videoproyector </p>
-            <p> PC </p>
-            <p> Traducción simultánea </p>
-            <p> Vídeo </p>
-            <p> Conexión por Skype </p>
-            <p> Conexión Internet </p>
-            <p> Videoconferencia </p>
-            <p> Pizarrón </p>
-            <p> Webcast </p>
-            <p> Grabación de video </p>
-            <p> Grabación de audio </p>
-          <h3> OTROS SERVICIOS </h3>
-            <p> En todas las sesiones se ofrece café. </p>
-            <p> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </p>
-            <p> <a id="cerrar" href="javascript:void(0);"> Cerrar </a> </p>
-      </div>
+                  <%= f.number_field :id, name:"id", min: "1", max: "99999", required:"" %>
+                  <center><%= f.submit "Consultar" %></center>
+                     </div>
+                  <% end %> 
+    
              </div>
 	          </div>
 	      </div>
@@ -66,10 +33,7 @@
             <ul class="thumbnails">
             <li class="span4">
             <div class="thumbnail">
-            <%= image_tag "aud4p.jpg", :alt => "Auditorio 4° piso", 
-              :title => "Aforo: 70 personas
-    SERVICIOS
-Videoproyector"%>
+            <%= image_tag "aud4p.jpg", :alt => "Auditorio 4° piso", :title => "Aforo: 70 personas" %>
             <center> 
               <a class="btn btn-primary btn-large">
                 <%= button_to 'Auditorio 4° piso', espacios_auditorio4P_path, :method => :post %>
@@ -127,7 +91,7 @@ Videoproyector"%>
 
             <li class="span4">
             <div class="thumbnail">
-              <%= image_tag "cubBiblioteca.jpeg", :alt => "Otro espacio" %>
+              <%= image_tag "salaVideoconferencias.jpg", :alt => "Otro espacio" %>
             <center> 
               <a class="btn btn-primary btn-large">
                 <%= button_to 'Otro espacio', espacios_espacioAdic_path, :method => :post %>
