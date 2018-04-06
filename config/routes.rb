@@ -23,12 +23,9 @@ Rails.application.routes.draw do
   get 'calendario/espacios'
   post 'calendario/espacios'
 
-  get 'calendario/salaVideoconferencia'
   post 'calendario/salaVideoconferencia'
 
   post 'calendario/actividadesInvestigacion'
-
-  get 'reservacion/index'
   
   get 'espacios/auditorio4P'
   post 'espacios/auditorio4P'
@@ -59,9 +56,8 @@ Rails.application.routes.draw do
   get 'reservacions/show'
 
   post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
-  post '/reservacions/espacios', to: 'reservacions#show'
-  post '/reservacions/salaVideoconferencia', to: 'videoconferencia#show'
-
+  post '/reservacions/id', to: 'reservacions#show'
+  post '/videoconferencia/id',  to: 'videoconferencia#show'
  
  
 

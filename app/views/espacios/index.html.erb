@@ -41,14 +41,13 @@
 <br>
 </div>
 <div align="right">
-<%= button_to 'Ver todos los espacios', calendario_espacios_path, :method => :post %>
 <%= button_to 'Sala de Videoconferencias', calendario_salaVideoconferencia_path, :method => :post %>
 </div>
 
 </div>
 <% end %>
 
-<% if cannot? :manage, @espacio  %>
+<% if cannot? :manage, Espacio %>
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>

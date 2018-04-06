@@ -18,11 +18,10 @@
                   <%= form_for :reservacion, url: reservacion_path do |f| %>
                     <div class="thumbnail">
                       <h7>Folio:</h7> 
-                  <%= f.number_field :id, name:"id", min: "1", max: "99", required:"" %>
-                  <%= f.submit "Consultar" %>
+                  <%= f.number_field :id, name:"id", min: "1", max: "99999", required:"" %>
+                  <center><%= f.submit "Consultar" %></center>
                      </div>
-                  <% end %>
-                  
+                  <% end %>      
 
              </div>
 	          </div>

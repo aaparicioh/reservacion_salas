@@ -1,7 +1,7 @@
 class VideoconferenciaController < ApplicationController
   protect_from_forgery
   before_action :set_videoconferencium, only: [:show, :edit, :update, :destroy]
-
+  respond_to :json
   # GET /videoconferencia
   # GET /videoconferencia.json
   def index
@@ -11,6 +11,7 @@ class VideoconferenciaController < ApplicationController
   # GET /videoconferencia/1
   # GET /videoconferencia/1.json
   def show
+      @videoconferencium  = Videoconferencium.find_by_id(params[:id])
   end
 
   # GET /videoconferencia/new
@@ -20,12 +21,14 @@ class VideoconferenciaController < ApplicationController
 
   # GET /videoconferencia/1/edit
   def edit
+    @videoconferencium = Videoconferencium.find_by_id(params[:id])
   end
 
   # POST /videoconferencia
   # POST /videoconferencia.json
   def create
     @videoconferencium = Videoconferencium.new(videoconferencium_params)
+    @videoconferencium.save
 
     respond_to do |format|
       if @videoconferencium.save
@@ -70,6 +73,6 @@ class VideoconferenciaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def videoconferencium_params
-      params.require(:videoconferencium).permit(:id, :nSolicitante, :tituloActividad, :fechaActividad, :coordinador, :tipoEnlace, :horainicio, :horafin, :coordinadorEnlace, :responsableTecnico, :numeroIP, :usuarioTipoEnlace, :telefono, :correoElectronico, :recursos, :horainicioEnlace, :horafinEnlace, :usuario, :fechaSolicitud)
+      params.require(:videoconferencium).permit(:nSolicitante, :tituloActividad, :fechaActividad, :coordinador, :tipoEnlace, :horainicio, :horafin, :coordinadorEnlace, :responsableTecnico, :numeroIP, :usuarioTipoEnlace, :telefono, :correoElectronico, :recursos, :horainicioEnlace, :horafinEnlace, :usuario, :fechaSolicitud)
     end
 end
