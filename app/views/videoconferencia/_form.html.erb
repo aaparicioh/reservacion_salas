@@ -1,8 +1,10 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
 <%= form_with(model: videoconferencium, local: true) do |form| %>
   <% if videoconferencium.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(videoconferencium.errors.count, "error") %> prohibited this videoconferencium from being saved:</h2>
-
       <ul>
       <% videoconferencium.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -54,9 +56,9 @@
         </div>
 
         
-        <% if can? :manage, @videoconferencia %>
+        <% if can? :manage, Videoconferencium %>
         <div class="field">
-          <%= form.label :aprobación %>
+          <%= form.label :aprobacion %>
           <%= form.check_box :aprobacion, id: :videoconferencia_aprobacion %>
         </div>
         <% end %>

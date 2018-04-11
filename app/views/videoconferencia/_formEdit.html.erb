@@ -54,7 +54,7 @@
         </div>
 
         
-        <% if can? :manage, @videoconferencia %>
+        <% if can? :manage, Videoconferencium %>
         <div class="field">
           <%= form.label :aprobación %>
           <%= form.check_box :aprobacion, id: :videoconferencia_aprobacion %>
