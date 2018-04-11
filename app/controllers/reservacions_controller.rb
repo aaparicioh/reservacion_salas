@@ -17,29 +17,29 @@ class ReservacionsController < ApplicationController
   # GET /reservacions.json
   def index
     @reservacions = Reservacion.all
-    respond_to do |format|
-      format.json { render :show, title: :nevento}#, location: @reservacion }
-      format.json {render json: @reservacions}
-      format.json {render :json => @reservacions}
-      format.json {render json: @reservacions.as_json(only: [:nevento, :fechainicio, :fechafin, :fechasolicitud] )}
-      format.json do
-        render json: {
-          title: @reservacions.nevento,
-          start: @reservacions.fechainicio,
-          end: @reservacions.fechafin
-        }.to_json
-      end
-      format.html
-      format.pdf do
-        pdf = ReservacionPdf.new(@reservacions)
-        send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
-      end
-      format.json do
-        json.array!(@reservacions) do |reservacion|
-          json.extract! reservacion, :id, :nevento, :fechainicio, :fechafin
-        end
-      end
-    end
+    #respond_to do |format|
+    #  format.json { render :show, title: :nevento}#, location: @reservacion }
+    #  format.json {render json: @reservacions}
+    #  format.json {render :json => @reservacions}
+    #  format.json {render json: @reservacions.as_json(only: [:nevento, :fechainicio, :fechafin, :fechasolicitud] )}
+    #  format.json do
+    #    render json: {
+    #      title: @reservacions.nevento,
+    #      start: @reservacions.fechainicio,
+    #      end: @reservacions.fechafin
+    #    }.to_json
+    #  end
+    #  format.html
+    #  format.pdf do
+    #    pdf = ReservacionPdf.new(@reservacions)
+    #    send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
+    #  end
+    #  format.json do
+    #    json.array!(@reservacions) do |reservacion|
+    #      json.extract! reservacion, :id, :nevento, :fechainicio, :fechafin
+    #    end
+    #  end
+    #end
   end
 
   # GET /reservacions/1
@@ -62,12 +62,13 @@ class ReservacionsController < ApplicationController
   # GET /reservacions/new
   def new
     @reservacion = Reservacion.new
-
+    @espacios = Espacio.all
   end
 
   # GET /reservacions/1/edit
   def edit 
     @reservacion = Reservacion.find_by_id(params[:id])
+    @espacios = Espacio.all
   end
 
   
