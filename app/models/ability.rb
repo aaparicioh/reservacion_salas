@@ -19,6 +19,7 @@ class Ability
       end
       if user.role == "usuario"
         can :show, Reservacion
+        cannot :delete, Reservacion
       end
       if user.role == "usuarioV"
         can :show, Videoconferencium
