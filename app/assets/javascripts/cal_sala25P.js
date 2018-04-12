@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#calendar').fullCalendar({
+    $('#calendar25P').fullCalendar({
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -10,14 +10,9 @@ $(document).ready(function() {
         width  : 300,
         weekends: false,
 
-        //events:[
-        //{
-        //  title  : 'Cumpleaños',
-        //  start  : '2018-03-15'
-        //}
-        //]
+        eventColor: 'green',
+        textColor: '#FFF',
 
-        //events:'/index.json'
-        events: <%= @events.to_json.html_safe %>
+        events: '/reservacions.json'
     });
 });

@@ -24,7 +24,7 @@
           <%= form.label :Auditorio_del_4_piso, id: :solicitud_sala %>
           <% end %>
 
-          <%= form.select :sala, [['Sala 1 del 5° piso','Sala1 del piso 5'],['Sala 2 del 5° piso','Sala2 del piso 5'],['Sala del 6° piso','Sala del piso 6'],['Anexo','Anexo']], id: :solicitud_sala %>
+          <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
           
         </div>
   

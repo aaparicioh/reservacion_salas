@@ -1,15 +1,18 @@
 $(document).ready(function() {
-    $('#calendar').fullCalendar({
+    $('#calendar15P').fullCalendar({
       header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay'
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
       },
       weekends: false,
       height : 750,
       width  : 300,
 
-      events: '/reservacions.json',
+      eventColor: 'green',
+      textColor: '#FFF',
+
+      events: '/reservacions.json'
 
       /*events:[
         {
@@ -39,10 +42,6 @@ $(document).ready(function() {
           color: '#ff9f89'
         }
       ],*/
-      eventColor: '#378006',
-      textColor: '#f00'
-      //backgroundColor: '#f00'
-      //"/reservacions/get_reservacion",
-
+      //backgroundColor: '#f00'.
     });
 });
