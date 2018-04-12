@@ -1,6 +1,8 @@
 class ReservacionsController < ApplicationController
   protect_from_forgery
   before_action :set_reservacion, only: [:show, :edit, :update, :destroy]
+  #before_action :reservacion_map, only: [:new, :edit]
+  #before_action :reservacion_update, only: [:create, :update]
   respond_to :json
 
   def as_json(options={})
@@ -16,6 +18,7 @@ class ReservacionsController < ApplicationController
   # GET /reservacions
   # GET /reservacions.json
   def index
+    #$espacioActual = 0
     @reservacions = Reservacion.all
     #respond_to do |format|
     #  format.json { render :show, title: :nevento}#, location: @reservacion }
@@ -62,13 +65,13 @@ class ReservacionsController < ApplicationController
   # GET /reservacions/new
   def new
     @reservacion = Reservacion.new
-    @espacios = Espacio.all
+    @espacios = Espacio.where(id: [2,3,5,6])
   end
 
   # GET /reservacions/1/edit
   def edit 
     @reservacion = Reservacion.find_by_id(params[:id])
-    @espacios = Espacio.all
+    @espacios = Espacio.where(id: [2,3,5,6])
   end
 
   
@@ -123,6 +126,18 @@ class ReservacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservacion_params
+<<<<<<< HEAD
       params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :ncartel, :programa, :nprograma, :constancias, :nconstancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :video, :conexInternet, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo,:grabAudio, :cafe, :galletas, :fruta, :pizarron, :asistentes, :usuario, :espacio)
+=======
+      params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :ncartel, :programa, :nprograma, :constancias, :nconstancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :video, :conexInternet, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo,:grabAudio, :cafe, :galletas, :fruta, :pizarron, :asistentes, :usuario, :espacio_id)
+>>>>>>> b603ab07e814c7624af3eccbbf0a90c47095b289
     end
+
+    #def reservacion_map
+    #  @espacios = Espacio.all.map { |result| [result.nombre, result.id] }
+    #end
+
+    #def reservacion_update
+    #  @reservacion.espacio_id=params[:espacio_id]
+    #end
 end
