@@ -1,7 +1,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  
 
 <%= form_with(model: reservacion, local: true) do |form| %>
   <% if reservacion.errors.any? %>
@@ -13,7 +12,6 @@
       </ul>
     </div>
   <% end %>
-
 
 <div class = "contenedor">
   <div class="container">
@@ -41,12 +39,12 @@
 
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, disabledDays:[0, 6], :value => Time.zone.today + 5.day, min: Time.zone.today%>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today %>
         </div>
 
         <div class="field">
