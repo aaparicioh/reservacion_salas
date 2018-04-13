@@ -2,9 +2,18 @@
 #json.url videoconferencium_url(videoconferencium, format: :json)
 #date_format = reservacion.all_day? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'
 
-json.title videoconferencium.tituloActividad
-json.start videoconferencium.fechaActividad#.strftime(date_format)
-json.end videoconferencium.fechaActividad
+
+
+if videoconferencium.aprobacion == false
+  json.title videoconferencium.tituloActividad
+  json.start videoconferencium.fechaActividad#.strftime(date_format)
+  json.end videoconferencium.fechaActividad
+else
+  json.title videoconferencium.tituloActividad
+  json.start videoconferencium.fechaActividad#.strftime(date_format)
+  json.end videoconferencium.fechaActividad
+  json.color '#F00'
+end
 
 #json.extract! @videoconferencium do |videoconferencium|
   #date_format = videoconferencia.all_day? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'

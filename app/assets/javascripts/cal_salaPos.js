@@ -1,10 +1,12 @@
 $(document).ready(function() {
     $('#calendarPos').fullCalendar({
-      header: {
+      header: 
+      {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
+
       height : 750,
       width  : 300,
       weekends : false,
@@ -12,6 +14,12 @@ $(document).ready(function() {
       eventColor: 'green',
       textColor: '#FFF',
 
-      events: '/reservacions.json'
+      events: '/reservacions.json',
+
+      eventRender: function(event, element) {
+        element.qtip({
+          content: event.description
+        });
+      }
     });
 });

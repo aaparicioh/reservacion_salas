@@ -9,10 +9,12 @@ json.array! @reservacions do |reservacion|
       json.title reservacion.nevento
       json.start reservacion.fechainicio#.strftime(date_format)
       json.end reservacion.fechafin#.strftime(date_format)
+      json.description reservacion.nresponsable
     else
       json.title reservacion.nevento
       json.start reservacion.fechainicio#.strftime(date_format)
       json.end reservacion.fechafin#.strftime(date_format)
+      json.description reservacion.nresponsable
       json.color '#F00'
     end
   end

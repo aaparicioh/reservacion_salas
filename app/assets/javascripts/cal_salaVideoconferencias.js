@@ -1,6 +1,5 @@
-
 $(document).ready(function() {
-    $('#calendar').fullCalendar({
+    $('#calendarVideoconf').fullCalendar({
       header: 
       {
         left: 'prev,next today',
@@ -12,9 +11,9 @@ $(document).ready(function() {
       width  : 300,
       weekends : false,
 
-      events: '/videoconferencia.json',
+      eventColor: 'green',
+      textColor: '#FFF',
 
-      eventColor: '#378006',
-      textColor: '#f00'
+      events: '/videoconferencia.json'
     });
 });
