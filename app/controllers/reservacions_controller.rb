@@ -18,30 +18,14 @@ class ReservacionsController < ApplicationController
   # GET /reservacions
   # GET /reservacions.json
   def index
-    #$espacioActual = 0
     @reservacions = Reservacion.all
+    #@reservacion = Reservacion.find_by_id(params[:id])
     #respond_to do |format|
-    #  format.json { render :show, title: :nevento}#, location: @reservacion }
-    #  format.json {render json: @reservacions}
-    #  format.json {render :json => @reservacions}
-    #  format.json {render json: @reservacions.as_json(only: [:nevento, :fechainicio, :fechafin, :fechasolicitud] )}
-    #  format.json do
-    #    render json: {
-    #      title: @reservacions.nevento,
-    #      start: @reservacions.fechainicio,
-    #      end: @reservacions.fechafin
-    #    }.to_json
-    #  end
     #  format.html
-    #  format.pdf do
-    #    pdf = ReservacionPdf.new(@reservacions)
-    #    send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
-    #  end
-    #  format.json do
-    #    json.array!(@reservacions) do |reservacion|
-    #      json.extract! reservacion, :id, :nevento, :fechainicio, :fechafin
-    #    end
-    #  end
+      #format.pdf do
+      #  pdf = ReservacionPdf.new(@reservacion)
+      #  send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
+      #end
     #end
   end
 
@@ -126,11 +110,7 @@ class ReservacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservacion_params
-<<<<<<< HEAD
-      params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :ncartel, :programa, :nprograma, :constancias, :nconstancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :video, :conexInternet, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo,:grabAudio, :cafe, :galletas, :fruta, :pizarron, :asistentes, :usuario, :espacio)
-=======
       params.require(:reservacion).permit(:nresponsable, :nevento, :fechainicio, :fechafin, :horainicio, :horafin, :repeticion, :idrepeticiones, :aprobacion, :tipoactividad, :fechasolicitud, :cartel, :ncartel, :programa, :nprograma, :constancias, :nconstancias, :mesaRedonda, :auditorio, :videoproyector, :pc, :video, :conexInternet, :traducSimultanea, :conexSkype, :videoconferencia, :webcast, :grabVideo,:grabAudio, :cafe, :galletas, :fruta, :pizarron, :asistentes, :usuario, :espacio_id)
->>>>>>> b603ab07e814c7624af3eccbbf0a90c47095b289
     end
 
     #def reservacion_map

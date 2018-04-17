@@ -7,13 +7,13 @@ json.array! @reservacions do |reservacion|
   if reservacion.espacio_id == $espacioActual
     if reservacion.aprobacion == true
       json.title reservacion.nevento
-      json.start reservacion.fechainicio#.strftime(date_format)
-      json.end reservacion.fechafin#.strftime(date_format)
+      json.start "#{reservacion.fechainicio}T#{reservacion.horainicio.strftime('%H:%M:%S')}Z"
+      json.end "#{reservacion.fechafin}T#{reservacion.horafin.strftime('%H:%M:%S')}Z"
       json.description reservacion.nresponsable
     else
       json.title reservacion.nevento
-      json.start reservacion.fechainicio#.strftime(date_format)
-      json.end reservacion.fechafin#.strftime(date_format)
+      json.start "#{reservacion.fechainicio}T#{reservacion.horainicio.strftime('%H:%M:%S')}Z"
+      json.end "#{reservacion.fechafin}T#{reservacion.horafin.strftime('%H:%M:%S')}Z"
       json.description reservacion.nresponsable
       json.color '#F00'
     end
