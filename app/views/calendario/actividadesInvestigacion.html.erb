@@ -15,7 +15,7 @@
              <div class="btn-group-vertical" role="group" aria-label="..."> 
                  
                   <h6> Consultar mi reservación. </h6>
-                  <%= form_for :reservacion, url: reservacion_path do |f| %>
+                  <%= form_for :reservacion, url: reservacion_path(:id) do |f| %>
                     <div class="thumbnail">
                       <h7>Folio:</h7> 
                   <%= f.number_field :id, name:"id", min: "1", max: "99999", required:"" %>

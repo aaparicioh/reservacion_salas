@@ -48,29 +48,20 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title"></h4>
                         </div>
-                       
-                        <%= form_tag(calendario_actividadesInvestigacion_path, method: :get) do %>
+
                            <div class="modal-body">
-                             <h4> TIPO DE ACTIVIDAD</h4>
-                            	<h5><input type="radio" name="tipoactividad" id="tipoactividad_seminario" value="Seminario" required="">Seminario<br></h5>
-                            	<h5><input type="radio" name="tipoactividad" id="tipoactividad_reunion" value="Reunión">Reunión<br></h5>
-                            	<h5><input type="radio" name="tipoactividad" id="tipoactividad_clase" value="Clase">Clase<br></h5>
-      
-                                <h5>¿Cuál es el número aproximado de asistentes?</h5>
-                                <input type="number" id="asistentes" min="1" max="18" oninvalid ="setCustomValidity('Si necesita reservar algún auditorio comuníquese con el Departamento de Difusión')" oninput="setCustomValidity('')" required="" /><br>   
-                                 <%= @reservacion = Reservacion.new[:tipoactividad]%> 
-                                 <%= @reservacion = Reservacion.new[:asistentes]%>                            
+                           </br>
+                             <h5> Si requiere reservar algún auditorio, por favor comuníquese con el departamento de Difusión.</h5>
                            </div>
 
                           <div class="modal-footer">
-                           <%= form_tag new_reservacion_path, method: :post do %>
-                           <%= hidden_field_tag :asistentes, @asistentes  %>
-                           <%= hidden_field_tag :tipoactividad, @tipoactividad%>
-                           <a class="btn btn-primary btn-sm">
-                           <%= submit_tag "Ver disponibilidad"%></a>
-                           <%end%>
+                            <center>
+                              <a class="btn btn-primary btn-large">
+                                <%= button_to 'Ver disponibilidad', calendario_actividadesInvestigacion_path, :method => :post %>
+                              </a>
+                            </center>
                           </div>
-                        <% end %>             
+                                 
                       </div>
         
                         </center>

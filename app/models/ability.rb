@@ -23,6 +23,7 @@ class Ability
       end
       if user.role == "usuarioV"
         can :show, Videoconferencium
+        cannot :delete, Videoconferencium
       end
   end
 end

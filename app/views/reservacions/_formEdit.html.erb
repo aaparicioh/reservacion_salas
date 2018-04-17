@@ -26,11 +26,6 @@
           <% end %>
 
           <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
-<<<<<<< HEAD
-                  
-=======
-          
->>>>>>> b603ab07e814c7624af3eccbbf0a90c47095b289
         </div>
   
         <div class="field">
@@ -45,28 +40,28 @@
 
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio%>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today, step:0%>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin%>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today, step:0%>
         </div>
 
         <div class="field">
           <%= form.label :hora_de_inicio %>
-          <%= form.time_field :horainicio, id: :reservacion_horainicio%>
+          <%= form.time_field :horainicio, id: :reservacion_horainicio, min: "07:00", max: "20:00" %>
         </div>
 
         <div class="field">
           <%= form.label :hora_de_fin %>
-          <%= form.time_field :horafin, id: :reservacion_horafin%>
+          <%= form.time_field :horafin, id: :reservacion_horafin, min: "07:00", max: "20:00" %>
         </div>
 
-        <div class="field">
+        <!--<div class="field">
           <%= form.label :repetición %>
           <%= form.check_box :repeticion, id: :reservacion_repeticion %>
-        </div>
+        </div>-->
 
         <%if false%>
         <div class="field">
@@ -75,7 +70,7 @@
         </div>
         <%end%>
         
-        <% if can? :manage, @reservacion %>
+        <% if can? :manage, Reservacion %>
         <div class="field">
           <%= form.label :aprobación %>
           <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
@@ -146,7 +141,7 @@
            <h6> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </h6>
             <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
-            <!--<div><h7> Asistencia aproximada por sesión: </h7> <input type="number" name="asistentes" id="num_asistentes" value="" min="1" max="18"/> personas</h7> </div>-->
+            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 18 %> personas</h7>
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
