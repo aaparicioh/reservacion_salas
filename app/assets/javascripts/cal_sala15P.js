@@ -8,6 +8,7 @@ $(document).ready(function() {
       weekends: false,
       height : 750,
       width  : 300,
+      fixedWeekCount: false,
 
       eventColor: 'green',
       textColor: '#FFF',

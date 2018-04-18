@@ -13,7 +13,7 @@
 <div class= "contenedor">
   <div class="container">
     <div class="jumbotron4">
-    	<center>
+    	<center> </br> </br>
 
   <div><%= f.label :email %>
   <%= f.email_field :email %></div></br>
@@ -26,8 +26,8 @@
 
   <div><%= f.label :rol %>
   <%= f.text_field :role, required:"" %></div></br>
-   
-   <div><%= f.submit t('.sign_up', :default => "Registrar") %></div>
+   <a class="btn btn-primary btn-sm">
+   <div><%= f.submit t('.sign_up', :default => "Registrar") %></div></a>
 
        </center>
     </div>

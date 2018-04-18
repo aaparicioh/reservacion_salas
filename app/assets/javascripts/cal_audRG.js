@@ -13,6 +13,7 @@ $(document).ready(function() {
         width  : 300,
         weekends : false,
         selectable: true,
+        fixedWeekCount: false,
         loading: function(bool){
               if (bool) 
                   $('#loading').show();
