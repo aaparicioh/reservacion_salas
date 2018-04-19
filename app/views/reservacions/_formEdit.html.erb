@@ -25,7 +25,7 @@
           <%= form.select :espacio_id, [['Sala 1 del 5° piso','2'],['Sala 2 del 5° piso','3'],['Sala del 6° piso','5'],['Anexo','6']], id: :reservacion_espacio_id %>
           <% end %>
 
-          <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
+          <%= collection_select(:reservacion, :espacio_id, @espacios, :id,:nombre, :prompt => "Seleccione un espacio") %>
         </div>
   
         <div class="field">
@@ -35,17 +35,17 @@
 
         <div class="field">
           <%= form.label :nombre_de_la_actividad %>
-          <%= form.text_field :nevento, id: :reservacion_nevento %>
+          <%= form.text_area :nevento, id: :reservacion_nevento %>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today, step:0%>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today %>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today, step:0%>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today%>
         </div>
 
         <div class="field">
@@ -141,7 +141,7 @@
            <h6> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </h6>
             <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 18 %> personas</h7>
+            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 18, required: "" %> personas</h7>
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">

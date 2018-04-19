@@ -9,16 +9,17 @@ $(document).ready(function() {
         height : 750,
         width  : 300,
         weekends: false,
+        fixedWeekCount: false,
 
         eventColor: 'green',
         textColor: '#FFF',
 
         events: '/reservacions.json',
 
-        eventRender: function(event, element) {
+        /*eventRender: function(event, element) {
           element.qtip({
             content: "Responsable: " + event.description
           });
-        }
+        }*/
       });
 });

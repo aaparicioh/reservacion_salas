@@ -12,6 +12,7 @@ $(document).ready(function() {
       navLinks: true,
       eventLimit: true,
       weekends : false,
+      fixedWeekCount: false,
       
       events:[
 
