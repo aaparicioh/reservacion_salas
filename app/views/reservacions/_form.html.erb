@@ -39,12 +39,12 @@
 
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
         </div>
 
         <div class="field">
@@ -78,7 +78,7 @@
 
          <div class="field">
           <%= form.label :tipo_de_actividad %>
-          <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
+          <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad, required:"", placeholder: "Clase, Seminario o Reunión" %>
         </div>
          
 

@@ -160,13 +160,13 @@
 
 
   <% if can? :manage, Reservacion %>
-    <h5><%= link_to 'Editar | ', edit_reservacion_path(@reservacion) %>
+    <h5><%= link_to 'Editar | ', edit_reservacion_path(@reservacion), :method =>:get %>
     <%= link_to 'Regresar', reservacions_path, :method => :get %> </h5>
   <% end %>
 
   <% if cannot? :delete, Reservacion %>
     <% if @reservacion.aprobacion == false %>
-      <h5><%= link_to 'Editar', edit_reservacion_path(@reservacion) %> </h5>
+      <h5><%= link_to 'Editar', edit_reservacion_path(@reservacion), :method =>:get %> </h5>
     <% end %> <h5><%= link_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %> </h5>
   <% end %>
 

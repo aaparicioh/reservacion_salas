@@ -3,6 +3,6 @@
 
 <%= render 'form', espacio: @espacio %>
 
-<%= link_to 'Mostrar', @espacio %> |
-<%= link_to 'Regresar', espacios_path %>
+<%= link_to 'Mostrar', @espacio, :method =>:get %> |
+<%= link_to 'Regresar', espacios_path, :method =>:get %>
 </center>

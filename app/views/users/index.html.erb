@@ -5,7 +5,7 @@
 
 <div class= "contenedor">
   <h1 align = "center">Usuarios</h1>
- <div align="right"> <h4><%= link_to 'Nuevo usuario', users_new_path %></h4></div>
+ <div align="right"> <h4><%= link_to 'Nuevo usuario', users_new_path, :method => :get %></h4></div>
 
 <% @users.each do |user| %>
   <div class=""container">
@@ -20,7 +20,7 @@
         <table class="table table-striped table-hover">
           <tbody>
              <tr>
-               <td><%= link_to 'Editar', edit_user_path(user) %></td>
+               <td><%= link_to 'Editar', edit_user_path(user), :method => :get %></td>
                <td><%= link_to 'Eliminar', user, method: :delete, data: {confirm: '¿Desea continuar?'} %></td> 
              </tr>
           </tbody>
@@ -33,7 +33,7 @@
 
 <% end %>
 
-<% if cannot? :manage, @user  %>
+<% if cannot? :manage, User  %>
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>
@@ -41,7 +41,7 @@
                 <center>
                   <div> No tienes acceso a esta página.</div>
                  <a class="btn btn-primary btn-large">
-                 <%= button_to 'Regresar', calendario_espacios_path, :method => :get %>
+                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
                  </a>
                  </center>
           

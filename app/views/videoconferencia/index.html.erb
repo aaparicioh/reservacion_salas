@@ -41,7 +41,7 @@
 
 <div class= "contenedor">
  <h1 align="center">Reservaciones</h1><h4 align="center">SALA DE VIDEOCONFERENCIAS</h4>
-  <div align="right"> <h4><%= link_to 'Nueva reservación', new_videoconferencium_path %></h4></div>
+  <div align="right"> <h4><%= link_to 'Nueva reservación', new_videoconferencium_path, :method => :get %></h4></div>
 
     <% @videoconferencia = @videoconferencia.reverse%>
     <% @videoconferencia.each do |videoconferencium| %>
@@ -89,8 +89,8 @@
           <table class="table table-striped table-hover">
           <tbody>
              <tr>
-              <td><%= link_to 'Mostrar', videoconferencium %></td>
-              <td><%= link_to 'Editar', edit_videoconferencium_path(videoconferencium) %></td>
+              <td><%= link_to 'Mostrar', videoconferencium, :method => :get %></td>
+              <td><%= link_to 'Editar', edit_videoconferencium_path(videoconferencium), :method => :get %></td>
               <td><%= link_to 'Eliminar', videoconferencium, method: :delete, data: { confirm: '¿Desea continuar?' } %></td>
               <!-- <td><%= link_to 'Descargar solicitud', reservacions_path(format: 'pdf')%></td> -->
              </tr>
