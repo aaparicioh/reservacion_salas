@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('#calendarVideoconf').fullCalendar({
-      header: 
-      {
+      header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'

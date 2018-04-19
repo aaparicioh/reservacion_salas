@@ -44,12 +44,12 @@
 
 <li class="list-group-item">
   <strong>Hora de inicio:</strong>
-  <%= @reservacion.horainicio %>
+  <%= @reservacion.horainicio.strftime("%H:%M") %>
 </li>
 
 <li class="list-group-item">
   <strong>Hora de fin:</strong>
-  <%= @reservacion.horafin %>
+  <%= @reservacion.horafin.strftime("%H:%M") %>
 </li>
 
 <!--<li class="list-group-item">
@@ -70,7 +70,7 @@
 
 <li class="list-group-item">
   <strong>Fecha de solicitud:</strong>
-  <%= @reservacion.fechasolicitud %>
+  <%= @reservacion.fechasolicitud.strftime("%d-%m-%Y %H:%M") %>
 </li>
 
 <li class="list-group-item">
@@ -160,8 +160,13 @@
 
 
   <% if can? :manage, Reservacion %>
+<<<<<<< HEAD
     <h5><%= link_to 'Editar | ', edit_reservacion_path(@reservacion), :method =>:get %>
     <%= link_to 'Regresar', reservacions_path, :method => :get %> </h5>
+=======
+    <h5><%= link_to 'Editar ', edit_reservacion_path(@reservacion) %>|
+    <%= link_to ' Regresar', reservacions_path, :method => :get %> </h5>
+>>>>>>> ec6596cf2cf03dd74e01d2715aaec414b87457aa
   <% end %>
 
   <% if cannot? :delete, Reservacion %>

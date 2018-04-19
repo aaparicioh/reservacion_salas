@@ -2,16 +2,14 @@
 #json.url videoconferencium_url(videoconferencium, format: :json)
 #date_format = reservacion.all_day? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'
 
-
-
-if videoconferencium.aprobacion == false
+if videoconferencium.aprobacion == true
   json.title videoconferencium.tituloActividad
-  json.start videoconferencium.fechaActividad#.strftime(date_format)
-  json.end videoconferencium.fechaActividad
+  json.start "#{videoconferencium.fechaActividad}T#{videoconferencium.horainicio.strftime("%H:%M:%S")}Z"
+  json.end "#{videoconferencium.fechaActividad}T#{videoconferencium.horafin.strftime("%H:%M:%S")}Z"
 else
   json.title videoconferencium.tituloActividad
-  json.start videoconferencium.fechaActividad#.strftime(date_format)
-  json.end videoconferencium.fechaActividad
+  json.start "#{videoconferencium.fechaActividad}T#{videoconferencium.horainicio.strftime("%H:%M:%S")}Z"
+  json.end "#{videoconferencium.fechaActividad}T#{videoconferencium.horafin.strftime("%H:%M:%S")}Z"
   json.color '#F00'
 end
 
