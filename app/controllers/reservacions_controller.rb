@@ -63,7 +63,9 @@ class ReservacionsController < ApplicationController
   # POST /reservacions.json
   def create
   
+    #@reservacions = Reservacion.all
     @reservacion = Reservacion.new(reservacion_params)
+    #if @reservacion.
     @reservacion.save
     
 

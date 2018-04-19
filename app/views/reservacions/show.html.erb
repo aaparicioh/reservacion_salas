@@ -17,6 +17,12 @@
 <% end %>
 
 <li class="list-group-item">
+  <strong>Espacio:</strong>
+  <%= @reservacion.espacio.nombre if @reservacion.espacio %>
+</li>
+
+
+<li class="list-group-item">
   <strong>Responsable:</strong>
   <%= @reservacion.nresponsable %>
 </li>
@@ -38,15 +44,15 @@
 
 <li class="list-group-item">
   <strong>Hora de inicio:</strong>
-  <%= @reservacion.horainicio %>
+  <%= @reservacion.horainicio.strftime("%H:%M") %>
 </li>
 
 <li class="list-group-item">
   <strong>Hora de fin:</strong>
-  <%= @reservacion.horafin %>
+  <%= @reservacion.horafin.strftime("%H:%M") %>
 </li>
 
-<li class="list-group-item">
+<!--<li class="list-group-item">
   <strong>Repetición:</strong>
   <%= "Sí" if @reservacion.repeticion == true %> <%= "No" if @reservacion.repeticion == false %>
 </li>
@@ -54,7 +60,7 @@
 <li class="list-group-item">
   <strong>ID de repeticiones:</strong>
   <%= @reservacion.idrepeticiones %>
-</li>
+</li> -->
 
 <li class="list-group-item">
   <strong>Tipo de actividad:</strong>
@@ -64,7 +70,7 @@
 
 <li class="list-group-item">
   <strong>Fecha de solicitud:</strong>
-  <%= @reservacion.fechasolicitud %>
+  <%= @reservacion.fechasolicitud.strftime("%d-%m-%Y %H:%M") %>
 </li>
 
 <li class="list-group-item">
@@ -152,20 +158,16 @@
 
       </ul>
 
-  <% if @reservacion.aprobacion == false %>
-    <h5><%= link_to 'Editar | ', edit_reservacion_path(@reservacion) %>
-  <% end %>
-  <% if @reservacion.aprobacion == true %>
-    <% if can? :manage, Reservacion %>
-      <h5><%= link_to 'Editar | ', edit_reservacion_path(@reservacion) %>
-    <% end %>
-  <% end %>
 
   <% if can? :manage, Reservacion %>
-    <%= link_to 'Regresar', reservacions_path, :method => :get %> </h5>
+    <h5><%= link_to 'Editar ', edit_reservacion_path(@reservacion) %>|
+    <%= link_to ' Regresar', reservacions_path, :method => :get %> </h5>
   <% end %>
-  <% if cannot? :delete, Reservacion%>
-   <%= link_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %> </h5>
+
+  <% if cannot? :delete, Reservacion %>
+    <% if @reservacion.aprobacion == false %>
+      <h5><%= link_to 'Editar', edit_reservacion_path(@reservacion) %> </h5>
+    <% end %> <h5><%= link_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %> </h5>
   <% end %>
 
 

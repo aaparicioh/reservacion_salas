@@ -6,7 +6,7 @@
 <!--<%= link_to 'Back', videoconferencia_path %>-->
 <% end %>
 
-<% if cannot? :manage, @videoconferencium %>
+<% if cannot? :show, Videoconferencium %>
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>

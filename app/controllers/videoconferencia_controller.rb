@@ -73,6 +73,6 @@ class VideoconferenciaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def videoconferencium_params
-      params.require(:videoconferencium).permit(:nSolicitante, :tituloActividad, :fechaActividad, :coordinador, :tipoEnlace, :horainicio, :horafin, :coordinadorEnlace, :responsableTecnico, :numeroIP, :usuarioTipoEnlace, :telefono, :correoElectronico, :recursos, :horainicioEnlace, :horafinEnlace, :usuario, :fechaSolicitud)
+      params.require(:videoconferencium).permit(:nSolicitante, :tituloActividad, :fechaActividad, :coordinador, :tipoEnlace, :horainicio, :horafin, :coordinadorEnlace, :responsableTecnico, :numeroIP, :usuarioTipoEnlace, :telefono, :correoElectronico, :recursos, :horainicioEnlace, :horafinEnlace, :usuario, :fechaSolicitud, :aprobacion)
     end
 end

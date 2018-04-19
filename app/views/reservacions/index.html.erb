@@ -34,6 +34,9 @@
           <li class="list-group-item"> Repetición: <%= "Sí" if reservacion.repeticion == true %> <%= "No" if reservacion.repeticion == false %></li>
           <li class="list-group-item"> <b>ID repeticiones: <%= reservacion.idrepeticiones %></b></li>
           <li class="list-group-item"> Fecha de solicitud: <%= reservacion.fechasolicitud.strftime("%d-%m-%Y %H:%M") %></li>
+          <!--<li class="list-group-item"> Repetición: <%= "Sí" if reservacion.repeticion == true %> <%= "No" if reservacion.repeticion == false %></li>
+          <li class="list-group-item"> <b>ID repeticiones: <%= reservacion.idrepeticiones %></b></li> -->
+          <li class="list-group-item"> <b>Usuario: <%= reservacion.usuario %></b> </li>
           <!--<li class="list-group-item"> <b>Disposición: <%= reservacion.disposicion %></b></li>     
           <li class="list-group-item"> Cartel: <%= "Sí" if reservacion.cartel == true %> <%= "No" if reservacion.cartel == false %></li>
           <li class="list-group-item"> <b>Programa: <%= "Sí" if reservacion.programa == true %> <%= "No" if reservacion.programa == false %></b></li>
@@ -58,7 +61,7 @@
           <li class="list-group-item"> Galletas: <%= "Sí" if reservacion.galletas == true %> <%= "No" if reservacion.galletas == false %> </li>
           <li class="list-group-item"> <b>Fruta: <%= "Sí" if reservacion.fruta == true %> <%= "No" if reservacion.fruta == false %></b></li>
           <li class="list-group-item"> Asistentes: <%= reservacion.asistentes %> </li>
-          <li class="list-group-item"> <b>Usuario: <%= reservacion.usuario %></b> </li>
+          
 
         </ul>
          </div> 
@@ -67,7 +70,7 @@
              <tr>
                <td><%= link_to 'Mostrar', reservacion %></td>
                <td><%= link_to 'Editar', edit_reservacion_path(reservacion) %></td>
-               <td><%= link_to 'Eliminar', reservacion, method: :delete, data: {confirm: '¿Desea continuar?'} if reservacion.aprobacion == false%></td> 
+               <td><%= link_to 'Eliminar', reservacion, method: :delete, data: {confirm: '¿Desea continuar?'} if reservacion.aprobacion == false %></td> 
                <td><%= link_to 'Descargar solicitud', reservacions_path(format: 'pdf') if reservacion.aprobacion == true%></td> 
              </tr>
           </tbody>
