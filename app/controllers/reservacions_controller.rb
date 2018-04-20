@@ -1,6 +1,7 @@
 class ReservacionsController < ApplicationController
   protect_from_forgery
   before_action :set_reservacion, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
   #before_action :reservacion_map, only: [:new, :edit]
   #before_action :reservacion_update, only: [:create, :update]
   respond_to :json
@@ -14,9 +15,12 @@ class ReservacionsController < ApplicationController
     )
   end
 
-
   # GET /reservacions
   # GET /reservacions.json
+  def handle_record_not_found
+    redirect_to calendario_actividadesInvestigacion_path, :notice => "Verifique su folio de reservación."
+  end
+
   def index
     @reservacions = Reservacion.all
     #@reservacion = Reservacion.find_by_id(params[:id])
@@ -107,7 +111,7 @@ class ReservacionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservacion
-      @reservacion = Reservacion.find(params[:id])
+       @reservacion = Reservacion.find(params[:id]) 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

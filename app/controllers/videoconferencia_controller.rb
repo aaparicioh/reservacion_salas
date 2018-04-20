@@ -1,9 +1,14 @@
 class VideoconferenciaController < ApplicationController
   protect_from_forgery
   before_action :set_videoconferencium, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
   respond_to :json
   # GET /videoconferencia
   # GET /videoconferencia.json
+  def handle_record_not_found
+    redirect_to calendario_salaVideoconferencia_path, method: :post, :notice => "Verifique su folio de reservación."
+  end
+
   def index
     @videoconferencia = Videoconferencium.all
   end

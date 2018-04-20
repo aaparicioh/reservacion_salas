@@ -1,9 +1,14 @@
 class EspaciosController < ApplicationController
 protect_from_forgery
-  before_action :set_espacio, only: [:show, :edit, :update, :destroy]
 
+  before_action :set_espacio, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
   # GET /espacios
   # GET /espacios.json
+  def handle_record_not_found
+    redirect_to calendario_actividadesInvestigacion_path
+  end
+
   def index
     @espacios = Espacio.all
   end
@@ -11,7 +16,7 @@ protect_from_forgery
   # GET /espacios/1
   # GET /espacios/1.json
   def show
-  end
+   end
 
   # GET /espacios/new
   def new
