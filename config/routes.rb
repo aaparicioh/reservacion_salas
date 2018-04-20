@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   get 'espacios/sala15P'
   post 'espacios/sala15P'
- 
+
   get 'espacios/sala25P'
   post 'espacios/sala25P'
  
@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
   post '/reservacions/id', to: 'reservacions#show'
   post '/videoconferencia/id',  to: 'videoconferencia#show'
+
  
  
 

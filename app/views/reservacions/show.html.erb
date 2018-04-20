@@ -160,13 +160,8 @@
 
 
   <% if can? :manage, Reservacion %>
-<<<<<<< HEAD
-    <h5><%= link_to 'Editar | ', edit_reservacion_path(@reservacion), :method =>:get %>
-    <%= link_to 'Regresar', reservacions_path, :method => :get %> </h5>
-=======
-    <h5><%= link_to 'Editar ', edit_reservacion_path(@reservacion) %>|
+    <h5><%= link_to 'Editar ', edit_reservacion_path(@reservacion), :method => :get %>|
     <%= link_to ' Regresar', reservacions_path, :method => :get %> </h5>
->>>>>>> ec6596cf2cf03dd74e01d2715aaec414b87457aa
   <% end %>
 
   <% if cannot? :delete, Reservacion %>
