@@ -55,11 +55,13 @@ Rails.application.routes.draw do
   get 'reservacions/new'
   get 'reservacions/show'
 
-  post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
-  post '/reservacions/id', to: 'reservacions#show'
-  post '/videoconferencia/id',  to: 'videoconferencia#show'
+  get 'reservacions/solicitud'
 
- 
+  #post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
+  #post '/reservacions/id', to: 'reservacions#show'
+  #post '/videoconferencia/id',  to: 'videoconferencia#show'
+
+  #map.root :controller => 'reservacions', :action => 'solicitud'
  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

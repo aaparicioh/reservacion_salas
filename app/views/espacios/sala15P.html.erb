@@ -6,6 +6,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"> </script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/locale/es.js'></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css " rel="stylesheet" type="text/css" media="print">
   </head>
 
   <div class= "contenedor">
@@ -58,6 +60,7 @@
             <center>
               <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
               <a class="btn btn-primary btn-large"><%= button_to 'Reservar', new_reservacion_path, :method => :get %> </a>
+              <!--<button id="printpdf" class="btn btn-primary btn-large">Imprimir</button>-->
             </center>
           </div>
         </center>

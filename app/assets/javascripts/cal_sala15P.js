@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  /*$('#printpdf').click(function(){
+      window.print();
+  });*/
     $('#calendar15P').fullCalendar({
       header: {
         left: 'prev,next today',
