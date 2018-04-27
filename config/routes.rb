@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  map.connect '/reservacions/solicitud', :controller => 'reservacions', :action => 'solicitud'
   
   resources :reservacions
   resources :welcome
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   resources :videoconferencia
   devise_for :users
   resources :users
+  #map.resource :reservacions, :collection => {:solicitud => :get}
   
   
   root 'welcome#solicitud'
@@ -33,10 +36,10 @@ Rails.application.routes.draw do
   get 'espacios/sala15P'
   post 'espacios/sala15P'
 
-  get 'espacios/sala25P'
+  get   'espacios/sala25P'
   post 'espacios/sala25P'
  
-  get'espacios/auditorioRG'
+  get   'espacios/auditorioRG'
   post 'espacios/auditorioRG'
 
   get 'espacios/sala6P'
@@ -57,11 +60,9 @@ Rails.application.routes.draw do
 
   get 'reservacions/solicitud'
 
-  #post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
-  #post '/reservacions/id', to: 'reservacions#show'
-  #post '/videoconferencia/id',  to: 'videoconferencia#show'
-
-  #map.root :controller => 'reservacions', :action => 'solicitud'
+  post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
+  post '/reservacions/id', to: 'reservacions#show'
+  post '/videoconferencia/id',  to: 'videoconferencia#show'
  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

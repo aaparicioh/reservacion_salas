@@ -73,6 +73,8 @@
           <%= form.label :aprobación %>
           <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
         </div>
+        <% else %>
+          <%= form.check_box :aprobacion, :checked => false, :style => 'visibility: hidden' %>
         <% end %>
 
          <div class="field">

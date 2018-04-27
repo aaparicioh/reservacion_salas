@@ -107,22 +107,21 @@ class ReservacionsController < ApplicationController
   
   end
 
-  def solicitud
-    @reservacion = Reservacion.find_by_id(params[:id])
-  #  respond_to do |format|
-  #    format.html
-  #    format.pdf do
-  #      pdf = ReportPdf.new(@reservacion)
-  #      send_data pdf.render, filename: @reservacion.id+'.pdf', type: 'application/pdf'
-  #    end
-  #  end
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservacion
        @reservacion = Reservacion.find(params[:id]) 
+    end
+
+    def solicitud
+    @reservacion = Reservacion.find_by_id(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = ReportPdf.new(@reservacion)
+          send_data pdf.render, filename: @reservacion.id+'.pdf', type: 'application/pdf'
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
