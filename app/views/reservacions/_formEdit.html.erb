@@ -29,24 +29,44 @@
         </div>
   
         <div class="field">
-          <%= form.label :nombre_de_responsable %>
+          <%= form.label :responsable_de_la_sesión %>
           <%= form.text_field :nresponsable, id: :reservacion_nresponsable %>
         </div>
+
+        <div class="field">
+          <%= form.label :tipo_de_actividad %>
+           <%= form.select :tipoactividad, ['Clase', 'Reunión de trabajo', 'Seminario', 'Otro'] %>
+        </div>
+
 
         <div class="field">
           <%= form.label :nombre_de_la_actividad %>
           <%= form.text_area :nevento, id: :reservacion_nevento %>
         </div>
 
+         <% if cannot? :delete, Reservacion %>
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today%>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
         </div>
+        <% end %>
+
+        <% if can? :manage, Reservacion %>
+        <div class="field">
+          <%= form.label :fecha_de_inicio %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
+        </div>
+
+        <div class="field">
+          <%= form.label :fecha_de_fin %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today, min: Time.zone.today%>
+        </div>
+        <% end %>
 
         <div class="field">
           <%= form.label :hora_de_inicio %>
@@ -90,25 +110,16 @@
 
         <div class="field">
           <%= form.label :fecha_de_solicitud %>
-           
           <%= form.date_field :fechasolicitud, id: :reservacion_fechasolicitud, :readonly => true %>
         </div>
 
         <div class="field">
           <%= form.label :usuario %>
           <%= form.text_field :usuario, id: :reservacion_usuario, :readonly => true  %>
-        
         </div>
 
-      <!-- <div class="actions">
-          <a class="btn btn-primary btn-large">
-        <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
-        
-        </div> -->
-         
 
-
-  <button type="button" class="btn btn-primary btn-sm" id="myBtn">Crear reservación</button>
+  <button type="button" class="btn btn-primary btn-sm" style="color:white;" id="myBtn" >Continuar</button>
 
   <!-- Modal -->
   <div class="modal fade" id="Servicios" role="dialog">
@@ -126,7 +137,7 @@
            <h5><b> SERVICIOS TÉCNICOS </b></h5>
             <div><%= form.check_box :videoproyector, id: :reservacion_videoproyector %><h7> Videoproyector </h7> </div> 
             <div><%= form.check_box :pc, id: :reservacion_pc %> <h7> PC </h7> </div>
-            <div><%= form.check_box :video, id: :reservacion_video %><h7> Video </h7> </div> 
+            <!--<div><%= form.check_box :video, id: :reservacion_video %><h7> Video </h7> </div>--> 
             <div><%= form.check_box :conexInternet, id: :reservacion_conexInternet %><h7> Conexión Internet </h7> </div>
             <div><%= form.check_box :pizarron, id: :reservacion_pizarron %> <h7> Pizarrón </h7> </div> 
            <!-- <div><%= form.check_box :traducSimultanea, id: :reservacion_traducSimultanea %> <h7> Traducción simultánea </h7> </div> -->
@@ -145,7 +156,7 @@
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
-            <%= form.submit t('.submit', :default => "Crear reservación") %> </a> 
+            <%= form.submit t('.submit', :default => "Confirmar reservación") %> </a> 
             </div>
         </div>   
       </div>   

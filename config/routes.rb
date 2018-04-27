@@ -59,6 +59,8 @@ Rails.application.routes.draw do
   post '/reservacions/id', to: 'reservacions#show'
   post '/videoconferencia/id',  to: 'videoconferencia#show'
 
+  post 'reservacions/indexEnero'
+
  
  
 
