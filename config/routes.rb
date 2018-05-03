@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   post 'calendario/salaVideoconferencia'
 
   post 'calendario/actividadesInvestigacion'
+  post 'calendario/calendarioGeneral'
   
   get 'espacios/auditorio4P'
   post 'espacios/auditorio4P'
@@ -59,8 +60,7 @@ Rails.application.routes.draw do
   post '/reservacions/id', to: 'reservacions#show'
   post '/videoconferencia/id',  to: 'videoconferencia#show'
 
-  post 'reservacions/indexEnero'
-
+  
  
  
 

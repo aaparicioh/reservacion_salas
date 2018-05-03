@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"> </script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/locale/es.js'></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" rel="stylesheet">
+  </head>
+
+  <div class= "contenedor">
+    <div class="panel-group">
+      <center>
+    <div class="col-md-4"></div>
+	    <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading"> <center><h3> ESPACIOS </h3> </center></div>
+          <div class="panel-body">
+            <div class="btn-group-vertical" role="group" aria-label="...">
+              <center>
+                <input type="text" readonly="true" style="background-color:red; color:white;" value=" SOLICITUD PENDIENTE"></br>
+                <input type="text" readonly="true" style="background-color:green; color:white;" value=" SOLICITUD APROBADA">
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+    </div>
+    <%= javascript_include_tag "cal_general" %>
+    <div class="panel-group">
+      <div class="col-md-12" >
+        <div id="calendar15P"></div>
+        <center>
+          <div class="btn-group" role="group" aria-label="...">
+            <center>
+              <a class="btn btn-primary btn-large"><%= button_to 'Continuar', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+            </center>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
+</html>
