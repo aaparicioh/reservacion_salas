@@ -1,99 +1,98 @@
-<p id="notice"><%= notice %></p>
-<% if can? :manage, Reservacion%>
+<body>
+  <p id="notice"><%= notice %></p>
+  <% if can? :manage, Reservacion%>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+      $(document).ready(function(){
+        $('.ir-arriba').click(function(){
+          $('body, html').animate({
+            scrollTop: '0px'},300 );
+        });
 
-<%= render 'welcome/administracion', welcome: @welcome %>
+        $(window).scroll(function(){
+          if ($(this).scrollTop() > 0){
+            $('.ir-arriba').slideDown(300);
+          }
+          else {
+            $('.ir-arriba').slideUp(300);
+          };
+        });  
+      });
+    </script>
 
-<div class= "contenedor">
- <h1 align="center">Reservaciones</h1>
-  <div align="right"> <h4><%= link_to 'Nueva reservación', new_reservacion_path, :method => :get %></h4></div>
+    <span class="fa-chevron-up ir-arriba"></span>
+   
+    <%= render 'welcome/administracion', welcome: @welcome %>
 
-<% @reservacions = @reservacions.reverse%>
- <% @reservacions.each do |reservacion| %>
+    <div class= "contenedor">
+      <h1 align="center">Reservaciones</h1></br>
+      <center>
+         <A class="btn btn-primary btn-large" href="#enero" :method = "get" style="color:white;">ENERO</A>
+         <A class="btn btn-primary btn-large" href="#febrero" method= "get" style="color:white;">FEBRERO</A>
+         <A class="btn btn-primary btn-large" href="#marzo" method= "get" style="color:white;">MARZO</A>
+         <A class="btn btn-primary btn-large" href="#abril" method= "get" style="color:white;">ABRIL</A>
+         <A class="btn btn-primary btn-large" href="#mayo" method= "get" style="color:white;">MAYO</A>
+         <A class="btn btn-primary btn-large" href="#junio" method= "get" style="color:white;">JUNIO</A>
+         <A class="btn btn-primary btn-large" href="#julio" method= "get" style="color:white;">JULIO</A>
+         <A class="btn btn-primary btn-large" href="#agosto" method= "get" style="color:white;">AGOSTO</A>
+         <A class="btn btn-primary btn-large" href="#septiembre" method= "get" style="color:white;">SEPTIEMBRE</A>
+         <A class="btn btn-primary btn-large" href="#octubre" method= "get" style="color:white;">OCTUBRE</A>
+         <A class="btn btn-primary btn-large" href="#noviembre" method= "get" style="color:white;">NOVIEMBRE</A>
+         <A class="btn btn-primary btn-large" href="#diciembre" method= "get" style="color:white;">DICIEMBRE</A>
+      </center></br>
 
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <div class="col-md-6" >
-         <ul class="list-group">
-          <li class="list-group-item list-group-item-info"> <b>Folio de reservación: <%= reservacion.id %></b></li>
+      <div align="right"> <h4><%= link_to 'Nueva reservación', new_reservacion_path, :method => :get %></h4></div>
 
+      <center><A name="enero"><H1>ENERO</H1></A></center>
+         <%= render 'reservacions/enero', reservacion: @reservacion %>
 
-          <% if reservacion.aprobacion == true %>
-          <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
-          <% else %>
-          <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
-          <% end %>
+      <center><A name="febrero"><H1>FEBRERO</H1></A></center>
+       <%= render 'reservacions/febrero', reservacion: @reservacion %>
 
-          <li class="list-group-item"> Espacio: <%= reservacion.espacio.nombre if reservacion.espacio%> </li>
-          <li class="list-group-item"> <b>Responsable: <%= reservacion.nresponsable %></b></li>
-          <li class="list-group-item"> Evento: <%= reservacion.nevento %> </li>
-          <li class="list-group-item"> <b>Tipo de actividad: <%= reservacion.tipoactividad %>  </b></li>
-          <li class="list-group-item"> Fecha de inicio: <%= reservacion.fechainicio %> </li>    
-          <li class="list-group-item"> <b>Fecha de fin: <%= reservacion.fechafin %> </b></li>
-          <li class="list-group-item"> Hora de inicio: <%= reservacion.horainicio.strftime("%H:%M") %></li>
-          <li class="list-group-item"> <b>Hora de fin: <%= reservacion.horafin.strftime("%H:%M") %></b></li>
-          <!--<li class="list-group-item"> Repetición: <%= "Sí" if reservacion.repeticion == true %> <%= "No" if reservacion.repeticion == false %></li>
-          <li class="list-group-item"> <b>ID repeticiones: <%= reservacion.idrepeticiones %></b></li> -->
-          <li class="list-group-item"> Fecha de solicitud: <%= reservacion.fechasolicitud.strftime("%d-%m-%Y %H:%M") %></li>
-          <!--<li class="list-group-item"> Repetición: <%= "Sí" if reservacion.repeticion == true %> <%= "No" if reservacion.repeticion == false %></li>
-          <li class="list-group-item"> <b>ID repeticiones: <%= reservacion.idrepeticiones %></b></li> -->
-          <li class="list-group-item"> <b>Usuario: <%= reservacion.usuario %></b> </li>
-          <!--<li class="list-group-item"> <b>Disposición: <%= reservacion.disposicion %></b></li>     
-          <li class="list-group-item"> Cartel: <%= "Sí" if reservacion.cartel == true %> <%= "No" if reservacion.cartel == false %></li>
-          <li class="list-group-item"> <b>Programa: <%= "Sí" if reservacion.programa == true %> <%= "No" if reservacion.programa == false %></b></li>
-          <li class="list-group-item"> Constancias: <%= "Sí" if reservacion.constancias == true %> <%= "No" if reservacion.constancias == false %></li> -->
-         </ul>
+      <center><A name="marzo"><H1>MARZO</H1></A></center>
+       <%= render 'reservacions/marzo', reservacion: @reservacion %>
+
+      <center><A name="abril"><H1>ABRIL</H1></A></center>
+       <%= render 'reservacions/abril', reservacion: @reservacion %>
+
+      <center><A name="mayo"><H1>MAYO</H1></A></center>
+       <%= render 'reservacions/mayo', reservacion: @reservacion %>
+
+      <center><A name="junio"><H1>JUNIO</H1></A></center>
+        <%= render 'reservacions/junio', reservacion: @reservacion %>
+
+      <center><A name="julio"><H1>JULIO</H1></A></center>
+        <%= render 'reservacions/julio', reservacion: @reservacion %>
+
+      <center><A name="agosto"><H1>AGOSTO</H1></A></center>
+        <%= render 'reservacions/agosto', reservacion: @reservacion %>
+
+      <center><A name="septiembre"><H1>SEPTIEMBRE</H1></A></center>
+        <%= render 'reservacions/septiembre', reservacion: @reservacion %>
+
+      <center><A name="octubre"><H1>OCTUBRE</H1></A></center>
+        <%= render 'reservacions/octubre', reservacion: @reservacion %>
+
+      <center><A name="noviembre"><H1>NOVIEMBRE</H1></A></center>
+        <%= render 'reservacions/noviembre', reservacion: @reservacion %>
+
+      <center><A name="diciembre"><H1>DICIEMBRE</H1></A></center>
+        <%= render 'reservacions/diciembre', reservacion: @reservacion %>
+  </div>
+  <% end %>
+
+  <% if cannot? :manage, Reservacion %>
+    <div class= "contenedor">
+      <div class="panel panel-default">
+        <div class="panel-heading">Programación de actividades </div>
+        <div class="panel-body"> 
+          <center>
+            <div> No tienes acceso a esta página.</div>
+            <a class="btn btn-primary btn-large">  <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %></a>
+          </center>
         </div>
-        <div class="col-md-6" >
-           <ul class="list-group">
-           <center><h4>SERVICIOS</h4></center>
-          <li class="list-group-item"> <b>Videoproyector: <%= "Sí" if reservacion.videoproyector == true %> <%= "No" if reservacion.videoproyector == false %></b></li>
-          <li class="list-group-item"> PC: <%= "Sí" if reservacion.pc == true %> <%= "No" if reservacion.pc == false %></li>
-          <li class="list-group-item"> <b>Video: <%= "Sí" if reservacion.video == true %> <%= "No" if reservacion.video == false %></b></li>
-          <li class="list-group-item"> Conexión a Internet: <%= "Sí" if reservacion.conexInternet == true %> <%= "No" if reservacion.conexInternet == false %></li>
-          <li class="list-group-item"> <b>Pizarrón: <%= "Sí" if reservacion.pizarron == true %> <%= "No" if reservacion.pizarron == false %></b></li>
-         <!-- <li class="list-group-item"> Traducción simultánea: <%= "Sí" if reservacion.traducSimultanea == true %> <%= "No" if reservacion.traducSimultanea == false %></li>-->
-          <li class="list-group-item"> Conexión de Skype: <%= "Sí" if reservacion.conexSkype == true %> <%= "No" if reservacion.conexSkype == false %></li>
-         <!-- <li class="list-group-item"> Videoconferencia: <%= "Sí" if reservacion.videoconferencia == true %> <%= "No" if reservacion.videoconferencia == false %></li>
-          <li class="list-group-item"> <b>Webcast: <%= "Sí" if reservacion.webcast == true %> <%= "No" if reservacion.webcast == false %></b></li>
-          <li class="list-group-item"> Grabación de video: <%= "Sí" if reservacion.grabVideo == true %> <%= "No" if reservacion.grabVideo == false %></li>
-          <li class="list-group-item"> <b>Grabación de audio: <%= "Sí" if reservacion.grabAudio == true %> <%= "No" if reservacion.grabAudio == false %></b></li> -->
-          <li class="list-group-item"> <b>Café: <%= "Sí" if reservacion.cafe == true %> <%= "No" if reservacion.cafe == false %></b></li>
-          <li class="list-group-item"> Galletas: <%= "Sí" if reservacion.galletas == true %> <%= "No" if reservacion.galletas == false %> </li>
-          <li class="list-group-item"> <b>Fruta: <%= "Sí" if reservacion.fruta == true %> <%= "No" if reservacion.fruta == false %></b></li>
-          <li class="list-group-item"> Asistentes: <%= reservacion.asistentes %> </li>
-          
-
-        </ul>
-         </div> 
-          <table class="table table-striped table-hover">
-          <tbody>
-             <tr>
-               <td><%= link_to 'Mostrar', reservacion, :method => :get%></td>
-               <td><%= link_to 'Editar', edit_reservacion_path(reservacion), :method => :get %></td>
-               <td><%= link_to 'Eliminar', reservacion, method: :delete, data: {confirm: '¿Desea continuar?'} if reservacion.aprobacion == false %></td> 
-               <td><%= link_to 'Descargar solicitud', solicitud_reservacion_path(reservacion), :method => :get if reservacion.aprobacion == true%></td>
-             </tr>
-          </tbody>
-          </table>
       </div>
     </div>
-<% end %>
-</div>
-
-<% end %>
-<% if cannot? :manage, Reservacion %>
-<div class= "contenedor">
-    <div class="panel panel-default">
-        <div class="panel-heading">Programación de actividades </div>
-            <div class="panel-body"> 
-                <center>
-                  <div> No tienes acceso a esta página.</div>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
-                 </a>
-                 </center>
-          
-            </div>
-        </div>      
-</div>
-<% end %>
+  <% end %>
+</body>

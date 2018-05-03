@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  map.connect '/reservacions/solicitud', :controller => 'reservacions', :action => 'solicitud'
+  #map.connect '/reservacions/solicitud', :controller => 'reservacions', :action => 'solicitud'
   
   resources :reservacions
   resources :welcome
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :videoconferencia
   devise_for :users
   resources :users
-  #map.resource :reservacions, :collection => {:solicitud => :get}
+  resources :reservacions, :member => {:solicitud => :get}
   
   
   root 'welcome#solicitud'

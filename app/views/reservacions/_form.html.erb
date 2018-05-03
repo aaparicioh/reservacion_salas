@@ -27,8 +27,13 @@
         </div>
   
         <div class="field">
-          <%= form.label :nombre_de_responsable %>
+          <%= form.label :responsable_de_la_sesión %>
           <%= form.text_field :nresponsable, id: :reservacion_nresponsable, required:"" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :tipo_de_actividad %>
+           <%= form.select :tipoactividad, ['Clase', 'Reunión de trabajo', 'Seminario', 'Otro'] %>
         </div>
 
         <div class="field">
@@ -36,6 +41,7 @@
           <%= form.text_area :nevento, id: :reservacion_nevento, required:"" %>
         </div>
 
+        <% if cannot? :delete, Reservacion %>
         <div class="field">
           <%= form.label :fecha_de_inicio %>
           <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
@@ -45,6 +51,19 @@
           <%= form.label :fecha_de_fin %>
           <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
         </div>
+        <% end %>
+
+        <% if can? :manage, Reservacion %>
+        <div class="field">
+          <%= form.label :fecha_de_inicio %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
+        </div>
+
+        <div class="field">
+          <%= form.label :fecha_de_fin %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today, min: Time.zone.today%>
+        </div>
+        <% end %>
 
         <div class="field">
           <%= form.label :hora_de_inicio %>
@@ -76,13 +95,7 @@
         <% else %>
           <%= form.check_box :aprobacion, :checked => false, :style => 'visibility: hidden' %>
         <% end %>
-
-         <div class="field">
-          <%= form.label :tipo_de_actividad %>
-          <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad, required:"", placeholder: "Clase, Seminario o Reunión" %>
-        </div>
          
-
           <!--<%= form.select :tipoactividad, [['Seminario interno','Seminario interno'],['Reunión de trabajo','Reunión de trabajo'],['Clases','Clases'],['Curso','Curso'],['Diplomado','Diplomado'],['Seminario','Seminario'],['Taller','Taller'],['Inauguración','Inauguración'],['Ciclo de conferencias','Ciclo de conferencias'],['Cine debate','Cine debate'],['Coloquio','Coloquio'],['Conversatorio','Conversatorio'],['Encuentro','Encuentro'],['Foro','Foro'],['Jornada','Jornada'],['Mesa redonda','Mesa redonda'],['Presentación de libro','Presentación de libro'],['Mesa de trabajo','Mesa de trabajo'],['Congreso','Congreso']], id: :reservacion_tipoactividad %>
 
           <% if false %>
@@ -103,7 +116,7 @@
         </div>
          
 
-  <button type="button" class="btn btn-primary btn-sm" id="myBtn">Crear reservación</button>
+  <button type="button" class="btn btn-primary btn-sm" style="color:white;" id="myBtn">Continuar</button>
 
   <!-- Modal -->
   <div class="modal fade" id="Servicios" role="dialog">
@@ -121,7 +134,7 @@
            <h5><b> SERVICIOS TÉCNICOS </b></h5>
             <div><%= form.check_box :videoproyector, id: :reservacion_videoproyector %><h7> Videoproyector </h7> </div> 
             <div><%= form.check_box :pc, id: :reservacion_pc %> <h7> PC </h7> </div>
-            <div><%= form.check_box :video, id: :reservacion_video %><h7> Video </h7> </div> 
+            <!--<div><%= form.check_box :video, id: :reservacion_video %><h7> Video </h7> </div>--> 
             <div><%= form.check_box :conexInternet, id: :reservacion_conexInternet %><h7> Conexión Internet </h7> </div>
             <div><%= form.check_box :pizarron, id: :reservacion_pizarron %> <h7> Pizarrón </h7> </div> 
            <!-- <div><%= form.check_box :traducSimultanea, id: :reservacion_traducSimultanea %> <h7> Traducción simultánea </h7> </div> -->

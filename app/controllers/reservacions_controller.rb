@@ -39,16 +39,6 @@ class ReservacionsController < ApplicationController
     @reservacion = Reservacion.find_by_id(params[:id])
   end
 
-  def consultar
-    @reservacion = Reservacion.find_by_id(params[:id])
-    if current_user == "paulina.gv@ceiich.unam.mx"
-      reservacion.show
-    else
-    if current_user.email == @reservacion.usuario
-     reservacion.show
-       end
-    end
-  end
 
   # GET /reservacions/new
   def new
@@ -69,7 +59,6 @@ class ReservacionsController < ApplicationController
   
     #@reservacions = Reservacion.all
     @reservacion = Reservacion.new(reservacion_params)
-    #if @reservacion.
     @reservacion.save
     
 
