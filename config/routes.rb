@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post 'calendario/salaVideoconferencia'
 
   post 'calendario/actividadesInvestigacion'
+  post 'calendario/calendarioGeneral'
   
   get 'espacios/auditorio4P'
   post 'espacios/auditorio4P'
@@ -63,7 +64,6 @@ Rails.application.routes.draw do
   post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
   post '/reservacions/id', to: 'reservacions#show'
   post '/videoconferencia/id',  to: 'videoconferencia#show'
- 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -47,7 +47,7 @@
                <td><%= link_to 'Mostrar', reservacion, :method => :get%></td>
                <td><%= link_to 'Editar', edit_reservacion_path(reservacion), :method => :get %></td>
                <td><%= link_to 'Eliminar', reservacion, method: :delete, data: {confirm: '¿Desea continuar?'} if reservacion.aprobacion == false %></td> 
-               <td><%= link_to 'Descargar solicitud', reservacions_solicitud(format: 'pdf') if reservacion.aprobacion == true%></td> 
+               <td><%= link_to 'Descargar solicitud', reservacions_path(format: 'pdf') if reservacion.aprobacion == true%></td> 
              </tr>
           </tbody>
           </table>

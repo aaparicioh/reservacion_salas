@@ -1,5 +1,5 @@
-<% @reservacions = @reservacions.reverse%>    
- <% @reservacions.each do |reservacion| %>
+<% @reservacions.each do |reservacion| %>
+ <% @reservacions = @reservacions.reverse%> 
   <% if reservacion.fechainicio.strftime("%d-%m-%Y") == reservacion.fechainicio.strftime("%d-07-%Y") %>
     <div class="panel panel-primary">
       <div class="panel-body">

@@ -23,14 +23,15 @@ class ReservacionsController < ApplicationController
 
   def index
     @reservacions = Reservacion.all
-    #@reservacion = Reservacion.find_by_id(params[:id])
-    #respond_to do |format|
-    #  format.html
-      #format.pdf do
-      #  pdf = ReservacionPdf.new(@reservacion)
-      #  send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
-      #end
-    #end
+    @reservacion = Reservacion.find_by_id(params[:id])
+    respond_to do |format|
+      format .json
+      format.html
+      format.pdf do
+        pdf = ReservacionPdf.new(@reservacion)
+        send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /reservacions/1
@@ -44,12 +45,14 @@ class ReservacionsController < ApplicationController
   def new
     @reservacion = Reservacion.new
     @espacios = Espacio.where(id: [2,3,5,6])
+    @espaciosadmin = Espacio.where(id: [1,2,3,4,5,6])
   end
 
   # GET /reservacions/1/edit
   def edit 
     @reservacion = Reservacion.find_by_id(params[:id])
     @espacios = Espacio.where(id: [2,3,5,6])
+    @espaciosadmin = Espacio.where(id: [1,2,3,4,5,6])
   end
 
   

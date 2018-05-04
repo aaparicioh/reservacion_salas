@@ -1,9 +1,9 @@
 class ReservacionPdf < Prawn::Document
   require "prawn/measurement_extensions"
 
-  def initialize(reservacions)
+  def initialize(reservacion)
     super()
-    @reservacions = reservacions
+    @reservacions = reservacion
     encabezado
     datos_solicitante
     servicios

@@ -1,90 +1,92 @@
 <body>
-  <p id="notice"><%= notice %></p>
-  <% if can? :manage, Reservacion%>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
-      $(document).ready(function(){
-        $('.ir-arriba').click(function(){
-          $('body, html').animate({
-            scrollTop: '0px'},300 );
-        });
+<p id="notice"><%= notice %></p>
+<% if can? :manage, Reservacion%>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script>
+  $(document).ready(function(){
 
-        $(window).scroll(function(){
-          if ($(this).scrollTop() > 0){
-            $('.ir-arriba').slideDown(300);
-          }
-          else {
-            $('.ir-arriba').slideUp(300);
-          };
-        });  
-      });
-    </script>
+  $('.ir-arriba').click(function(){
+    $('body, html').animate({
+      scrollTop: '0px'},300 );
+  });
 
-    <span class="fa-chevron-up ir-arriba"></span>
-   
-    <%= render 'welcome/administracion', welcome: @welcome %>
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 0){
+      $('.ir-arriba').slideDown(300);
+    } else {
+      $('.ir-arriba').slideUp(300);
+    };
+  });
+  
+});
+</script>
+<span class="fa-chevron-up ir-arriba"></span>
+ 
+<%= render 'welcome/administracion', welcome: @welcome %>
 
-    <div class= "contenedor">
-      <h1 align="center">Reservaciones</h1></br>
-      <center>
-         <A class="btn btn-primary btn-large" href="#enero" :method = "get" style="color:white;">ENERO</A>
-         <A class="btn btn-primary btn-large" href="#febrero" method= "get" style="color:white;">FEBRERO</A>
-         <A class="btn btn-primary btn-large" href="#marzo" method= "get" style="color:white;">MARZO</A>
-         <A class="btn btn-primary btn-large" href="#abril" method= "get" style="color:white;">ABRIL</A>
-         <A class="btn btn-primary btn-large" href="#mayo" method= "get" style="color:white;">MAYO</A>
-         <A class="btn btn-primary btn-large" href="#junio" method= "get" style="color:white;">JUNIO</A>
-         <A class="btn btn-primary btn-large" href="#julio" method= "get" style="color:white;">JULIO</A>
-         <A class="btn btn-primary btn-large" href="#agosto" method= "get" style="color:white;">AGOSTO</A>
-         <A class="btn btn-primary btn-large" href="#septiembre" method= "get" style="color:white;">SEPTIEMBRE</A>
-         <A class="btn btn-primary btn-large" href="#octubre" method= "get" style="color:white;">OCTUBRE</A>
-         <A class="btn btn-primary btn-large" href="#noviembre" method= "get" style="color:white;">NOVIEMBRE</A>
-         <A class="btn btn-primary btn-large" href="#diciembre" method= "get" style="color:white;">DICIEMBRE</A>
-      </center></br>
+<div class= "contenedor">
+ <h1 align="center">Reservaciones</h1></br>
+<center>
+ <A class="btn btn-primary btn-large" href="#enero" style="color:white;">ENERO</A>
+ <A class="btn btn-primary btn-large" href="#febrero" method= "get" style="color:white;">FEBRERO</A>
+ <A class="btn btn-primary btn-large" href="#marzo" method= "get" style="color:white;">MARZO</A>
+ <A class="btn btn-primary btn-large" href="#abril" method= "get" style="color:white;">ABRIL</A>
+ <A class="btn btn-primary btn-large" href="#mayo" method= "get" style="color:white;">MAYO</A>
+ <A class="btn btn-primary btn-large" href="#junio" method= "get" style="color:white;">JUNIO</A>
+ <A class="btn btn-primary btn-large" href="#julio" method= "get" style="color:white;">JULIO</A>
+ <A class="btn btn-primary btn-large" href="#agosto" method= "get" style="color:white;">AGOSTO</A>
+ <A class="btn btn-primary btn-large" href="#septiembre" method= "get" style="color:white;">SEPTIEMBRE</A>
+ <A class="btn btn-primary btn-large" href="#octubre" method= "get" style="color:white;">OCTUBRE</A>
+ <A class="btn btn-primary btn-large" href="#noviembre" method= "get" style="color:white;">NOVIEMBRE</A>
+ <A class="btn btn-primary btn-large" href="#diciembre" method= "get" style="color:white;">DICIEMBRE</A>
+</center></br>
+ 
+  <div align="right"> <h4><%= link_to 'Nueva reservación', new_reservacion_path, :method => :get %></h4></div>
 
-      <div align="right"> <h4><%= link_to 'Nueva reservación', new_reservacion_path, :method => :get %></h4></div>
+<center><A name="enero"><H1>ENERO</H1></A></center>
+   <%= render 'reservacions/enero', reservacion: @reservacion %>
 
-      <center><A name="enero"><H1>ENERO</H1></A></center>
-         <%= render 'reservacions/enero', reservacion: @reservacion %>
+<center><A name="febrero"><H1>FEBRERO</H1></A></center>
+ <%= render 'reservacions/febrero', reservacion: @reservacion %>
 
-      <center><A name="febrero"><H1>FEBRERO</H1></A></center>
-       <%= render 'reservacions/febrero', reservacion: @reservacion %>
+<center><A name="marzo"><H1>MARZO</H1></A></center>
+ <%= render 'reservacions/marzo', reservacion: @reservacion %>
 
-      <center><A name="marzo"><H1>MARZO</H1></A></center>
-       <%= render 'reservacions/marzo', reservacion: @reservacion %>
+<center><A name="abril"><H1>ABRIL</H1></A></center>
+ <%= render 'reservacions/abril', reservacion: @reservacion %>
 
-      <center><A name="abril"><H1>ABRIL</H1></A></center>
-       <%= render 'reservacions/abril', reservacion: @reservacion %>
+<center><A name="mayo"><H1>MAYO</H1></A></center>
+ <%= render 'reservacions/mayo', reservacion: @reservacion %>
 
-      <center><A name="mayo"><H1>MAYO</H1></A></center>
-       <%= render 'reservacions/mayo', reservacion: @reservacion %>
+<center><A name="junio"><H1>JUNIO</H1></A></center>
+  <%= render 'reservacions/junio', reservacion: @reservacion %>
 
-      <center><A name="junio"><H1>JUNIO</H1></A></center>
-        <%= render 'reservacions/junio', reservacion: @reservacion %>
+<center><A name="julio"><H1>JULIO</H1></A></center>
+  <%= render 'reservacions/julio', reservacion: @reservacion %>
 
-      <center><A name="julio"><H1>JULIO</H1></A></center>
-        <%= render 'reservacions/julio', reservacion: @reservacion %>
+<center><A name="agosto"><H1>AGOSTO</H1></A></center>
+  <%= render 'reservacions/agosto', reservacion: @reservacion %>
 
-      <center><A name="agosto"><H1>AGOSTO</H1></A></center>
-        <%= render 'reservacions/agosto', reservacion: @reservacion %>
+<center><A name="septiembre"><H1>SEPTIEMBRE</H1></A></center>
+  <%= render 'reservacions/septiembre', reservacion: @reservacion %>
 
-      <center><A name="septiembre"><H1>SEPTIEMBRE</H1></A></center>
-        <%= render 'reservacions/septiembre', reservacion: @reservacion %>
+<center><A name="octubre"><H1>OCTUBRE</H1></A></center>
+  <%= render 'reservacions/octubre', reservacion: @reservacion %>
 
-      <center><A name="octubre"><H1>OCTUBRE</H1></A></center>
-        <%= render 'reservacions/octubre', reservacion: @reservacion %>
+<center><A name="noviembre"><H1>NOVIEMBRE</H1></A></center>
+  <%= render 'reservacions/noviembre', reservacion: @reservacion %>
 
-      <center><A name="noviembre"><H1>NOVIEMBRE</H1></A></center>
-        <%= render 'reservacions/noviembre', reservacion: @reservacion %>
+<center><A name="diciembre"><H1>DICIEMBRE</H1></A></center>
+  <%= render 'reservacions/diciembre', reservacion: @reservacion %>
 
-      <center><A name="diciembre"><H1>DICIEMBRE</H1></A></center>
-        <%= render 'reservacions/diciembre', reservacion: @reservacion %>
-  </div>
-  <% end %>
+</div>
 
-  <% if cannot? :manage, Reservacion %>
-    <div class= "contenedor">
-      <div class="panel panel-default">
+<% end %>
+
+
+<% if cannot? :manage, Reservacion %>
+<div class= "contenedor">
+    <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>
         <div class="panel-body"> 
           <center>

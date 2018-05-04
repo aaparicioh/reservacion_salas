@@ -24,22 +24,22 @@ json.array! @reservacions do |reservacion|
     end
     json.start "#{reservacion.fechainicio}T#{reservacion.horainicio.strftime('%H:%M:%S')}Z"
     json.end "#{reservacion.fechafin}T#{reservacion.horafin.strftime('%H:%M:%S')}Z"
-    #if reservacion.aprobacion == false
-    #  json.color '#F00'
-    #end
-    if reservacion.espacio_id == 1
-      json.color '#2E2EFE'
-    elsif reservacion.espacio_id == 2
-        json.color '#2E9AFE'
-      elsif reservacion.espacio_id == 3
-          json.color '#FE9A2E'
-        elsif reservacion.espacio_id == 4
-            json.color '#FE642E'
-          elsif reservacion.espacio_id == 5
-              json.color '#610B21'
-            elsif reservacion.espacio_id == 6
-                json.color '#FF0040'
+    if reservacion.aprobacion == false
+      json.color '#F00'
     end
+    #if reservacion.espacio_id == 1
+    #  json.color '#4A235A'
+    #elsif reservacion.espacio_id == 2
+    #    json.color '#884EA0'
+    #  elsif reservacion.espacio_id == 3
+    #      json.color '#D498F9'
+    #    elsif reservacion.espacio_id == 4
+    #        json.color '#11B5D6'
+    #      elsif reservacion.espacio_id == 5
+    #          json.color '#14788C'
+    #        elsif reservacion.espacio_id == 6
+    #            json.color '#014957'
+    #end
   end
 
   #json.allDay reservacion.all_day_event? ? true : false

@@ -22,7 +22,7 @@
           </center>
         </div>
         <div id="user_nav">
-          <% if can? :manage, Welcome %>                
+          <% if can? :show, Reservacion %>
             <button type="button">
               <span class="glyphicon glyphicon-home"></span>
               <%= button_to 'Inicio', welcome_solicitud_path %>

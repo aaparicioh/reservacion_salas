@@ -13,19 +13,17 @@
     </div>
   <% end %>
 
-
 <div class = "contenedor">
   <div class="container">
     <div class="jumbotron4">
       <center>
         <div class="field">
           <%= form.label :sala %>
-          <% if false %>
-          <%= form.label :Auditorio_del_4_piso, id: :solicitud_sala %>
-          <%= form.select :espacio_id, [['Sala 1 del 5° piso','2'],['Sala 2 del 5° piso','3'],['Sala del 6° piso','5'],['Anexo','6']], id: :reservacion_espacio_id %>
+          <% if can? :manage, Reservacion %>
+            <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio") %>
+          <% else %>
+            <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
           <% end %>
-
-          <%= collection_select(:reservacion, :espacio_id, @espacios, :id,:nombre, :prompt => "Seleccione un espacio") %>
         </div>
   
         <div class="field">
@@ -47,24 +45,24 @@
          <% if cannot? :delete, Reservacion %>
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today + 5.day %>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today + 5.day %>
         </div>
         <% end %>
 
         <% if can? :manage, Reservacion %>
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today%>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today, min: Time.zone.today%>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today%>
         </div>
         <% end %>
 
@@ -97,20 +95,10 @@
         </div>
         <% end %>
 
-        <!-- <div class="field">
-          <%= form.label :tipo_de_actividad %>
-         
-
-          <%= form.select :tipoactividad, [['Seminario interno','Seminario interno'],['Reunión de trabajo','Reunión de trabajo'],['Clases','Clases'],['Curso','Curso'],['Diplomado','Diplomado'],['Seminario','Seminario'],['Taller','Taller'],['Inauguración','Inauguración'],['Ciclo de conferencias','Ciclo de conferencias'],['Cine debate','Cine debate'],['Coloquio','Coloquio'],['Conversatorio','Conversatorio'],['Encuentro','Encuentro'],['Foro','Foro'],['Jornada','Jornada'],['Mesa redonda','Mesa redonda'],['Presentación de libro','Presentación de libro'],['Mesa de trabajo','Mesa de trabajo'],['Congreso','Congreso']], id: :reservacion_tipoactividad %>
-
-          <% if false %>
-          <%= form.text_field :tipoactividad, id: :reservacion_tipoactividad %>
-          <%end%>
-        </div>-->
 
         <div class="field">
           <%= form.label :fecha_de_solicitud %>
-          <%= form.date_field :fechasolicitud, id: :reservacion_fechasolicitud, :readonly => true %>
+          <%= form.text_field :fechasolicitud, id: :reservacion_fechasolicitud, :readonly => true %>
         </div>
 
         <div class="field">
