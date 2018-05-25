@@ -3,7 +3,7 @@ class ReservacionPdf < Prawn::Document
 
   def initialize(reservacion)
     super()
-    @reservacions = reservacion
+    @reservacion = reservacion #Reservacion.find_by_id(params[:id])
     encabezado
     datos_solicitante
     servicios
@@ -15,12 +15,13 @@ class ReservacionPdf < Prawn::Document
 
   def encabezado
     image "#{Rails.root}/app/assets/images/UNAM-Escudo.jpg", width: 57, height: 61, :at => [20,700]
-    image "#{Rails.root}/app/assets/images/ceiich-300dpi.jpg", width: 71, height: 61, :at => [470,700]
+    image "#{Rails.root}/app/assets/images/ceiich-300dpi.jpg", width: 71, height: 61, :at => [80,700]
     move_down 10.mm
-    text"UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO", size: 12, style: :bold, align: :center
-    text"SECRETARÍAS Y UNIDADES ADMINISTRATIVAS", size: 12, align: :center
-    text"SERVICIOS GENERALES", size: 12, align: :center
-    text"SOLICITUD DE SERVICIOS DIVERSOS", size: 11, style: :bold, align: :center
+    bounding_box([150,cursor], :width => 400, :height => 50) do
+      text"UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO", size: 12, style: :bold, align: :center
+      text"SECRETARÍAS Y UNIDADES ADMINISTRATIVAS - SGC", size: 12, align: :center
+      text"SOLICITUD DE SERVICIOS DIVERSOS Y LIMPIEZA", size: 12, style: :bold, align: :center
+    end
   end
 
   def datos_solicitante
@@ -40,6 +41,7 @@ class ReservacionPdf < Prawn::Document
     move_down 5.mm
     y3=cursor-6
     text"NOMBRE DEL USUARIO:", size: 9
+    draw_text"#{@reservacion.nresponsable}", size: 10, :at => [150,y3+2]
     draw_text"TELÉFONO:", size: 9, :at => [429,y3]
 
     stroke do
@@ -50,7 +52,6 @@ class ReservacionPdf < Prawn::Document
       horizontal_line 120, 350, :at => y3
       horizontal_line 490, 550, :at => y3
       move_down 6.mm
-      horizontal_line 120, 350, :at => cursor
     end
   end
 

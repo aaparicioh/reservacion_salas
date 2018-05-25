@@ -28,8 +28,8 @@ class ReservacionsController < ApplicationController
       format .json
       format.html
       format.pdf do
-        pdf = ReservacionPdf.new(@reservacion)
-        send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
+        pdf = ReservacionPdf.new
+        send_data pdf.render, filename: "reservacion_#{@reservacion.id}", type: 'application/pdf', disposition: 'inline'
       end
     end
   end
@@ -38,6 +38,14 @@ class ReservacionsController < ApplicationController
   # GET /reservacions/1.json
   def show
     @reservacion = Reservacion.find_by_id(params[:id])
+    respond_to do |format|
+      format .json
+      format.html
+      format.pdf do
+        pdf = ReservacionPdf.new
+        send_data pdf.render, filename: "reservacion_#{@reservacion.id}", type: 'application/pdf', disposition: 'inline'
+      end
+    end
   end
 
 
@@ -53,6 +61,13 @@ class ReservacionsController < ApplicationController
     @reservacion = Reservacion.find_by_id(params[:id])
     @espacios = Espacio.where(id: [2,3,5,6])
     @espaciosadmin = Espacio.where(id: [1,2,3,4,5,6])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReservacionPdf.new(@reservacion)
+        send_data pdf.render, filename: "reservacion_#{@reservacion.id}", type: 'application/pdf', disposition: 'inline'
+      end
+    end
   end
 
   
