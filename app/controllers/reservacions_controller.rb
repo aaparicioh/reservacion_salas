@@ -74,14 +74,11 @@ class ReservacionsController < ApplicationController
   # POST /reservacions
   # POST /reservacions.json
   def create
-  
-    #@reservacions = Reservacion.all
-    @reservacion = Reservacion.new(reservacion_params)
-    @reservacion.save
-    
+  @reservacion = Reservacion.new(reservacion_params)
 
     respond_to do |format|
       if @reservacion.save
+        ReservacionMailer.solicitud_email(@reservacion).deliver_now
         format.html { redirect_to @reservacion, notice: 'Su solicitud fue realizada satisfactoriamente.' }
         format.json { render :show, status: :created, location: @reservacion }
       else
@@ -96,6 +93,9 @@ class ReservacionsController < ApplicationController
   def update
     respond_to do |format|
       if @reservacion.update(reservacion_params)
+        if @reservacion.aprobacion == true 
+        ReservacionMailer.aprobacion_email(@reservacion).deliver_now
+        end
         format.html { redirect_to @reservacion, notice: 'La información de su reservación fue actualizada satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @reservacion }
       else

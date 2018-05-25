@@ -24,8 +24,11 @@
   <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, required: ""%></div></br>
 
-  <div><%= f.label :rol %>
-  <%= f.text_field :role, required:"" %></div></br>
+  <div class="field">
+          <%= f.label :rol %>
+           <%= f.select :role, ['usuario', 'usuarioV', 'admin', 'videoconferencias', 'superadmin'], required:"" %>
+  </div></br>
+
    <a class="btn btn-primary btn-sm">
    <div><%= f.submit t('.sign_up', :default => "Registrar") %></div></a>
 
