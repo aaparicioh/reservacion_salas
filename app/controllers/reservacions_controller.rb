@@ -23,14 +23,15 @@ class ReservacionsController < ApplicationController
 
   def index
     @reservacions = Reservacion.all
-    #@reservacion = Reservacion.find_by_id(params[:id])
-    #respond_to do |format|
-    #  format.html
-      #format.pdf do
-      #  pdf = ReservacionPdf.new(@reservacion)
-      #  send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
-      #end
-    #end
+    @reservacion = Reservacion.find_by_id(params[:id])
+    respond_to do |format|
+      format .json
+      format.html
+      format.pdf do
+        pdf = ReservacionPdf.new(@reservacion)
+        send_data pdf.render, filename: 'reservacion.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /reservacions/1
@@ -44,26 +45,25 @@ class ReservacionsController < ApplicationController
   def new
     @reservacion = Reservacion.new
     @espacios = Espacio.where(id: [2,3,5,6])
+    @espaciosadmin = Espacio.where(id: [1,2,3,4,5,6])
   end
 
   # GET /reservacions/1/edit
   def edit 
     @reservacion = Reservacion.find_by_id(params[:id])
     @espacios = Espacio.where(id: [2,3,5,6])
+    @espaciosadmin = Espacio.where(id: [1,2,3,4,5,6])
   end
 
   
   # POST /reservacions
   # POST /reservacions.json
   def create
-  
-    #@reservacions = Reservacion.all
-    @reservacion = Reservacion.new(reservacion_params)
-    @reservacion.save
-    
+  @reservacion = Reservacion.new(reservacion_params)
 
     respond_to do |format|
       if @reservacion.save
+        ReservacionMailer.solicitud_email(@reservacion).deliver_now
         format.html { redirect_to @reservacion, notice: 'Su solicitud fue realizada satisfactoriamente.' }
         format.json { render :show, status: :created, location: @reservacion }
       else
@@ -78,6 +78,9 @@ class ReservacionsController < ApplicationController
   def update
     respond_to do |format|
       if @reservacion.update(reservacion_params)
+        if @reservacion.aprobacion == true 
+        ReservacionMailer.aprobacion_email(@reservacion).deliver_now
+        end
         format.html { redirect_to @reservacion, notice: 'La información de su reservación fue actualizada satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @reservacion }
       else
@@ -96,11 +99,21 @@ class ReservacionsController < ApplicationController
   
   end
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservacion
        @reservacion = Reservacion.find(params[:id]) 
+    end
+
+    def solicitud
+    @reservacion = Reservacion.find_by_id(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = ReportPdf.new(@reservacion)
+          send_data pdf.render, filename: @reservacion.id+'.pdf', type: 'application/pdf'
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,29 @@
+
+
+LA SOLICITUD CON FOLIO DE RESERVACIÓN
+    <%= @reservacion.id %>
+SE HA REALIZADO SATISFACTORIAMENTE
+   
+A continuación se muestran los detalles de su reservación. 
+  Espacio:  <%= @reservacion.espacio.nombre if @reservacion.espacio %>
+  Responsable: <%= @reservacion.nresponsable %>
+  Actividad: <%= @reservacion.nevento %>
+  Fecha de inicio: <%= @reservacion.fechainicio.strftime("%d-%m-%Y") %>
+  Fecha de fin: <%= @reservacion.fechafin.strftime("%d-%m-%Y") %>
+  Hora de inicio: <%= @reservacion.horainicio.strftime("%H:%M") %>
+  Hora de fin: <%= @reservacion.horafin.strftime("%H:%M") %>
+  Tipo de actividad: <%= @reservacion.tipoactividad %>
+  Fecha de solicitud: <%= @reservacion.fechasolicitud.strftime("%d-%m-%Y %H:%M") %>
+  SERVICIOS
+  Videoproyector: <%= "Sí" if @reservacion.videoproyector == true %> <%= "No" if @reservacion.videoproyector == false %>
+  PC: <%= "Sí" if @reservacion.pc == true %> <%= "No" if @reservacion.pc == false %>
+  Conexión a internet: <%= "Sí" if @reservacion.conexInternet == true %> <%= "No" if @reservacion.conexInternet == false %>
+  Pizarrón: <%= "Sí" if @reservacion.pizarron == true %> <%= "No" if @reservacion.pizarron == false %>
+  Conexión de Skype: <%= "Sí" if @reservacion.conexSkype == true %> <%= "No" if @reservacion.conexSkype == false %>
+  Café: <%= "Sí" if @reservacion.cafe == true %> <%= "No" if @reservacion.cafe == false %>
+  Galletas: <%= "Sí" if @reservacion.galletas == true %> <%= "No" if @reservacion.galletas == false %>
+  Fruta: <%= "Sí" if @reservacion.fruta == true %> <%= "No" if @reservacion.fruta == false %>
+  Número de asistentes: <%= @reservacion.asistentes %>
+ 
+ Una vez aprobada su solicitud recibirá un correo de notificación, igualmente puede consultar el estado de su solicitud en el sistema.
+ Para cualquier aclaración comuníquese con el Departamento de Difusión. Ext. 30027 

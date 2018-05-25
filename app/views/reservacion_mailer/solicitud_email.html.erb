@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <center>
+    <h2> LA SOLICITUD CON FOLIO DE RESERVACIÓN</h2>
+    <h2> <%= @reservacion.id %> </h2> 
+    </h2> SE HA REALIZADO SATISFACTORIAMENTE </h2>
+    </center>
+    
+    <p>A continuación se muestran los detalles de su reservación.</p>
+     <ul class="list-group">
+              
+             <!-- <% if @reservacion.aprobacion == true %>
+                <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
+              <% else %>
+                <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
+              <% end %>-->
+              <li class="list-group-item">
+                <strong>Espacio:</strong>
+                <%= @reservacion.espacio.nombre if @reservacion.espacio %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Responsable:</strong>
+                <%= @reservacion.nresponsable %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Actividad:</strong>
+                <%= @reservacion.nevento %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Fecha de inicio:</strong>
+                <%= @reservacion.fechainicio.strftime("%d-%m-%Y") %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Fecha de fin:</strong>
+                <%= @reservacion.fechafin.strftime("%d-%m-%Y") %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Hora de inicio:</strong>
+                <%= @reservacion.horainicio.strftime("%H:%M") %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Hora de fin:</strong>
+                <%= @reservacion.horafin.strftime("%H:%M") %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Tipo de actividad:</strong>
+                <%= @reservacion.tipoactividad %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Fecha de solicitud:</strong>
+                <%= @reservacion.fechasolicitud.strftime("%d-%m-%Y %H:%M") %>
+              </li> 
+
+             <h3><b>SERVICIOS</b></h3>
+             
+
+              <li class="list-group-item">
+                <strong>Videoproyector:</strong>
+                <%= "Sí" if @reservacion.videoproyector == true %> <%= "No" if @reservacion.videoproyector == false %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>PC:</strong>
+                <%= "Sí" if @reservacion.pc == true %> <%= "No" if @reservacion.pc == false %>
+              </li>
+
+            
+              <li class="list-group-item">
+                <strong>Conexión a internet:</strong>
+                <%= "Sí" if @reservacion.conexInternet == true %> <%= "No" if @reservacion.conexInternet == false %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Pizarrón:</strong>
+                <%= "Sí" if @reservacion.pizarron == true %> <%= "No" if @reservacion.pizarron == false %>
+              </li>
+            
+              <li class="list-group-item">
+                <strong>Conexión de Skype:</strong>
+                <%= "Sí" if @reservacion.conexSkype == true %> <%= "No" if @reservacion.conexSkype == false %>
+              </li>
+            
+              <li class="list-group-item">
+                <strong>Café:</strong>
+                <%= "Sí" if @reservacion.cafe == true %> <%= "No" if @reservacion.cafe == false %>
+              </li>
+
+              <li class="list-group-item">
+                <strong>Galletas:</strong>
+                <%= "Sí" if @reservacion.galletas == true %> <%= "No" if @reservacion.galletas == false %>
+              </li>
+              <li class="list-group-item">
+                <strong>Fruta:</strong>
+                <%= "Sí" if @reservacion.fruta == true %> <%= "No" if @reservacion.fruta == false %>
+              </li>
+              <li class="list-group-item">
+                <strong>Número de asistentes:</strong>
+                <%= @reservacion.asistentes %>
+              </li> </ul>
+    </br></br>
+    <p>Una vez aprobada su solicitud recibirá un correo de notificación, igualmente puede consultar el estado de su solicitud en el sistema.</p>
+    <p>Para cualquier aclaración comuníquese con el Departamento de Difusión. Ext. 30027 </p>
+
+
+</html>

@@ -3,7 +3,9 @@
 <% if can? :manage, Reservacion%>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script>
+<script src="https://use.fontawesome.com/a18b0c2e94.js"></script>
+
+<script>
   $(document).ready(function(){
 
   $('.ir-arriba').click(function(){
@@ -18,29 +20,35 @@
       $('.ir-arriba').slideUp(300);
     };
   });
-  
 });
 </script>
-<span class="fa-chevron-up ir-arriba"></span>
- 
+<span class="fa fa-chevron-up ir-arriba" aria-hidden="true"></span>
+
 <%= render 'welcome/administracion', welcome: @welcome %>
 
 <div class= "contenedor">
  <h1 align="center">Reservaciones</h1></br>
 <center>
- <A class="btn btn-primary btn-large" href="#enero" style="color:white;">ENERO</A>
- <A class="btn btn-primary btn-large" href="#febrero" method= "get" style="color:white;">FEBRERO</A>
- <A class="btn btn-primary btn-large" href="#marzo" method= "get" style="color:white;">MARZO</A>
- <A class="btn btn-primary btn-large" href="#abril" method= "get" style="color:white;">ABRIL</A>
- <A class="btn btn-primary btn-large" href="#mayo" method= "get" style="color:white;">MAYO</A>
- <A class="btn btn-primary btn-large" href="#junio" method= "get" style="color:white;">JUNIO</A>
- <A class="btn btn-primary btn-large" href="#julio" method= "get" style="color:white;">JULIO</A>
- <A class="btn btn-primary btn-large" href="#agosto" method= "get" style="color:white;">AGOSTO</A>
- <A class="btn btn-primary btn-large" href="#septiembre" method= "get" style="color:white;">SEPTIEMBRE</A>
- <A class="btn btn-primary btn-large" href="#octubre" method= "get" style="color:white;">OCTUBRE</A>
- <A class="btn btn-primary btn-large" href="#noviembre" method= "get" style="color:white;">NOVIEMBRE</A>
- <A class="btn btn-primary btn-large" href="#diciembre" method= "get" style="color:white;">DICIEMBRE</A>
+ <A class="btn btn-primary btn-large" href="#enero" TARGET="_top" style="color:white;">ENERO</A>
+ <A class="btn btn-primary btn-large" href="#febrero" TARGET="_top" style="color:white;">FEBRERO</A>
+ <A class="btn btn-primary btn-large" href="#marzo" TARGET="_top" style="color:white;">MARZO</A>
+ <A class="btn btn-primary btn-large" href="#abril" TARGET="_top" style="color:white;">ABRIL</A>
+ <A class="btn btn-primary btn-large" href="#mayo" TARGET="_top" style="color:white;">MAYO</A>
+ <A class="btn btn-primary btn-large" href="#junio" TARGET="_top" style="color:white;">JUNIO</A>
+ <A class="btn btn-primary btn-large" href="#julio" TARGET="_top" style="color:white;">JULIO</A>
+ <A class="btn btn-primary btn-large" href="#agosto" TARGET="_top" style="color:white;">AGOSTO</A>
+ <A class="btn btn-primary btn-large" href="#septiembre" TARGET="_top" style="color:white;">SEPTIEMBRE</A>
+ <A class="btn btn-primary btn-large" href="#octubre" TARGET="_top" style="color:white;">OCTUBRE</A>
+ <A class="btn btn-primary btn-large" href="#noviembre" TARGET="_top" style="color:white;">NOVIEMBRE</A>
+ <A class="btn btn-primary btn-large" href="#diciembre" TARGET="_top" style="color:white;">DICIEMBRE</A>
 </center></br>
+
+   <!-- <form class="navbar-form navbar-left" method="get">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="¿Qué estás buscando?">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+    </form> </br> -->
  
   <div align="right"> <h4><%= link_to 'Nueva reservación', new_reservacion_path, :method => :get %></h4></div>
 
@@ -89,16 +97,13 @@
 <div class= "contenedor">
     <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>
-            <div class="panel-body"> 
-                <center>
-                  <div> No tienes acceso a esta página.</div>
-                 <a class="btn btn-primary btn-large">
-                 <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
-                 </a>
-                 </center>
-          
-            </div>
-        </div>      
-</div>
-<% end %>
+        <div class="panel-body"> 
+          <center>
+            <div> No tienes acceso a esta página.</div>
+            <a class="btn btn-primary btn-large">  <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %></a>
+          </center>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </body>

@@ -34,6 +34,8 @@ gem 'devise-i18n', '~> 0.12.1'
 gem 'devise-i18n-views'
 gem 'cancan'
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
+gem 'mail_view'
+gem 'figaro'
 # Use Capistrano for deploymen
 # gem 'capistrano-rails', group: :development
 

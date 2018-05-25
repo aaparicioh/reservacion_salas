@@ -12,13 +12,15 @@
     <div class="panel-group">
       <center>
     <div class="col-md-4"></div>
-	    <div class="col-md-4">
+      <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading"> <center><h3> ESPACIOS </h3> </center></div>
+          <% $espacioActual=0 %>
           <div class="panel-body">
             <div class="btn-group-vertical" role="group" aria-label="...">
               <center>
-                
+                <input type="text" readonly="true" style="background-color:green; color:white;" value="SOLICITUDES CONFIRMADAS" size="25px"></br>
+                <input type="text" readonly="true" style="background-color:red; color:white;" value="SOLICITUDES PENDIENTES" size="25px">
               </center>
             </div>
           </div>
@@ -26,10 +28,10 @@
       </div>
     </center>
     </div>
-    <%= javascript_include_tag "cal_general" %>
+    <%= javascript_include_tag "cal_global" %>
     <div class="panel-group">
       <div class="col-md-12" >
-        <div id="calendar15P"></div>
+        <div id="calendarglobal"></div>
         <center>
           <div class="btn-group" role="group" aria-label="...">
             <center>

@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+
 <% if can? :show, Reservacion %>
 <div class="contenedor">
+  <center><b><p id="notice"><%= notice %></p></br></center>
   <center> 
     <div class="panel panel-primary">
       <div class="col-md-3" ></div>
@@ -29,18 +30,18 @@
               </li>
 
               <li class="list-group-item">
-                <strong>Evento:</strong>
+                <strong>Actividad:</strong>
                 <%= @reservacion.nevento %>
               </li>
 
               <li class="list-group-item">
                 <strong>Fecha de inicio:</strong>
-                <%= @reservacion.fechainicio %>
+                <%= @reservacion.fechainicio.strftime("%d-%m-%Y") %>
               </li>
 
               <li class="list-group-item">
                 <strong>Fecha de fin:</strong>
-                <%= @reservacion.fechafin %>
+                <%= @reservacion.fechafin.strftime("%d-%m-%Y") %>
               </li>
 
               <li class="list-group-item">
@@ -157,10 +158,6 @@
                 <strong>Número de asistentes:</strong>
                 <%= @reservacion.asistentes %>
               </li>
-
-           </ul>
-
-
   <% if can? :manage, Reservacion %>
     <h5><%= link_to 'Editar ', edit_reservacion_path(@reservacion), :method => :get %>|
     <%= link_to ' Regresar', reservacions_path, :method => :get %> </h5>
@@ -171,6 +168,8 @@
       <h5><%= link_to 'Editar', edit_reservacion_path(@reservacion), :method =>:get %> </h5>
     <% end %> <h5><%= link_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %> </h5>
   <% end %>
+
+           </ul>
 
         </div>
       </div>
@@ -189,8 +188,7 @@
                  <a class="btn btn-primary btn-large">
                  <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
                  </a>
-                 </center>
-          
+                 </center>      
             </div>
         </div>      
 </div>
