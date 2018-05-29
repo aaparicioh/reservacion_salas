@@ -5,8 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reservacions
   has_many :videoconferencium
-  after_create { UserMail.welcome_email(self).deliver }
-  
+    
 
   def self.create_new_user(params)
   @user = User.create!(params)
