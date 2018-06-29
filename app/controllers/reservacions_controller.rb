@@ -75,7 +75,6 @@ class ReservacionsController < ApplicationController
   # POST /reservacions.json
   def create
   @reservacion = Reservacion.new(reservacion_params)
-
     respond_to do |format|
       if @reservacion.save
         ReservacionMailer.solicitud_email(@reservacion).deliver_now
