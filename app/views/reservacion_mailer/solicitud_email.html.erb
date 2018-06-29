@@ -13,12 +13,7 @@
     
     <p>A continuación se muestran los detalles de su reservación.</p>
      <ul class="list-group">
-              
-             <!-- <% if @reservacion.aprobacion == true %>
-                <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
-              <% else %>
-                <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
-              <% end %>-->
+             
               <li class="list-group-item">
                 <strong>Espacio:</strong>
                 <%= @reservacion.espacio.nombre if @reservacion.espacio %>
@@ -111,8 +106,8 @@
                 <%= @reservacion.asistentes %>
               </li> </ul>
     </br></br>
-    <p>Una vez aprobada su solicitud recibirá un correo de notificación, igualmente puede consultar el estado de su solicitud en el sistema.</p>
-    <p>Para cualquier aclaración comuníquese con el Departamento de Difusión. Ext. 30027 </p>
+    <center><p><b>Una vez aprobada su solicitud recibirá un correo de notificación</b>, igualmente puede consultar el estado de su solicitud en el sistema.</p>
+    <p>Para cualquier aclaración comuníquese con el Departamento de Difusión. Ext. 30027 </p> </center>
 
 
 </html>
