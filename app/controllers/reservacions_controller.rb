@@ -74,18 +74,33 @@ class ReservacionsController < ApplicationController
     end
   end
 
-  
   # POST /reservacions
   # POST /reservacions.json
   def create
-  @reservacion = Reservacion.new(reservacion_params)
+    colision = false
+    @reservaciones = Reservacion.all
+    @reservacion = Reservacion.new(reservacion_params)
+    @reservacion.fechafin = @reservacion.fechainicio
+
+      @reservaciones.each do |r|
+      if #(@solicitud.fechainicio==s.fechainicio&&@solicitud.horainicio>s.horainicio)&&(@solicitud.fechafin==s.fechafin&&@solicitud.horafin<s.horafin)
+      (@reservacion.espacio_id==r.espacio_id) && (( @reservacion.fechainicio==r.fechafin && @reservacion.horainicio<r.horafin ) || ( @reservacion.fechafin==r.fechainicio && @reservacion.horafin>r.horainicio ))
+        puts
+        puts 'Existe un traslape en la solicitud de nombre ' + r.nevento
+        colision = true
+      end
+    end
+    puts "COLISIÓN: " + colision.to_s
+    puts
+
     respond_to do |format|
-      if @reservacion.save
+      if colision == false
+        @reservacion.save
         ReservacionMailer.solicitud_email(@reservacion).deliver_now
         format.html { redirect_to @reservacion, notice: 'Su solicitud fue realizada satisfactoriamente.' }
         format.json { render :show, status: :created, location: @reservacion }
       else
-        format.html { render :new }
+        format.html { redirect_to calendario_actividadesInvestigacion_path, :notice => 'Eror al procesar su solicitud: "Existe un traslape con una reservación previa".' }
         format.json { render json: @reservacion.errors, status: :unprocessable_entity }
       end
     end

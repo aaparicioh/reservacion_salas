@@ -16,6 +16,12 @@ $(document).ready(function() {
       eventColor: 'green',
       textColor: '#FFF',
 
-      events: '/reservacions.json'
+      events: '/reservacions.json',
+
+      /*eventRender: function(event, element) {
+        element.qtip({
+          content: event.description
+        });
+      }*/
     });
 });

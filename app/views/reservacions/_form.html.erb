@@ -27,22 +27,6 @@
           <% end %>              
         </div>
         
-        <input id="espacioSeleccionado" name="nom_Espacio" >
-        
-        <script>
-        var opcion;
-        onchange = espacio();
-        function espacio(){
-         $(document).on('change', '#espacio', function(event) {
-         $('#espacioSeleccionado').val($("#espacio option:selected").text());
-         opcion = $("#espacio option:selected").val();
-         return opcion  
-           
-         });
-       }
-         
-        </script>
-
         <% if "espacio()" == 1 %>
           <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
         <% end %>
@@ -63,27 +47,32 @@
         </div>
 
         <% if cannot? :delete, Reservacion %>
-        <div class="field">
-          <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
-        </div>
+          <div class="field">
+            <%= form.label :fecha %>
+            <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
+          </div>
 
-        <div class="field">
-          <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
-        </div>
+          <%if false%> #########Se regresará cuando se contemplen repeticiones############
+          <div class="field">
+            <%= form.label :fecha_de_fin %>
+            <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
+          </div>
+          <%end%>
         <% end %>
 
         <% if can? :manage, Reservacion %>
-        <div class="field">
-          <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
-        </div>
+          <div class="field">
+            <%= form.label :fecha_de_inicio %>
+            <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
+          </div>
 
-        <div class="field">
-          <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today, min: Time.zone.today%>
-        </div>
+          
+          <%if false%> #########Se regresará cuando se contemplen repeticiones############
+          <div class="field">
+            <%= form.label :fecha_de_fin %>
+            <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today, min: Time.zone.today%>
+          </div>
+          <% end %>
         <% end %>
 
         <div class="field">
@@ -109,12 +98,12 @@
         <%end%>
         
         <% if can? :manage, Reservacion %>
-        <div class="field">
-          <%= form.label :aprobación %>
-          <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
-        </div>
-        <% else %>
-          <%= form.check_box :aprobacion, :checked => false, :style => 'visibility: hidden' %>
+          <div class="field">
+            <%= form.label :aprobación %>
+            <%= form.check_box :aprobacion, id: :reservacion_aprobacion %>
+          </div>
+          <% else %>
+            <%= form.check_box :aprobacion, :checked => false, :style => 'visibility: hidden' %>
         <% end %>
          
           <!--<%= form.select :tipoactividad, [['Seminario interno','Seminario interno'],['Reunión de trabajo','Reunión de trabajo'],['Clases','Clases'],['Curso','Curso'],['Diplomado','Diplomado'],['Seminario','Seminario'],['Taller','Taller'],['Inauguración','Inauguración'],['Ciclo de conferencias','Ciclo de conferencias'],['Cine debate','Cine debate'],['Coloquio','Coloquio'],['Conversatorio','Conversatorio'],['Encuentro','Encuentro'],['Foro','Foro'],['Jornada','Jornada'],['Mesa redonda','Mesa redonda'],['Presentación de libro','Presentación de libro'],['Mesa de trabajo','Mesa de trabajo'],['Congreso','Congreso']], id: :reservacion_tipoactividad %>
