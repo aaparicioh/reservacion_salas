@@ -44,26 +44,30 @@
 
          <% if cannot? :delete, Reservacion %>
         <div class="field">
-          <%= form.label :fecha_de_inicio %>
+          <%= form.label :fecha %>
           <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today + 5.day %>
         </div>
 
+        <%if false%> #########Se regresará cuando se contemplen repeticiones############
         <div class="field">
           <%= form.label :fecha_de_fin %>
           <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today + 5.day %>
         </div>
         <% end %>
+        <% end %>
 
         <% if can? :manage, Reservacion %>
         <div class="field">
-          <%= form.label :fecha_de_inicio %>
+          <%= form.label :fecha %>
           <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today%>
         </div>
 
+        <%if false%> #########Se regresará cuando se contemplen repeticiones############
         <div class="field">
           <%= form.label :fecha_de_fin %>
           <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today%>
         </div>
+        <% end %>
         <% end %>
 
         <div class="field">

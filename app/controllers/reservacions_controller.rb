@@ -61,16 +61,14 @@ class ReservacionsController < ApplicationController
   end
 
   # GET /reservacions/1/edit
-  def edit 
+  def edit
     @reservacion = Reservacion.find_by_id(params[:id])
+    @solicitud = Reservacion.find_by_id(params[:id])
     @espacios = Espacio.where(id: [2,3,5,6])
     @espaciosadmin = Espacio.where(id: [1,2,3,4,5,6])
+
     respond_to do |format|
       format.html
-      format.pdf do
-        pdf = ReservacionPdf.new(@reservacion)
-        send_data pdf.render, filename: "reservacion_#{@reservacion.id}", type: 'application/pdf', disposition: 'inline'
-      end
     end
   end
 
@@ -82,16 +80,12 @@ class ReservacionsController < ApplicationController
     @reservacion = Reservacion.new(reservacion_params)
     @reservacion.fechafin = @reservacion.fechainicio
 
-      @reservaciones.each do |r|
+    @reservaciones.each do |r|
       if #(@solicitud.fechainicio==s.fechainicio&&@solicitud.horainicio>s.horainicio)&&(@solicitud.fechafin==s.fechafin&&@solicitud.horafin<s.horafin)
       (@reservacion.espacio_id==r.espacio_id) && (( @reservacion.fechainicio==r.fechafin && @reservacion.horainicio<r.horafin ) || ( @reservacion.fechafin==r.fechainicio && @reservacion.horafin>r.horainicio ))
-        puts
-        puts 'Existe un traslape en la solicitud de nombre ' + r.nevento
         colision = true
       end
     end
-    puts "COLISIÓN: " + colision.to_s
-    puts
 
     respond_to do |format|
       if colision == false
@@ -109,15 +103,42 @@ class ReservacionsController < ApplicationController
   # PATCH/PUT /reservacions/1
   # PATCH/PUT /reservacions/1.json
   def update
+    colision = false
+    respaldo=@reservacion
+    espacio = respaldo.espacio_id
+    fi = respaldo.fechainicio
+    ff = respaldo.fechafin
+    hi = respaldo.horainicio
+    hf = respaldo.horafin
+    @reservacion.horainicio = Time.parse("00:00")#Time.now.strftime("%d-%m-%Y %H:%M")
+    @reservacion.horafin = Time.parse("00:00")#(Time.now+600).strftime("%d-%m-%Y %H:%M")
+    @reservacion.save
+    @reservaciones = Reservacion.all
+    @reservaciones.each do |r|
+      condicion = (@solicitud.espacio_id==r.espacio_id) && (( @solicitud.fechainicio==r.fechafin && @solicitud.horainicio<r.horafin ) || ( @solicitud.fechafin==r.fechainicio && @solicitud.horafin>r.horainicio ))
+      puts r.id.to_s + condicion.to_s + " -> " + colision.to_s
+      if condicion
+        colision = true
+      end
+    end
+
+    puts "El valor de colisión es: " + colision.to_s
+
     respond_to do |format|
-      if @reservacion.update(reservacion_params)
+      if colision == false
+        @reservacion.update(reservacion_params)
+        @reservacion.fechafin = @reservacion.fechainicio
+        @reservacion.save
         if @reservacion.aprobacion == true 
-        ReservacionMailer.aprobacion_email(@reservacion).deliver_now
+          ReservacionMailer.aprobacion_email(@reservacion).deliver_now
         end
         format.html { redirect_to @reservacion, notice: 'La información de su reservación fue actualizada satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @reservacion }
       else
-        format.html { render :edit }
+        @reservacion.horainicio = hi
+        @reservacion.horafin = hf
+        @reservacion.save
+        format.html { redirect_to calendario_actividadesInvestigacion_path, :notice => 'Error al actualizar su solicitud: "Existe un traslape con una reservación previa".' }
         format.json { render json: @reservacion.errors, status: :unprocessable_entity }
       end
     end
