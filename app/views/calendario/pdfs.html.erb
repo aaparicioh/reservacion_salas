@@ -1,0 +1,29 @@
+<%if can? :show, Videoconferencium %>
+	<style type="button">
+		input {color: black;}
+	</style>
+	<div class="container">
+		<h4 align="center">CALENDARIOS (VERSIÓN IMPRIMIBLE)</h4></br></br></br>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="jumbotron5">
+						<center>
+							<a class="btn btn-primary btn-large">
+								<%= button_to 'Auditorio 4° piso', reservacions_show_path(format: 'pdf'), :method => :get %>
+							</a>
+						</center>
+					</div>
+				</div>
+				<div class="col-md-6" >
+					<div class="jumbotron6">
+						<center>
+							<a class="btn btn-primary btn-large">
+								<%= button_to 'Sala 1 del 5° piso', new_videoconferencium_path, :method => :get %>
+							</a>
+						</center>
+					</div>
+				</div>
+			</div>
+	</div>
+<% end %>
+</br></br></br></br>

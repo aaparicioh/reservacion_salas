@@ -28,8 +28,9 @@ class ReservacionsController < ApplicationController
       format .json
       format.html
       format.pdf do
-        pdf = ReservacionPdf.new
-        send_data pdf.render, filename: "reservacion_#{@reservacion.id}", type: 'application/pdf', disposition: 'inline'
+        pdf = ExportPdf.new
+        send_data pdf.render,
+          filename: "calendario.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
   end
@@ -68,6 +69,10 @@ class ReservacionsController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.pdf do
+        pdf = ReservacionPdf.new(@reservacion)
+        send_data pdf.render, filename: "reservacion_#{@reservacion.id}", type: 'application/pdf', disposition: 'inline'
+      end
     end
   end
 

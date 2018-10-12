@@ -1,16 +1,14 @@
 class CalendarioPdf < Prawn::Document
   require "prawn/measurement_extensions"
 
-  def initialize(calendarios)
+  def initialize(reservaciones)
     super()
-    @calendarios = calendarios
+    @reservaciones = reservaciones
     encabezado
-    datos_solicitante
-    servicios
-    fechas
-    observaciones
-    evaluacion
-    codigo
+    mes
+    dia
+    salas
+    horas
   end
 
   def encabezado
@@ -18,12 +16,12 @@ class CalendarioPdf < Prawn::Document
     image "#{Rails.root}/app/assets/images/ceiich-300dpi.jpg", width: 71, height: 61, :at => [470,700]
     move_down 10.mm
     text"UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO", size: 12, style: :bold, align: :center
-    text"SECRETARÍAS Y UNIDADES ADMINISTRATIVAS", size: 12, align: :center
-    text"SERVICIOS GENERALES", size: 12, align: :center
-    text"SOLICITUD DE SERVICIOS DIVERSOS", size: 11, style: :bold, align: :center
+    text"CENTRO DE INVESTIGACIONES INTERDISCIPLINARIAS EN CIENCIAS Y HUMANIDADES", size: 12, align: :center
+    text"DEPARTAMENTO DE DIFUSIÓN", size: 12, align: :center
+    text"CALENDARIO DE ACTIVIDADES ACADÉMICAS, 2018", size: 11, style: :bold, align: :center
   end
 
-  def datos_solicitante
+  def mes
     move_down 10.mm
     y1=cursor-6
     text"ÁREA SOLICITANTE:", size: 9
@@ -54,7 +52,7 @@ class CalendarioPdf < Prawn::Document
     end
   end
 
-  def servicios
+  def dia
     fill_color "BDBDBD"
     fill_rectangle [0, 510], 550, 25
     fill_color "000000"
@@ -109,7 +107,7 @@ class CalendarioPdf < Prawn::Document
     draw_text"EQ. AUDIOVISUAL", size: 9, :at => [10,cursor]
   end
 
-  def fechas
+  def salas
     move_down 10.mm
     y5=cursor-6
     text"FECHA COMPROMISO:", size: 9
@@ -120,7 +118,7 @@ class CalendarioPdf < Prawn::Document
     end
   end
 
-  def observaciones
+  def horas
     move_down 4.mm
     text "OBSERVACIONES:", size: 9, style: :bold
     fill_color "BDBDBD"
@@ -174,44 +172,5 @@ class CalendarioPdf < Prawn::Document
     move_down 3.mm
     draw_text "PRESUPUESTO", size: 8, :at => [365,cursor]
     draw_text "UNIDAD ADMINISTRATIVA", size: 8, :at => [448,cursor]
-  end
-
-  def evaluacion
-    y6=cursor
-    fill_color "BDBDBD"
-    fill_rectangle [0, 145], 550, 25
-    fill_color "000000"
-    stroke_color "000000"
-    stroke do
-      rectangle [0,145], 550, 75
-      horizontal_line 0,550, :at => 120
-      vertical_line 70,145, :at => 350
-    end
-    bounding_box([0,145], :width => 350, :height => 25) do
-      text"¿CÓMO CALIFICA EL SERVICIO RECIBIDO?", size: 9, :align => :center, :valign => :center
-    end
-    bounding_box([350,145], :width => 200, :height => 25) do
-      text"CONFORMIDAD DEL USUARIO DE RECIBIR EL SERVICIO EN LA FECHA COMPROMISO", size: 8, :align => :center, :valign => :center
-    end
-    draw_text "EXCELENTE", size: 9, :at => [5,cursor-23]
-    draw_text"X", size: 10, :at => [71,cursor-24]
-    draw_text "BUENO", size: 9, :at => [95,cursor-23]
-    draw_text "REGULAR", size: 9, :at => [185,cursor-23]
-    draw_text "MALO", size: 9, :at => [275,cursor-23]
-    stroke do
-      rectangle [65,cursor-14], 18,12
-      rectangle [135,cursor-14], 18,12
-      rectangle [240,cursor-14], 18,12
-      rectangle [315,cursor-14], 18,12
-    end
-    stroke do
-      horizontal_line 350,550, :at =>80
-    end
-    draw_text "NOMBRE Y FIRMA", size: 8, :at => [415, 72]
-    draw_text"MARÍA GLADYS CASTILLO GUERRERO", size: 8, :at => [380,82]
-  end
-
-  def codigo
-    draw_text "F01 PSG 0303 Rev. 3", size: 9, :at => [450,0]
   end
 end
