@@ -23,7 +23,7 @@
                  <% end %>
                  <% if can? :manage, Calendario %>
                  <a class="btn btn-primary btn-large">
-                 <%= button_to 'Calendarios', pdfs_calendario_path, :method => :get  %> </a>
+                 <%= button_to 'Calendarios', reservacions_path(format: 'pdf'), :method => :get  %> </a>
                  <% end %>
                  <% if can? :manage, User%>
                  <a class="btn btn-primary btn-large">

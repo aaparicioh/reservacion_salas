@@ -13,7 +13,7 @@ class ExportPdf < Prawn::Document#.generate("calendario.pdf", :page_layout => :l
     @num_salas = 7
     @alto_fila_enc = 18
     @alto_fila_hora = 17.5
-    $fecha=Time.new(2018,10,24)
+    $fecha=Time.new(2018,10,23)#Time.now+86400
     encabezado
     fecha
     salas
@@ -112,10 +112,13 @@ class ExportPdf < Prawn::Document#.generate("calendario.pdf", :page_layout => :l
     $icono=10
     @reservacions.each do |r|
       if (r.fechainicio.strftime("%d-%m-%Y") == $fecha.strftime("%d-%m-%Y")) && r.aprobacion
-        #bounding_box([0,@inicio_alto-2*@alto_fila_enc-(2*i+1)*@alto_fila_hora], :width => $ancho_celda, :height => @alto_fila_hora*(r.horafin-r.horainicio)*2) do
         celdas_abajo=(r.horainicio.strftime("%H").to_i-8)*2+(r.horainicio.strftime("%M").to_f/30)
+        stroke_color "000000"
+        stroke do
+          rectangle [@ancho_inicio+$ancho_celda*(r.espacio_id-1),@inicio_alto-2*@alto_fila_enc-celdas_abajo*@alto_fila_hora], $ancho_celda, @alto_fila_hora*2*(r.horafin-r.horainicio)/3600
+        end
         fill_color "D0D0DD"
-        fill_rectangle [@ancho_inicio+$ancho_celda*(r.espacio_id-1),@inicio_alto-2*@alto_fila_enc-celdas_abajo*@alto_fila_hora], $ancho_celda, @alto_fila_hora*2*(r.horafin-r.horainicio)/3600
+        fill_rectangle [@ancho_inicio+$ancho_celda*(r.espacio_id-1)+1,@inicio_alto-2*@alto_fila_enc-celdas_abajo*@alto_fila_hora-1], $ancho_celda-2, @alto_fila_hora*2*(r.horafin-r.horainicio)/3600-2
         fill_color "000000"
         if r.tipoactividad.to_s == "Seminario"
           tipoevento = "Sem"
@@ -130,16 +133,23 @@ class ExportPdf < Prawn::Document#.generate("calendario.pdf", :page_layout => :l
           image "#{Rails.root}/app/assets/images/pc.png", width: $icono, height: $icono, :at => [0,$icono] if r.pc
           image "#{Rails.root}/app/assets/images/skype.png", width: $icono, height: $icono, :at => [$icono,$icono] if r.conexSkype
           image "#{Rails.root}/app/assets/images/www.png", width: $icono, height: $icono, :at => [2*$icono,$icono] if r.conexInternet
-          #text r.horainicio.strftime("%H:%M - ")+r.horafin.strftime("%H:%M ")+r.nevento, size: 8, :align => :center, :valign => :center
-          if r.horafin-r.horainicio <= 3600
+          image "#{Rails.root}/app/assets/images/cafe.png", width: $icono, height: $icono, :at => [6*$icono,$icono] if r.cafe
+          image "#{Rails.root}/app/assets/images/galletas.png", width: $icono, height: $icono, :at => [7*$icono,$icono] if r.galletas
+          image "#{Rails.root}/app/assets/images/frutas.png", width: $icono, height: $icono, :at => [8*$icono,$icono] if r.fruta
+          if r.horafin-r.horainicio <= 7200
             if r.nevento.length >22
               nom_evento = r.nevento[0..22]+"..."
             else
               nom_evento = r.nevento
             end
-            text r.horainicio.strftime("%H:%M - ")+r.horafin.strftime("%H:%M ")+"-"+tipoevento+"\n"+nom_evento+"\n"+r.nresponsable+" "+r.asistentes.to_s+"p", size: 8, :align => :center, :valign => :top
+            if r.nresponsable.length >15
+              nom_resp = r.nresponsable[0..15]+"..."
+            else
+              nom_resp = r.nresponsable
+            end
+            text r.horainicio.strftime("%H:%M - ")+r.horafin.strftime("%H:%M ")+"-"+tipoevento+"\n"+nom_evento+"\n"+nom_resp+" "+r.asistentes.to_s+"p", size: 8, :align => :center, :valign => :top
           else
-            text r.horainicio.strftime("%H:%M - ")+r.horafin.strftime("%H:%M ")+"-"+tipoevento+"\n"+r.nevento+" "+r.nresponsable+" "+r.asistentes.to_s+"p", size: 8, :align => :center, :valign => :center
+            text r.horainicio.strftime("%H:%M - ")+r.horafin.strftime("%H:%M ")+"-"+tipoevento+"\n"+r.nevento+"\n"+r.nresponsable+" "+r.asistentes.to_s+"p", size: 8, :align => :center, :valign => :center
           end
         end
       end
@@ -147,6 +157,6 @@ class ExportPdf < Prawn::Document#.generate("calendario.pdf", :page_layout => :l
   end
 
   def pie_pagina
-    draw_text "Fecha y hora de generación: "+Time.now.strftime("%d-%m-%Y %H:%M"), size: 10, :at => [520,0]
+    draw_text "Fecha y hora de generación: "+Time.now.strftime("%d-%m-%Y %H:%M"), size: 8, :at => [562,0]
   end
 end

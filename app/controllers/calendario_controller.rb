@@ -5,6 +5,6 @@ class CalendarioController < ApplicationController
 	end
 
 	def pdfs
-		
-	endd
+		#render '/calendario/pdfs'
+	end
 end

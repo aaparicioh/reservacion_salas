@@ -85,8 +85,8 @@ class ReservacionsController < ApplicationController
     @reservacion.fechafin = @reservacion.fechainicio
 
     @reservaciones.each do |r|
-      condicion = (@reservacion.espacio_id==r.espacio_id) && (( @reservacion.fechainicio==r.fechafin && (@reservacion.horainicio<r.horafin && @reservacion.horainicio>=r.horainicio) ) || ( @reservacion.fechafin==r.fechainicio && (@reservacion.horafin>r.horainicio && @reservacion.horafin<=r.horafin) ))
-      if condicion
+      if #(@solicitud.fechainicio==s.fechainicio&&@solicitud.horainicio>s.horainicio)&&(@solicitud.fechafin==s.fechafin&&@solicitud.horafin<s.horafin)
+      (@reservacion.espacio_id==r.espacio_id) && (( @reservacion.fechainicio==r.fechafin && @reservacion.horainicio<r.horafin ) || ( @reservacion.fechafin==r.fechainicio && @reservacion.horafin>r.horainicio ))
         colision = true
       end
     end
@@ -123,7 +123,7 @@ class ReservacionsController < ApplicationController
     puts "Actualizado.- fi: " + fi_a.to_s + " ff: " + ff_a.to_s + " hi: " + hi_a.to_s + " hf: " + hf_a.to_s
     @reservaciones = Reservacion.all
     @reservaciones.each do |r|
-      condicion = (@reservacion.id != r.id)&&(espacio_a==r.espacio_id)&&(( fi_a==r.fechafin && (hi_a<r.horafin && hi_a>=r.horainicio) ) || ( ff_a==r.fechainicio && (hf_a>r.horainicio && hf_a<=r.horafin) ))
+      condicion = (@reservacion.id != r.id)&&(espacio_a==r.espacio_id)&&(( fi_a==r.fechafin && (hi_a<=r.horafin && hi_a>=r.horainicio) ) || ( ff_a==r.fechainicio && (hf_a>=r.horainicio && hf_a<=r.horafin) ))
       if condicion
         colision = true
       end
