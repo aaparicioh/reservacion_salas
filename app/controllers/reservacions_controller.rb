@@ -83,6 +83,7 @@ class ReservacionsController < ApplicationController
     @reservaciones = Reservacion.all
     @reservacion = Reservacion.new(reservacion_params)
     @reservacion.fechafin = @reservacion.fechainicio
+    @reservacion.cafe = true
 
     @reservaciones.each do |r|
       condicion = (@reservacion.espacio_id==r.espacio_id) && (( @reservacion.fechainicio==r.fechafin && (@reservacion.horainicio<r.horafin && @reservacion.horainicio>=r.horainicio) ) || ( @reservacion.fechafin==r.fechainicio && (@reservacion.horafin>r.horainicio && @reservacion.horafin<=r.horafin) ))
