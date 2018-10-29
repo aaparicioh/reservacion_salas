@@ -63,8 +63,8 @@ Rails.application.routes.draw do
 
   get 'reservacions/new'
   get 'reservacions/show'
+  get 'reservacions/formSala6', to: "reservacions#new"
 
-  get 'reservacions/solicitud'
 
   post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
   post '/reservacions/id', to: 'reservacions#show'

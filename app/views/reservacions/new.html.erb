@@ -1,5 +1,29 @@
 
 <center><h2>NUEVA SOLICITUD</h2></center>
+ <% if $espacioActual == 1 %>
+<%= render 'formAud4', reservacion: @reservacion %>
+ <%end%>
 
-<%= render 'form', reservacion: @reservacion %>
+<% if $espacioActual == 2 %>
+<%= render 'formSala1', reservacion: @reservacion %>
+ <%end%>
+ 
+ <% if $espacioActual == 3 %>
+<%= render 'formSala2', reservacion: @reservacion %>
+ <%end%>
+ 
+ <% if $espacioActual == 4 %>
+<%= render 'formAudRG', reservacion: @reservacion %>
+ <%end%>
 
+ <% if $espacioActual == 5 %>
+<%= render 'formSala6', reservacion: @reservacion %>
+ <%end%>
+
+ <% if $espacioActual == 6 %>
+<%= render 'formAnexo', reservacion: @reservacion %>
+ <%end%>
+
+ <% if $espacioActual == 0 %>
+<%= render 'formAud4', reservacion: @reservacion %>
+ <%end%>

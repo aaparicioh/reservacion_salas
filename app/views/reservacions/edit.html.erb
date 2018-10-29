@@ -2,15 +2,23 @@
 
  <% if @reservacion.aprobacion == false %>
    <% if can? :show, Reservacion %>
-     <%= render 'formEdit', reservacion: @reservacion %>
-   <% end %>   
-<% end %>
+      <% if @reservacion.espacio.id == 1 or @reservacion.espacio.id == 4 %>
+        <%= render 'formEditAud', reservacion: @reservacion %> 
+      <% else %>
+        <%= render 'formEdit', reservacion: @reservacion %>
+      <% end %>   
+  <% end %>
+<%end%>
 
    <% if @reservacion.aprobacion == true %>
       <% if can? :manage, Reservacion %>
-        <%= render 'formEdit', reservacion: @reservacion %>
-      <% end %> 
-      <% if cannot? :delete, Reservacion%>
+        <% if @reservacion.espacio.id == 1 or @reservacion.espacio.id == 4  %>
+          <%= render 'formEditAud', reservacion: @reservacion %>
+        <% else %>
+          <%= render 'formEdit', reservacion: @reservacion %>
+        <% end %> 
+      <%end%>
+   <% if cannot? :delete, Reservacion%>
     <div class= "contenedor">
       <div class="panel panel-default">
         <div class="panel-heading">Programación de actividades </div>

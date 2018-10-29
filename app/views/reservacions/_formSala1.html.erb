@@ -2,7 +2,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <center>
 <%= form_with(model: reservacion, local: true) do |form| %>
-  <% if reservacion.errors.any? %>
+ <% if reservacion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reservacion.errors.count, "error") %> prohibited this reservacion from being saved:</h2>
       <ul> <% reservacion.errors.full_messages.each do |message| %>
@@ -18,18 +18,15 @@
     <div class="jumbotron4">
       <center>
         
+
         <div class="field">
-          <%= form.label :sala %>
           <% if can? :manage, Reservacion %>
-            <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio") %>
+            <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio", :selected => 2)%>
           <% else %>
-            <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
+            <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio", :selected => 2) %>
           <% end %>              
         </div>
 
-        <% if "espacio()" == 1 %>
-          <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-        <% end %>
 
         <div class="field">
           <%= form.label :responsable_de_la_sesión %>
@@ -183,9 +180,7 @@ $(document).ready(function(){
       </center>
     </div>
     <div align ="right">
-      <a class="btn btn-primary btn-large">
-            <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
-      </a>
+      <a class="btn btn-primary btn-large"><%= button_to 'Regresar', espacios_sala15P_path, :method => :post %> </a> 
     </div>
   </div>
 </div>

@@ -58,10 +58,13 @@
         <center>
           <div class="btn-group" role="group" aria-label="...">
             <center>
-              <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+              <% if can? :manage, Reservacion %>   
+               <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_espacios_path, :method => :post %> </a>
+              <% else %>   
+               <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+              <% end %> 
               <a class="btn btn-primary btn-large"><%= button_to 'Reservar', new_reservacion_path, :method => :get %> </a>
-              <!--<button id="printpdf" class="btn btn-primary btn-large">Imprimir</button>-->
-            </center>
+              
           </div>
         </center>
       </div>

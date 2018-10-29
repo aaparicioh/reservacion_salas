@@ -1,8 +1,8 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <center>
 <%= form_with(model: reservacion, local: true) do |form| %>
-  <% if reservacion.errors.any? %>
+ <% if reservacion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reservacion.errors.count, "error") %> prohibited this reservacion from being saved:</h2>
       <ul> <% reservacion.errors.full_messages.each do |message| %>
@@ -18,18 +18,15 @@
     <div class="jumbotron4">
       <center>
         
+
         <div class="field">
-          <%= form.label :sala %>
           <% if can? :manage, Reservacion %>
-            <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio") %>
+            <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio", :selected => 4)%>
           <% else %>
             <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
           <% end %>              
         </div>
 
-        <% if "espacio()" == 1 %>
-          <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-        <% end %>
 
         <div class="field">
           <%= form.label :responsable_de_la_sesión %>
@@ -79,6 +76,11 @@
           <%= form.label :hora_de_fin %>
           <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00", min: "07:00", max: "20:30" %>
         </div>
+        
+        <h6> DISPOSICIÓN DEL AUDITORIO </h6>
+          <div class="field">
+           <%= form.select :disposicionAud, ['Clase', 'Reunión de trabajo', 'Seminario', 'Otro'] %>
+          </div>
 
         <!--<div class="field">
           <%= form.label :repetición %>
@@ -137,16 +139,16 @@
            <h6> Seleccione los servicios que requiera. </h6>
             
            <h5><b> SERVICIOS TÉCNICOS </b></h5>
-            <div><%= form.check_box :videoproyector, id: :reservacion_videoproyector %><h7> Videoproyector </h7> </div> 
+           <div><%= form.check_box :videoproyector, id: :reservacion_videoproyector %><h7> Videoproyector </h7> </div> 
             <div><%= form.check_box :pc, id: :reservacion_pc %> <h7> PC </h7> </div>
             <!--<div><%= form.check_box :video, id: :reservacion_video %><h7> Video </h7> </div>--> 
             <div><%= form.check_box :conexInternet, id: :reservacion_conexInternet %><h7> Conexión Internet </h7> </div>
             <div><%= form.check_box :pizarron, id: :reservacion_pizarron %> <h7> Pizarrón </h7> </div> 
            <!-- <div><%= form.check_box :traducSimultanea, id: :reservacion_traducSimultanea %> <h7> Traducción simultánea </h7> </div> -->
             <div><%= form.check_box :conexSkype, id: :reservacion_conexSkype %> <h7> Conexión por Skype </h7> </div> 
-            <!--<div><%= form.check_box :videoconferencia, id: :reservacion_videoconferencia %><h7> Videoconferencia </h7> </div>
             <div><%= form.check_box :webcast, id: :reservacion_webcast %> <h7> Webcast </h7> </div>
             <div><%= form.check_box :grabVideo, id: :reservacion_grabVideo %> <h7> Grabación de video </h7> </div>
+            <!--<div><%= form.check_box :videoconferencia, id: :reservacion_videoconferencia %><h7> Videoconferencia </h7> </div>
             <div><%= form.check_box :grabAudio, id: :reservacion_grabAudio %> <h7> Grabación de audio </h7> </div>-->
            <h5><b> OTROS SERVICIOS </b></h5>
            <h6> En todas las sesiones hay servicio de café. </h6>
@@ -154,13 +156,8 @@
             <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
    
-
-            <% if params[:espacio_id] == "Auditorio 4o. piso" %>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-            <% end %>
-            <% if @reservacion[:espacio_id] == 4%>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 50, required:"" %> personas</h7>
-            <% end %>
+            <div><h7> Asistencia aproximada: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 50, required:"" %> personas</h7>
+        
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
@@ -183,9 +180,7 @@ $(document).ready(function(){
       </center>
     </div>
     <div align ="right">
-      <a class="btn btn-primary btn-large">
-            <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
-      </a>
+      <a class="btn btn-primary btn-large"><%= button_to 'Regresar', espacios_auditorioRG_path, :method => :post %> </a> 
     </div>
   </div>
 </div>

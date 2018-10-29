@@ -34,9 +34,14 @@
         <div id="calendarglobal"></div>
         <center>
           <div class="btn-group" role="group" aria-label="...">
+            <% if can? :manage, Reservacion %>
             <center>
-              <a class="btn btn-primary btn-large"><%= button_to 'Continuar', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+              <a class="btn btn-primary btn-large"><%= button_to 'Continuar', calendario_espacios_path, :method => :post %> </a>
             </center>
+            <% else %>   
+              <a class="btn btn-primary btn-large"><%= button_to 'Continuar', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+            <% end %> 
+
           </div>
         </center>
       </div>

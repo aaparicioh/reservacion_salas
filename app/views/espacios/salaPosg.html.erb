@@ -51,14 +51,17 @@
     <div class="panel-group">
       <div class="col-md-9" >
         <div class="panel panel-primary">
-          <div class="panel-heading"> <center><h3>SALA DE POSGRADO </h3> </center></div>
+          <div class="panel-heading"> <center><h3>SALA ANEXO CEIICH </h3> </center></div>
         </div>
         <div id="calendarPos"></div>
         <center>
          <div class="btn-group" role="group" aria-label="...">
           <center>
-            <a class="btn btn-primary btn-large">
-            <%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+            <% if can? :manage, Reservacion %>   
+               <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_espacios_path, :method => :post %> </a>
+              <% else %>   
+               <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+              <% end %> 
             <a class="btn btn-primary btn-large"> 
             <%= button_to 'Reservar', new_reservacion_path, :method => :get %> </a>
           </center>

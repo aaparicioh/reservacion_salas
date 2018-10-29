@@ -14,10 +14,11 @@
 	<div class="col-md-3" >
 	  <div class="panel panel-default">
       <div class="panel-heading">Programación de actividades </div>
+      <% $espacioActual=1 %>
 		    <div class="panel-body">
           <div class="btn-group-vertical" role="group" aria-label="...">
 	  		      	Reservaciones
-	 
+	
 	  	      <button type="button" class="btn btn-link"></button>
             <%= javascript_include_tag "ventanaCatalogo" %>
       <div id="ventana_emergente"> 
@@ -67,8 +68,11 @@
        <center>
            <div class="btn-group" role="group" aria-label="...">
             <center>
-              <a class="btn btn-primary btn-large">
-              <%= button_to 'Otro espacio', calendario_espacios_path, :method => :get %> </a>
+              <% if can? :manage, Reservacion %>
+              <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_espacios_path, :method => :post %> </a>  
+            <% else %>   
+              <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+            <% end %> 
               <a class="btn btn-primary btn-large"> 
               <%= button_to 'Reservar', new_reservacion_path, :method => :get %> </a>
             </center>
