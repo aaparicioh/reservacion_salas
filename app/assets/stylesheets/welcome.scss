@@ -1,8 +1,10 @@
 .jumbotron1 {
-       background-image: url(torre_humanidades.jpg);
-       background-size: cover;
-       padding: 10px 100px 400px 10px;
-       color: black;       
+       padding: 10px;
+       background-repeat: no-repeat;
+       background-position: 28% 50%; 
+       color: black;  
+       background-color: #2c3e50;
+       color: #edf4fc;     
 }
 
 .jumbotron2 {
@@ -31,14 +33,13 @@
        background-position:  57.5% 50%;   
                   }
 .jumbotron {
-   
+    padding: 20px;
     color: #edf4fc;
-	background-color:#2c3e50;
+	  background-color:#2c3e50;
 }
 
 .jumbotron4 {
-   
-    color: #2c3e50;
+  color: #2c3e50;
   background-color:#D9E0E5;
 }
 
@@ -63,4 +64,35 @@ footer {
  }
  ul.ui-autocomplete {
     z-index: 1100;
+}
+.contenedorJumbotron{
+  width: 300px;
+}
+.pie-derechos1 {
+  width: 1270px;
+  font-family: "Lucida Grande", "lucida sans", "Lucida Sans Unicode", "Lucida Console";
+  font-size: 10px;
+  color: #FFFFFF;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-right-color: #CCCCCC;
+  border-left-color: #CCCCCC;
+  padding: 5px;
+  margin-left: 2px;
+  margin-top: 2px;
+  float: left;
+  background-image: url(img/pie-bg.jpg);
+  background-repeat: no-repeat;
+}
+.administrado1{
+  float: right;
+  width: 1270px;
+  margin-top: 5px;
+  color: #edf4fc;
+  text-align: center;
+}
+a1{
+  color: white;
 }

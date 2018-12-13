@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<link href="https://goo.gl/34igzK" rel="shortcut icon">
+  <title>Sistema de Gestión de Espacios </title>
+  <!-- Latest compiled and minified CSS -->
+  <head>
+  <link rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.min.css">
+    <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.min.css">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application'%>
+    <%= javascript_include_tag "application"%>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="contenedor">
+      <div class="encabezado"><a href="http://www.unam.mx" target="_blank"><img src="https://www.ceiich.unam.mx/0/img/encabezadoLogo01.png" alt="Visita la web de la UNAM" border="0" width="250" height="119" /></a><a href="http://www.ceiich.unam.mx"><img src="https://www.ceiich.unam.mx/0/img/encabezadoLogo02.png" title="Regreso home del CEIICH"  title="Visita la web de la UNAM" border="0" width="1030" height="119"/></a></div> 
+
+      <div class="container">
+        <div class="jumbotron">
+          <center>
+            <h2>SISTEMA DE GESTIÓN DE ESPACIOS</h2>
+          </center>
+        </div>
+        <div id="user_nav">
+          <div align="right">
+          <p class="notice"><%= notice %></p><p class="alert"><%= alert %></p> </div>
+          <% if user_signed_in? %>
+            <div align="left">
+              <% if can? :show, Reservacion %>
+                <a class="btn btn-default">
+                <span class="glyphicon glyphicon-home"></span>
+                <%= button_to 'Inicio', root_path, :method => :get %>
+                </a>
+              <% end %>
+            </div>
+            <div align="right">
+              Conectado como <%= current_user.email %>. 
+              <%= button_to  "Cerrar sesión", destroy_user_session_path, :method => :delete %>
+            </div>
+          <% end %>
+         
+        </div>
+        <% if can? :manage, Welcome %>                
+          <div class= "container">
+            <div class="panel-group">     
+              <div class="panel panel-default">
+                <div class="panel-heading"></div>
+                  <div class="panel-body">
+                    <center>
+                      <div class="btn-group" role="group" aria-label="...">
+                        <center>
+                          <a class="btn btn-primary btn-large"><%= button_to "Administración", welcome_administracion_path %></a>
+                        </center>
+                      </div>
+                    </center>
+                  </div>
+              </div>      
+            </div>
+          </div>
+          </br></br>
+        <% end %>
+      </div>
+    </div>
+      <%= yield %>
+
+  </body>
+</html>

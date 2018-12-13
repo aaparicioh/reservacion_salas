@@ -1,3 +1,4 @@
+<%= render 'welcome/encabezado', welcome: @welcome %>
 <center><h2>EDICIÓN DE LA RESERVACIÓN</h2></center>
 
  <% if @reservacion.aprobacion == false %>
@@ -32,7 +33,7 @@
             </div>
       </div>      
     </div>
-      <% end %>
+     <% end %>
    <% end %>
 
 <% if cannot? :show, Reservacion %>

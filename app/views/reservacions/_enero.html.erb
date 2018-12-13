@@ -17,7 +17,7 @@
           <li class="list-group-item"> <b>Responsable: <%= reservacion.nresponsable %></b></li>
           <li class="list-group-item"> Actividad: <%= reservacion.nevento %> </li>
           <li class="list-group-item"> <b>Tipo de actividad: <%= reservacion.tipoactividad %>  </b></li>
-          <li class="list-group-item"> Fecha: <%= reservacion.fechainicio %> </li>    
+          <li class="list-group-item"> Fecha: <%= reservacion.fechainicio.strftime("%d-%m-%Y") %> </li>    
           <!--<li class="list-group-item"> <b>Fecha de fin: <%= reservacion.fechafin %> </b></li>-->
           <li class="list-group-item"> Hora de inicio: <%= reservacion.horainicio.strftime("%H:%M") %></li>
           <li class="list-group-item"> <b>Hora de fin: <%= reservacion.horafin.strftime("%H:%M") %></b></li>

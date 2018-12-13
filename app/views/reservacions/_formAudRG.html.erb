@@ -18,7 +18,6 @@
     <div class="jumbotron4">
       <center>
         
-
         <div class="field">
           <% if can? :manage, Reservacion %>
             <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio", :selected => 4)%>
@@ -77,10 +76,9 @@
           <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00", min: "07:00", max: "20:30" %>
         </div>
         
-        <h6> DISPOSICIÓN DEL AUDITORIO </h6>
-          <div class="field">
-           <%= form.select :disposicionAud, ['Clase', 'Reunión de trabajo', 'Seminario', 'Otro'] %>
-          </div>
+        <%= form.label :disposición_del_auditorio %> 
+        <div><%= form.check_box :auditorio, id: :reservacion_auditorio %>Auditorio</div>
+        <div><%= form.check_box :mesaRedonda, id: :reservacion_mesaRedonda%>Mesa redonda</div> </br>
 
         <!--<div class="field">
           <%= form.label :repetición %>

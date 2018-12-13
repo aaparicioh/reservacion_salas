@@ -1,3 +1,4 @@
+<%= render 'encabezado', welcome: @welcome %>
 <%if can? :show, Videoconferencium %>
  <style type="button">
   input {color: black;}
@@ -100,4 +101,4 @@
       </div>
   </div>
 <% end %>
-
+ <%= render 'welcome/piePagina', welcome: @welcome %>

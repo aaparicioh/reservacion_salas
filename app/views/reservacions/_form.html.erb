@@ -27,10 +27,6 @@
           <% end %>              
         </div>
 
-        <% if "espacio()" == 1 %>
-          <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-        <% end %>
-
         <div class="field">
           <%= form.label :responsable_de_la_sesión %>
           <%= form.text_field :nresponsable, id: :reservacion_nresponsable, required:"" %>

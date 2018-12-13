@@ -1,4 +1,4 @@
-
+<%= render 'welcome/encabezado', welcome: @welcome %>
 
 <% if can? :manage, Welcome %>
 <div class= "contenedor">
@@ -37,3 +37,4 @@
     </div>
 </div>
 <% end %>
+<%= render 'welcome/piePagina', welcome: @welcome %>

@@ -1,5 +1,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 <center>
 <%= form_with(model: reservacion, local: true) do |form| %>
   <% if reservacion.errors.any? %>
@@ -56,10 +59,32 @@
         <% end %>
 
         <% if can? :manage, Reservacion %>
+         <script sinDomingos>
+         $(function() {
+         $('#datepicker1').datepicker({ 
+         beforeShowDay: $.datepicker.noWeekends,
+         dateFormat: 'dd/mm/yy'
+           });
+          });
+        </script>
+        <script sinFines>
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat(“dd-MM-yy”);
+        String strFecha = sinDomingos();
+        Date fecha = null;
+        try {
+        fecha = formatoDelTexto.parse(strFecha);
+         } catch (ParseException ex) {
+          ex.printStackTrace();
+          } 
+        </script>
+        Fecha: <input type='text' id='datepicker1' />
+
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, min: Time.zone.today%>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
+          <%= form.hidden_field :fechainicio, id: :reservacion_usuario, :value => "sinFines();" %>
         </div>
+       
 
         <div class="field">
           <%= form.label :fecha_de_fin %>

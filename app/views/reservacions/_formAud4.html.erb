@@ -1,5 +1,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 <center>
 <%= form_with(model: reservacion, local: true) do |form| %>
   <% if reservacion.errors.any? %>
@@ -18,19 +21,13 @@
     <div class="jumbotron4">
       <center>
         
-        <div class="field" name ="espacio" id= "espacio">
-          <%= form.label :espacio %>
+        <div class="field" >
           <% if can? :manage, Reservacion %>
             <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio", :selected => 1) %>
           <% else %>
             <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
           <% end %>              
         </div>
-
-         <h6> DISPOSICIÓN DEL AUDITORIO </h6>
-            <div class="field">
-              <%= form.select :disposicion, ['Auditorio', 'Mesa redonda'] %>
-            </div>
       
         <div class="field">
           <%= form.label :responsable_de_la_sesión %>
@@ -60,6 +57,8 @@
         <% end %>
 
         <% if can? :manage, Reservacion %>
+
+
         <div class="field">
           <%= form.label :fecha_de_inicio %>
           <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
@@ -80,6 +79,10 @@
           <%= form.label :hora_de_fin %>
           <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00", min: "07:00", max: "20:30" %>
         </div>
+
+        <%= form.label :disposición_del_auditorio %> 
+        <div><%= form.check_box :auditorio, id: :reservacion_auditorio %>Auditorio</div>
+        <div><%= form.check_box :mesaRedonda, id: :reservacion_mesaRedonda%>Mesa redonda</div></br>
 
         <!--<div class="field">
           <%= form.label :repetición %>
@@ -156,7 +159,6 @@
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
    
             <div><h7> Asistencia aproximada: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-           
          
             <p></p>
             <div class="actions">

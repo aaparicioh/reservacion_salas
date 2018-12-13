@@ -1,3 +1,4 @@
+<%= render 'welcome/encabezado', welcome: @welcome %>
 <p id="notice"><%= notice %></p>
 <% if can? :manage, Reservacion %>
 <div class= "contenedor">
@@ -118,5 +119,5 @@
         </div>      
 </div>
 <% end %>
-
+<%= render 'welcome/piePagina', welcome: @welcome %>
 

@@ -148,14 +148,8 @@
            <h6> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </h6>
             <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
+            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max:16 , required:"" %> personas</h7></div>
    
-
-            <% if params[:espacio_id] == "Auditorio 4o. piso" %>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-            <% end %>
-            <% if @reservacion[:espacio_id] == 4%>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 50, required:"" %> personas</h7>
-            <% end %>
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
