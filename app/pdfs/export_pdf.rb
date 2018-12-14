@@ -7,13 +7,14 @@ class ExportPdf < Prawn::Document#.generate("calendario.pdf", :page_layout => :l
   def initialize()
     super :page_layout => :landscape
     @reservacions = Reservacion.all
+    @agenda=Agenda.last
     @inicio_alto = 470
     @ancho = 730
     @ancho_inicio = 70
     @num_salas = 7
     @alto_fila_enc = 18
     @alto_fila_hora = 17.5
-    $fecha=Time.new(2018,10,23)#Time.now+86400
+    $fecha=@agenda.fecha
     encabezado
     fecha
     salas

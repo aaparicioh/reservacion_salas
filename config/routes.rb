@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :agendas
   #map.connect '/reservacions/solicitud', :controller => 'reservacions', :action => 'solicitud'
   
   resources :reservacions
@@ -69,6 +70,9 @@ Rails.application.routes.draw do
   post '/reservacions/actividadesInvestigacion', to: 'reservacions#show'
   post '/reservacions/id', to: 'reservacions#show'
   post '/videoconferencia/id',  to: 'videoconferencia#show'
+
+  get 'agendas/new'
+  get 'agendas/edit'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

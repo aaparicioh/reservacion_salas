@@ -1,0 +1,29 @@
+<div class="contenedor">
+  <p id="notice"><%= notice %></p>
+
+  <h2>Generación de pdf</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @agendas.each do |agenda| %>
+        <tr>
+          <td><%= agenda.fecha %></td>
+          <td><%= link_to 'Show', agenda %></td>
+          <td><%= link_to 'Edit', edit_agenda_path(agenda) %></td>
+          <td><%= link_to 'Destroy', agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Seleccionar fecha', new_agenda_path %>
+</div>

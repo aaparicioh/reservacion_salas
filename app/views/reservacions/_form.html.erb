@@ -85,10 +85,14 @@
           <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00", min: "07:00", max: "20:00" %>
         </div>
 
-        <!--<div class="field">
-          <%= form.label :repetición %>
-          <%= form.check_box :repeticion, id: :reservacion_repeticion %>
-        </div>-->
+        <% if can? :manage, Reservacion %>
+          <div class="field">
+            <%= form.label :repetición %>
+            <%= form.check_box :repeticion, id: :reservacion_repeticion %>
+          </div>
+          <% else %>
+            <%= form.check_box :repeticion, :checked => false, :style => 'visibility: hidden' %>
+        <% end %>
 
         <%if false%>
         <div class="field">
