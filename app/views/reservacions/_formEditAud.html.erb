@@ -1,5 +1,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 <center>
 <%= form_with(model: reservacion, local: true) do |form| %>
   <% if reservacion.errors.any? %>
@@ -18,7 +21,7 @@
     <div class="jumbotron4">
       <center>
         
-        <div class="field">
+        <div class="field" name ="espacio" id= "espacio">
           <%= form.label :sala %>
           <% if can? :manage, Reservacion %>
             <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio") %>
@@ -35,6 +38,7 @@
         <div class="field">
           <%= form.label :tipo_de_actividad %>
            <%= form.select :tipoactividad, ['Clase', 'Reunión de trabajo', 'Seminario', 'Otro'] %>
+         
         </div>
 
         <div class="field">
@@ -45,45 +49,68 @@
         <% if cannot? :delete, Reservacion %>
         <div class="field">
           <%= form.label :fecha_de_inicio %>
-          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
+          <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today + 5.day %>
         </div>
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day, min: Time.zone.today + 5.day %>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today + 5.day %>
         </div>
         <% end %>
 
         <% if can? :manage, Reservacion %>
+         <script sinDomingos>
+         $(function() {
+         $('#datepicker1').datepicker({ 
+         beforeShowDay: $.datepicker.noWeekends,
+         dateFormat: 'dd/mm/yy'
+           });
+          });
+        </script>
+        <script sinFines>
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat(“dd-MM-yy”);
+        String strFecha = sinDomingos();
+        Date fecha = null;
+        try {
+        fecha = formatoDelTexto.parse(strFecha);
+         } catch (ParseException ex) {
+          ex.printStackTrace();
+          } 
+        </script>
+        Fecha: <input type='text' id='datepicker1' />
+
         <div class="field">
           <%= form.label :fecha_de_inicio %>
           <%= form.date_field :fechainicio, id: :reservacion_fechainicio, :value => Time.zone.today, min: Time.zone.today%>
+          <%= form.hidden_field :fechainicio, id: :reservacion_usuario, :value => "sinFines();" %>
         </div>
+       
 
         <div class="field">
           <%= form.label :fecha_de_fin %>
-          <%= form.date_field :fechafin, id: :reservacion_fechafin, :value => Time.zone.today, min: Time.zone.today%>
+          <%= form.date_field :fechafin, id: :reservacion_fechafin, min: Time.zone.today%>
         </div>
         <% end %>
 
         <div class="field">
           <%= form.label :hora_de_inicio %>
-          <%= form.time_field :horainicio, id: :reservacion_horainicio, :value => "08:00", min: "07:00", max: "20:30" %>
+          <%= form.time_field :horainicio, id: :reservacion_horainicio, min: "07:00", max: "20:30" %>
         </div>
 
         <div class="field">
           <%= form.label :hora_de_fin %>
-          <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00", min: "07:00", max: "20:30" %>
+          <%= form.time_field :horafin, id: :reservacion_horafin, min: "07:00", max: "20:30" %>
         </div>
 
-        <% if can? :manage, Reservacion %>
-          <div class="field">
-            <%= form.label :repetición %>
-            <%= form.check_box :repeticion, id: :reservacion_repeticion %>
-          </div>
-          <% else %>
-            <%= form.check_box :repeticion, :checked => false, :style => 'visibility: hidden' %>
-        <% end %>
+ 
+      <%= form.label :disposición_del_auditorio %> 
+      <div><%= form.check_box :auditorio, id: :reservacion_auditorio %>Auditorio</div>
+      <div><%= form.check_box :mesaRedonda, id: :reservacion_mesaRedonda%>Mesa redonda</div>
+
+        <!--<div class="field">
+          <%= form.label :repetición %>
+          <%= form.check_box :repeticion, id: :reservacion_repeticion %>
+        </div>-->
 
         <%if false%>
         <div class="field">
@@ -110,14 +137,12 @@
 
         <div class="field">
           <%= form.label :fecha_de_solicitud %>
-          <%= Time.now.strftime("%d-%m-%Y %H:%M") %>
-          <%= form.hidden_field :fechasolicitud, id: :reservacion_fechasolicitud, :value => Time.now.strftime("%d-%m-%Y %H:%M") %>
+          <%= form.text_field :fechasolicitud, id: :reservacion_fechasolicitud, :readonly => true %>
         </div>
 
         <div class="field">
           <%= form.label :usuario %>
-          <%= current_user.email %>
-          <%= form.hidden_field :usuario, id: :reservacion_usuario, :value => current_user.email %>
+           <%= form.text_field :usuario, id: :reservacion_usuario, :readonly => true  %>
         </div>
          
 
@@ -144,9 +169,9 @@
             <div><%= form.check_box :pizarron, id: :reservacion_pizarron %> <h7> Pizarrón </h7> </div> 
            <!-- <div><%= form.check_box :traducSimultanea, id: :reservacion_traducSimultanea %> <h7> Traducción simultánea </h7> </div> -->
             <div><%= form.check_box :conexSkype, id: :reservacion_conexSkype %> <h7> Conexión por Skype </h7> </div> 
-            <!--<div><%= form.check_box :videoconferencia, id: :reservacion_videoconferencia %><h7> Videoconferencia </h7> </div>
             <div><%= form.check_box :webcast, id: :reservacion_webcast %> <h7> Webcast </h7> </div>
             <div><%= form.check_box :grabVideo, id: :reservacion_grabVideo %> <h7> Grabación de video </h7> </div>
+            <!--<div><%= form.check_box :videoconferencia, id: :reservacion_videoconferencia %><h7> Videoconferencia </h7> </div>
             <div><%= form.check_box :grabAudio, id: :reservacion_grabAudio %> <h7> Grabación de audio </h7> </div>-->
            <h5><b> OTROS SERVICIOS </b></h5>
            <h6> En todas las sesiones hay servicio de café. </h6>
@@ -154,13 +179,9 @@
             <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
    
-
-            <% if params[:espacio_id] == "Auditorio 4o. piso" %>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-            <% end %>
-            <% if @reservacion[:espacio_id] == 4%>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 50, required:"" %> personas</h7>
-            <% end %>
+            <div><h7> Asistencia aproximada: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
+           
+         
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
@@ -183,9 +204,8 @@ $(document).ready(function(){
       </center>
     </div>
     <div align ="right">
-      <a class="btn btn-primary btn-large">
-            <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
-      </a>
+       <a class="btn btn-primary btn-large"><%= button_to 'Regresar', espacios_auditorio4P_path, :method => :post %> </a>
+      
     </div>
   </div>
 </div>

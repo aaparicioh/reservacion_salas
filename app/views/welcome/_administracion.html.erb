@@ -1,4 +1,4 @@
-
+<%= render 'welcome/encabezado', welcome: @welcome %>
 <% if can? :manage, Welcome %>
     <div class= "contenedor">
         <div class="panel-group">     
@@ -35,4 +35,5 @@
             </div>      
         </div>
     </div>
+</div>
 <% end %>

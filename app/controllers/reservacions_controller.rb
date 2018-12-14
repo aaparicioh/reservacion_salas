@@ -99,7 +99,7 @@ class ReservacionsController < ApplicationController
         format.html { redirect_to @reservacion, notice: 'Su solicitud fue realizada satisfactoriamente.' }
         format.json { render :show, status: :created, location: @reservacion }
       else
-        format.html { redirect_to calendario_actividadesInvestigacion_path, :notice => 'Eror al procesar su solicitud: "Existe un traslape con una reservación previa".' }
+        format.html { redirect_to calendario_actividadesInvestigacion_path, :notice => 'Error al procesar su solicitud: "Existe un traslape con una reservación previa".' }
         format.json { render json: @reservacion.errors, status: :unprocessable_entity }
       end
     end

@@ -2,7 +2,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <center>
 <%= form_with(model: reservacion, local: true) do |form| %>
-  <% if reservacion.errors.any? %>
+ <% if reservacion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reservacion.errors.count, "error") %> prohibited this reservacion from being saved:</h2>
       <ul> <% reservacion.errors.full_messages.each do |message| %>
@@ -19,11 +19,10 @@
       <center>
         
         <div class="field">
-          <%= form.label :sala %>
           <% if can? :manage, Reservacion %>
-            <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio") %>
+            <%= collection_select(:reservacion, :espacio_id, @espaciosadmin, :id, :nombre, :prompt => "Seleccione un espacio", :selected => 6)%>
           <% else %>
-            <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio") %>
+            <%= collection_select(:reservacion, :espacio_id, @espacios, :id, :nombre, :prompt => "Seleccione un espacio", :selected => 6) %>
           <% end %>              
         </div>
 
@@ -76,14 +75,10 @@
           <%= form.time_field :horafin, id: :reservacion_horafin, :value => "10:00", min: "07:00", max: "20:30" %>
         </div>
 
-        <% if can? :manage, Reservacion %>
-          <div class="field">
-            <%= form.label :repetición %>
-            <%= form.check_box :repeticion, id: :reservacion_repeticion %>
-          </div>
-          <% else %>
-            <%= form.check_box :repeticion, :checked => false, :style => 'visibility: hidden' %>
-        <% end %>
+        <!--<div class="field">
+          <%= form.label :repetición %>
+          <%= form.check_box :repeticion, id: :reservacion_repeticion %>
+        </div>-->
 
         <%if false%>
         <div class="field">
@@ -153,14 +148,8 @@
            <h6> En sesiones de 3 horas o más se puede ofrecer galletas o fruta. </h6>
             <div><%= form.check_box :galletas, id: :reservacion_galletas %> <h7> Galletas </h7> </div>
             <div><%= form.check_box :fruta, id: :reservacion_fruta %> <h7> Fruta </h7> </div>
+            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max:16 , required:"" %> personas</h7></div>
    
-
-            <% if params[:espacio_id] == "Auditorio 4o. piso" %>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 70, required:"" %> personas</h7>
-            <% end %>
-            <% if @reservacion[:espacio_id] == 4%>
-            <div><h7> Asistencia aproximada por sesión: <%= form.number_field :asistentes, id: :reservacion_asistentes, min: 1, max: 50, required:"" %> personas</h7>
-            <% end %>
             <p></p>
             <div class="actions">
             <a class="btn btn-primary btn-sm">
@@ -183,9 +172,7 @@ $(document).ready(function(){
       </center>
     </div>
     <div align ="right">
-      <a class="btn btn-primary btn-large">
-            <%= button_to 'Regresar', calendario_actividadesInvestigacion_path, :method => :get %>
-      </a>
+      <a class="btn btn-primary btn-large"><%= button_to 'Regresar', espacios_salaPosg_path, :method => :post %> </a> 
     </div>
   </div>
 </div>

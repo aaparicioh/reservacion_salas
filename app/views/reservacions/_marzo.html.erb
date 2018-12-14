@@ -17,8 +17,8 @@
           <li class="list-group-item"> <b>Responsable: <%= reservacion.nresponsable %></b></li>
           <li class="list-group-item"> Actividad: <%= reservacion.nevento %> </li>
           <li class="list-group-item"> <b>Tipo de actividad: <%= reservacion.tipoactividad %>  </b></li>
-          <li class="list-group-item"> Fecha de inicio: <%= reservacion.fechainicio %> </li>    
-          <li class="list-group-item"> <b>Fecha de fin: <%= reservacion.fechafin %> </b></li>
+          <li class="list-group-item"> Fecha: <%= reservacion.fechainicio.strftime("%d-%m-%Y") %> </li>    
+          <!--<li class="list-group-item"> <b>Fecha de fin: <%= reservacion.fechafin %> </b></li>-->
           <li class="list-group-item"> Hora de inicio: <%= reservacion.horainicio.strftime("%H:%M") %></li>
           <li class="list-group-item"> <b>Hora de fin: <%= reservacion.horafin.strftime("%H:%M") %></b></li>
           <!--<li class="list-group-item"> Repetición: <%= "Sí" if reservacion.repeticion == true %> <%= "No" if reservacion.repeticion == false %></li>
@@ -27,8 +27,7 @@
           <!--<li class="list-group-item"> Repetición: <%= "Sí" if reservacion.repeticion == true %> <%= "No" if reservacion.repeticion == false %></li>
           <li class="list-group-item"> <b>ID repeticiones: <%= reservacion.idrepeticiones %></b></li> -->
           <li class="list-group-item"> <b>Usuario: <%= reservacion.usuario %></b> </li>
-          <!--<li class="list-group-item"> <b>Disposición: <%= reservacion.disposicion %></b></li>     
-          <li class="list-group-item"> Cartel: <%= "Sí" if reservacion.cartel == true %> <%= "No" if reservacion.cartel == false %></li>
+          <!--<li class="list-group-item"> Cartel: <%= "Sí" if reservacion.cartel == true %> <%= "No" if reservacion.cartel == false %></li>
           <li class="list-group-item"> <b>Programa: <%= "Sí" if reservacion.programa == true %> <%= "No" if reservacion.programa == false %></b></li>
           <li class="list-group-item"> Constancias: <%= "Sí" if reservacion.constancias == true %> <%= "No" if reservacion.constancias == false %></li> -->
          </ul>
@@ -51,6 +50,7 @@
           <li class="list-group-item"> <b>Galletas: <%= "Sí" if reservacion.galletas == true %> <%= "No" if reservacion.galletas == false %></b> </li>
           <li class="list-group-item"> Fruta: <%= "Sí" if reservacion.fruta == true %> <%= "No" if reservacion.fruta == false %></li>
           <li class="list-group-item"> <b>Asistentes: <%= reservacion.asistentes %></b> </li>
+          <li class="list-group-item"> <%= "Disposición del auditorio:" if reservacion.espacio.id == 1 %> <%= "Disposición del auditorio:" if reservacion.espacio.id == 4 %><%= " Auditorio" if reservacion.auditorio == true %><%= " Mesa redonda" if reservacion.mesaRedonda == true %></li>
           
 
         </ul>

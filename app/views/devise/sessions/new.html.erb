@@ -1,11 +1,20 @@
+<%= stylesheet_link_tag 'inicio'%>
 
-<body>
-<div class="contenedor">
-<div class="jumbotron1">
-      <div class="container">
-        <div align="left">
-              <h2>BIENVENIDO</h2>
-                
+<div class= "fondo">
+    <center>
+    <div class="encabezado"><a href="http://www.unam.mx" target="_blank"><img src="https://www.ceiich.unam.mx/0/img/encabezadoLogo01.png" alt="Visita la web de la UNAM" border="0" width="250" height="119" /></a><a href="http://www.ceiich.unam.mx"><img src="https://www.ceiich.unam.mx/0/img/encabezadoLogo02.png" title="Regreso home del CEIICH"  title="Visita la web de la UNAM" border="0" width="1030" height="119"/></a></div>
+        <div class="container"><div class="jumbotron">
+          <center>
+            <h2>SISTEMA DE GESTIÓN DE ESPACIOS</h2>
+          </center>
+        </div></div>
+    </center>
+      <center>
+      </br></br></br></br></br></br></br>
+        <div class="contenedorJumbotron">
+          <div class="jumbotron1">
+            <div align="center">
+              <h2>BIENVENIDO</h2>        
                 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
                 <h5> Ingresa tu correo electrónico </h5>
                 <%= f.email_field :email %>
@@ -15,13 +24,14 @@
 
                 <% if devise_mapping.rememberable? -%>
                 <div><%= f.check_box :remember_me %> <h7> Recordarme </h7></div>
-                <% end -%>
+                <% end -%></br>
 
                 <div><%= f.submit t('.sign_in', :default => "Sign in") %></div>
                 <% end %>
+            </div>
+          </div>
         </div>
-      </div>
+      </center>
+       <%= render 'welcome/piePagina1', welcome: @welcome %>
 </div>
-</div>
-</body>
 <%= render "devise/shared/links" %>

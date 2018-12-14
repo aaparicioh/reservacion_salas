@@ -9,7 +9,7 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet" type="text/css">
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css " rel="stylesheet" type="text/css" media="print">
   </head>
-
+<%= render 'welcome/encabezado', welcome: @welcome %>
   <div class= "contenedor">
     <div class="panel-group">
 	    <div class="col-md-3" >
@@ -58,13 +58,17 @@
         <center>
           <div class="btn-group" role="group" aria-label="...">
             <center>
-              <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+              <% if can? :manage, Reservacion %>   
+               <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_espacios_path, :method => :post %> </a>
+              <% else %>   
+               <a class="btn btn-primary btn-large"><%= button_to 'Otro espacio', calendario_actividadesInvestigacion_path, :method => :get %> </a>
+              <% end %> 
               <a class="btn btn-primary btn-large"><%= button_to 'Reservar', new_reservacion_path, :method => :get %> </a>
-              <!--<button id="printpdf" class="btn btn-primary btn-large">Imprimir</button>-->
-            </center>
+              
           </div>
         </center>
       </div>
     </div>
   </div>
+  <%= render 'welcome/piePagina', welcome: @welcome %>
 </html>

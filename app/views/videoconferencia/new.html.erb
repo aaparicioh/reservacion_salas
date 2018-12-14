@@ -1,3 +1,4 @@
+<%= render 'welcome/encabezado', welcome: @welcome %>
 <% if can? :show, Videoconferencium %>
 <center><h2>NUEVA SOLICITUD</h2></center>
 
@@ -22,3 +23,4 @@
         </div>      
 </div>
 <% end %>
+<%= render 'welcome/piePagina', welcome: @welcome %>

@@ -1,4 +1,5 @@
 <html>
+<%= render 'welcome/encabezado', welcome: @welcome %>
   <head>
     <meta charset='utf-8' />
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> 
@@ -64,4 +65,5 @@
       </div>
     </div>
   </div>
+  <%= render 'welcome/piePagina', welcome: @welcome %>
 </html>

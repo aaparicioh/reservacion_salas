@@ -8,7 +8,7 @@
           <li class="list-group-item list-group-item-info"> <b>Folio de reservación: <%= reservacion.id %></b></li>
           
           <% if reservacion.aprobacion == true %>
-          <li class="list-group-item list-group-item-success">  Aprobación: Aprobada </li>
+          <li class="list-group-item list-group-item-success"> Aprobación: Aprobada </li>
           <% else %>
           <li class="list-group-item list-group-item-danger"> Aprobación: Pendiente </li>
           <% end %>
@@ -17,8 +17,8 @@
           <li class="list-group-item"> <b>Responsable: <%= reservacion.nresponsable %></b></li>
           <li class="list-group-item"> Actividad: <%= reservacion.nevento %> </li>
           <li class="list-group-item"> <b>Tipo de actividad: <%= reservacion.tipoactividad %>  </b></li>
-          <li class="list-group-item"> Fecha de inicio: <%= reservacion.fechainicio %> </li>    
-          <li class="list-group-item"> <b>Fecha de fin: <%= reservacion.fechafin %> </b></li>
+          <li class="list-group-item"> Fecha: <%= reservacion.fechainicio.strftime("%d-%m-%Y") %> </li>    
+          <!--<li class="list-group-item"> <b>Fecha de fin: <%= reservacion.fechafin %> </b></li>-->
           <li class="list-group-item"> Hora de inicio: <%= reservacion.horainicio.strftime("%H:%M") %></li>
           <li class="list-group-item"> <b>Hora de fin: <%= reservacion.horafin.strftime("%H:%M") %></b></li>
           <li class="list-group-item"> Fecha de solicitud: <%= reservacion.fechasolicitud.strftime("%d-%m-%Y %H:%M") %></li>
@@ -37,8 +37,7 @@
           <li class="list-group-item"> <b>Galletas: <%= "Sí" if reservacion.galletas == true %> <%= "No" if reservacion.galletas == false %></b> </li>
           <li class="list-group-item"> Fruta: <%= "Sí" if reservacion.fruta == true %> <%= "No" if reservacion.fruta == false %></li>
           <li class="list-group-item"> <b>Asistentes: <%= reservacion.asistentes %></b> </li>
-          
-
+          <li class="list-group-item"> <%= "Disposición del auditorio:" if reservacion.espacio.id == 1 %> <%= "Disposición del auditorio:" if reservacion.espacio.id == 4 %><%= " Auditorio" if reservacion.auditorio == true %><%= " Mesa redonda" if reservacion.mesaRedonda == true %></li>
         </ul>
          </div> 
           <table class="table table-striped table-hover">

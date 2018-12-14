@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022233453) do
+#<<<<<<< HEAD
+#ActiveRecord::Schema.define(version: 20181022233453) do
 
-  create_table "agendas", force: :cascade do |t|
-    t.date "fecha"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+#  create_table "agendas", force: :cascade do |t|
+#    t.date "fecha"
+#    t.datetime "created_at", null: false
+#    t.datetime "updated_at", null: false
+#  end
+#=======
+ActiveRecord::Schema.define(version: 20181026185056) do
 
   create_table "espacios", force: :cascade do |t|
     t.string "nombre"
@@ -66,24 +69,9 @@ ActiveRecord::Schema.define(version: 20181022233453) do
     t.boolean "fruta"
     t.integer "asistentes"
     t.boolean "pizarron"
-    t.string "disposicion"
     t.string "usuario"
     t.integer "espacio_id"
-  end
-
-  create_table "solicituds", force: :cascade do |t|
-    t.string "sala"
-    t.string "responsable"
-    t.string "motivo"
-    t.string "sesiones"
-    t.string "fechainicio"
-    t.string "fechafin"
-    t.string "diasemana"
-    t.string "horario"
-    t.string "numpersonas"
-    t.string "requerimientos"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "disposicionAud"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,18 +92,6 @@ ActiveRecord::Schema.define(version: 20181022233453) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "usuarios", force: :cascade do |t|
-    t.string "nick"
-    t.string "pass"
-    t.string "nombre"
-    t.string "appat"
-    t.string "apmat"
-    t.string "tipo_usuario"
-    t.integer "autorizado"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "videoconferencia", force: :cascade do |t|
     t.string "nSolicitante"
     t.string "tituloActividad"
@@ -126,18 +102,18 @@ ActiveRecord::Schema.define(version: 20181022233453) do
     t.time "horafin"
     t.string "coordinadorEnlace"
     t.string "responsableTecnico"
-    t.string "numeroIP"
     t.string "usuarioTipoEnlace"
-    t.string "telefono"
     t.string "correoElectronico"
     t.string "recursos"
     t.time "horainicioEnlace"
     t.time "horafinEnlace"
-    t.datetime "fechaSolicitud"
-    t.string "usuario"
-    t.boolean "aprobacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "usuario"
+    t.boolean "aprobacion"
+    t.string "numeroIP"
+    t.string "telefono"
+    t.datetime "fechaSolicitud"
   end
 
 end
